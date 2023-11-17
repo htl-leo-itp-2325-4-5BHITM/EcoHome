@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrashbinCollider : MonoBehaviour
 {
+    [SerializeField] private Player player;
     private string paperTrashTag = "PaperTrash";
     private string paperBinTag = "PaperBin";
 
@@ -12,6 +13,7 @@ public class TrashbinCollider : MonoBehaviour
         if (collision.gameObject.tag == paperTrashTag && this.gameObject.tag == paperBinTag)
         {
             Destroy(collision.gameObject);
+            Player.globalScoreCounter += 1;
         }
     }
 }
