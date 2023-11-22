@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        switch (globalScoreCounter) {
+            case 1:
+                if (GameObject.Find("door_01") != null) Destroy(GameObject.Find("door_01"));
+                break;
+        }
     }
 }

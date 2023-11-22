@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PaperBin
   - PaperTrash
+  - Door
   layers:
   - Default
   - TransparentFX
