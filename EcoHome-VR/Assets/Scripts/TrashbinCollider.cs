@@ -7,6 +7,7 @@ public class TrashbinCollider : MonoBehaviour
     [SerializeField] private Player player;
     private string paperTrashTag = "PaperTrash";
     private string paperBinTag = "PaperBin";
+    private int maxScore = 5;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -14,6 +15,7 @@ public class TrashbinCollider : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Player.globalScoreCounter += 1;
+            
         }
     }
 }
