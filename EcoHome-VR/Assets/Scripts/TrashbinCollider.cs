@@ -9,13 +9,16 @@ public class TrashbinCollider : MonoBehaviour
     private string paperBinTag = "PaperBin";
     private int maxScore = 5;
 
+    public AudioSource audioPlayer; 
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == paperTrashTag && this.gameObject.tag == paperBinTag)
         {
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObj ect);
             Player.globalScoreCounter += 1;
-            
+
+            audioPlayer.Play();
         }
     }
 }
