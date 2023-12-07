@@ -23,7 +23,7 @@ public class TrashbinCollider : MonoBehaviour
     {
         if (collision.gameObject.tag == paperTrashTag && this.gameObject.tag == paperBinTag)
         {
-            Destroy(collision.gameObj ect);
+            Destroy(collision.gameObject);
             Player.globalScoreCounter += 1;
 
             audioPlayer.Play();
