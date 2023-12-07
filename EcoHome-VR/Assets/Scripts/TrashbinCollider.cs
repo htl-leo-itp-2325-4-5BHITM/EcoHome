@@ -27,6 +27,13 @@ public class TrashbinCollider : MonoBehaviour
             Player.globalScoreCounter += 1;
 
             audioPlayer.Play();
+        }
+    }
+
+    void onTriggerEnter(Collision other)
+    {
+        if (other.gameObject.tag == paperTrashTag && this.gameObject.tag == paperBinTag)
+        {
             paperParticle.Play();
         }
     }
