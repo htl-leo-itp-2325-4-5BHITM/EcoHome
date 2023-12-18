@@ -7,7 +7,7 @@ public class TrashbinCollider : MonoBehaviour
     [SerializeField] private Player player;
     private string paperTrashTag = "PaperTrash";
     private string paperBinTag = "PaperBin";
-    private int maxScore = 5;
+    //private int max_ = 5;
 
     //audio system
     public AudioSource audioPlayer; 
@@ -27,13 +27,6 @@ public class TrashbinCollider : MonoBehaviour
             Player.globalScoreCounter += 1;
 
             audioPlayer.Play();
-        }
-    }
-
-    void onTriggerEnter(Collision other)
-    {
-        if (other.gameObject.tag == paperTrashTag && this.gameObject.tag == paperBinTag)
-        {
             paperParticle.Play();
         }
     }
