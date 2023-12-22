@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -27,6 +28,12 @@ public class Player : MonoBehaviour
                     localScoreCounter = 0;
                 }
                 break;
+            
+            // case for restarting after completing level
+            /* case 5:
+                globalScoreCounter = 0;
+                SceneManager.LoadScene("Sebastian_Scene");
+                break; */
         }
     }
 }
