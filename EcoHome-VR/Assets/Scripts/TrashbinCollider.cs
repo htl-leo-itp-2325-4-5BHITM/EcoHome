@@ -13,12 +13,8 @@ public class TrashbinCollider : MonoBehaviour
     private string tinBinTag = "TinBin";
     private string bioTrashTag = "BioTrash";
     private string bioBinTag = "BioBin";
-
-    /* --- Glass Waste ---
     private string glassTrashTag = "GlassTrash";
     private string glassBinTag = "GlassBin";
-    */
-    
 
     // audio system
     public AudioSource audioPlayer; 
@@ -36,7 +32,7 @@ public class TrashbinCollider : MonoBehaviour
             || (collision.gameObject.tag == plasticTrashTag && this.gameObject.tag == plasticBinTag)
             || (collision.gameObject.tag == tinTrashTag && this.gameObject.tag == tinBinTag)
             || (collision.gameObject.tag == bioTrashTag && this.gameObject.tag == bioBinTag)
-            /* || (collision.gameObject.tag == glassTrashTag && this.gameObject.tag == glassBinTag) */)
+            || (collision.gameObject.tag == glassTrashTag && this.gameObject.tag == glassBinTag))
         {
             Destroy(collision.gameObject);
             Player.localScoreCounter += 1;

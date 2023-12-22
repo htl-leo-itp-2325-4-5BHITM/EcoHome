@@ -7,6 +7,14 @@ TagManager:
   - PaperBin
   - PaperTrash
   - Door
+  - PlasticBin
+  - PlasticTrash
+  - TinBin
+  - TinTrash
+  - BioBin
+  - BioTrash
+  - GlassBin
+  - GlassTrash
   layers:
   - Default
   - TransparentFX
