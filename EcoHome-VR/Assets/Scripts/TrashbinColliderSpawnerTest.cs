@@ -4,7 +4,7 @@ using UnityEngine;
 
 using static ItemSpawner;
 
-public class TrashbinColliderwithSpawn : MonoBehaviour
+public class TrashbinColliderSpawnerTest : MonoBehaviour
 {
     [SerializeField] private Player player;
 
@@ -41,14 +41,15 @@ public class TrashbinColliderwithSpawn : MonoBehaviour
             || (collision.gameObject.tag == bioTrashTag && this.gameObject.tag == bioBinTag)
             || (collision.gameObject.tag == glassTrashTag && this.gameObject.tag == glassBinTag))
         {
+            ItemSpawner itemSpawner = new ItemSpawner();
+
+            itemSpawner.identifyItem(collision.gameObject);
 
             Destroy(collision.gameObject);
 
 
 
-            ItemSpawner itemSpawner = new ItemSpawner();
-            Debug.Log(itemSpawner);
-            itemSpawner.identifyItem(collision.gameObject);
+           
             
 
             Player.localScoreCounter += 1;

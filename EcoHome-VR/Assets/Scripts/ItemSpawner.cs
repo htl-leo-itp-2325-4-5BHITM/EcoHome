@@ -19,17 +19,24 @@ public class ItemSpawner : MonoBehaviour{
     public Transform glassSpawner;
     public Transform tinSpawner;
 
+    
+    [SerializeField]
+    private GameObject paperTrashprefab;
+    [SerializeField]
+    private GameObject plasticTrashprefab;
+    [SerializeField]
+    private GameObject glassTrashprefab;
+    [SerializeField]
+    private GameObject bioTrashprefab;
+    [SerializeField]
+    private GameObject tinTrashprefab;
 
-  
-    public GameObject paperTrashprefab;
-    public GameObject plasticTrashprefab;
-    public GameObject glassTrashprefab;
-    public GameObject bioTrashprefab;
-    public GameObject tinTrashprefab;
-
-    public void spawnPaperTrash()
+    public void spawnPaperTrash(GameObject gi)
     {
-        Instantiate(paperTrashprefab, paperSpawner.position, Quaternion.identity);
+        paperTrashprefab = GameObject.Find("Trash Paper");
+        Instantiate(gi, 
+            paperSpawner.position,
+            Quaternion.identity);
         Debug.Log("spawned Paper");
         
     }
@@ -60,7 +67,7 @@ public class ItemSpawner : MonoBehaviour{
         if(givenObject.tag == paperTrashTag)
         {
             Debug.Log("go to Paper");
-            spawnPaperTrash();
+            spawnPaperTrash(givenObject);
         }
 
 
