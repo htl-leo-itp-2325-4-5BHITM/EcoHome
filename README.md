@@ -1,5 +1,7 @@
 # EcoHome
 
+![image](https://github.com/htl-leo-itp-2325-4-5BHITM/EcoHome/assets/91544005/1813af58-129d-47f5-ad02-5073b8446660)
+
 Learn about sustainability in this VR game.
 You'll enter a household and solve various tasks to improve your environmental awareness.
 
