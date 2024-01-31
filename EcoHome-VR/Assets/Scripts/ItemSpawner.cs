@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ItemSpawn : MonoBehaviour{
 
-    public Transform spawner;
+ 
 
     public string paperTrashTag = "PaperTrash";
     public string plasticTrashTag = "PlasticTrash";
@@ -14,12 +14,16 @@ public class ItemSpawn : MonoBehaviour{
     public string bioTrashTag = "BioTrash";
     public string glassTrashTag = "GlassTrash";
 
-
-    public GameObject paperSpawner;
-    public GameObject plasticSpwaner;
-    public GameObject bioSpawner;
-    public GameObject glassSpawner;
-    public GameObject tinSpawner;
+    
+    public Transform paperSpawner;
+    
+    public Transform plasticSpawner;
+    
+    public Transform bioSpawner;
+    
+    public Transform glassSpawner;
+    
+    public Transform tinSpawner;
 
 
     public GameObject paperTrashprefab;
@@ -37,9 +41,7 @@ public class ItemSpawn : MonoBehaviour{
 
 
     //TODO: implement identifier for given spanwer --> spawn at random or will ( location s)
-    public void spawnGivenItem(GameObject objectToSpawn){
-        Instantiate(objectToSpawn, spawner.position, Quaternion.identity);
-    }
+    
 
 
     public void spawnPaperTrash(GameObject paperTrash)
@@ -65,17 +67,30 @@ public class ItemSpawn : MonoBehaviour{
 
     public void identifyItem(GameObject givenObject)
     {
-        switch (givenObject) {
-            case givenObject.tag == paperTrashTag:
-                spawnPaperTrash(givenObject);
-            case givenObject.tag == glassTrashTag:
-                spawnGlassTrash(givenObject);
-            case givenObject.tag == plasticTrashTag:
-                spawnPlasticTrash(givenObject);
-            case givenObject.tag == tinTrashTag:
-                spawnTinTrash(givenObject);
-            case givenObject.tag == bioTrashTag:
-                spawnBioTrash(givenObject);
+        if(givenObject.tag == paperTrashTag)
+        {
+            spawnPaperTrash(givenObject);
+        }
+
+
+        if (givenObject.tag == plasticTrashTag)
+        {
+            spawnPlasticTrash(givenObject);
+        }
+
+        if (givenObject.tag == glassTrashTag)
+        {
+            spawnGlassTrash(givenObject);
+        }
+
+        if (givenObject.tag == tinTrashTag)
+        {
+            spawnTinTrash(givenObject);
+        }
+
+        if (givenObject.tag == bioTrashTag)
+        {
+            spawnBioTrash(givenObject);
         }
     }
 } 
