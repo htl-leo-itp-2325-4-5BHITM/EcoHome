@@ -1,5 +1,6 @@
 # EcoHome
 
+https://tenor.com/de/view/chipi-chapa-chipi-chipi-chipi-chipi-cat-chipi-chipi-dancing-cat-gif-10997735880837555564
 ![image](https://github.com/htl-leo-itp-2325-4-5BHITM/EcoHome/assets/91544005/1813af58-129d-47f5-ad02-5073b8446660)
 
 Learn about sustainability in this VR game.
