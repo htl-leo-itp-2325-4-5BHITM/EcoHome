@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class ItemSpawn : MonoBehaviour{
-
- 
+public class ItemSpawner : MonoBehaviour{
 
     public string paperTrashTag = "PaperTrash";
     public string plasticTrashTag = "PlasticTrash";
@@ -15,82 +13,80 @@ public class ItemSpawn : MonoBehaviour{
     public string glassTrashTag = "GlassTrash";
 
     
-    public Transform paperSpawner;
-    
-    public Transform plasticSpawner;
-    
-    public Transform bioSpawner;
-    
+    public Transform paperSpawner;    
+    public Transform plasticSpawner;    
+    public Transform bioSpawner;    
     public Transform glassSpawner;
-    
     public Transform tinSpawner;
 
 
+  
     public GameObject paperTrashprefab;
     public GameObject plasticTrashprefab;
     public GameObject glassTrashprefab;
     public GameObject bioTrashprefab;
     public GameObject tinTrashprefab;
 
-
-
-
-
-
-
-
-
-    //TODO: implement identifier for given spanwer --> spawn at random or will ( location s)
-    
-
-
-    public void spawnPaperTrash(GameObject paperTrash)
+    public void spawnPaperTrash()
     {
         Instantiate(paperTrashprefab, paperSpawner.position, Quaternion.identity);
+        Debug.Log("spawned Paper");
+        
     }
-    public void spawnPlasticTrash(GameObject plasticTrash)
+    public void spawnPlasticTrash()
     {
         Instantiate(plasticTrashprefab, plasticSpawner.position, Quaternion.identity);
+        Debug.Log("spawned plastic");
     }
-    public void spawnGlassTrash(GameObject glassTrash)
+    public void spawnGlassTrash()
     {
         Instantiate(glassTrashprefab, glassSpawner.position, Quaternion.identity);
+        Debug.Log("spawned glass");
     }
-    public void spawnBioTrash(GameObject BioTrash)
+    public void spawnBioTrash()
     {
         Instantiate(bioTrashprefab, bioSpawner.position, Quaternion.identity);
+        Debug.Log("spawned Bio");
     }
-    public void spawnTinTrash(GameObject TinTrash)
+    public void spawnTinTrash()
     {
         Instantiate(tinTrashprefab, tinSpawner.position, Quaternion.identity);
+        Debug.Log("spawned Tin");
     }
 
     public void identifyItem(GameObject givenObject)
     {
+        Debug.Log("hallo");
         if(givenObject.tag == paperTrashTag)
         {
-            spawnPaperTrash(givenObject);
+            Debug.Log("go to Paper");
+            spawnPaperTrash();
         }
 
 
         if (givenObject.tag == plasticTrashTag)
         {
-            spawnPlasticTrash(givenObject);
+            Debug.Log("go to Plastic");
+            spawnPlasticTrash();
         }
 
         if (givenObject.tag == glassTrashTag)
         {
-            spawnGlassTrash(givenObject);
+            Debug.Log("go to glass");
+            spawnGlassTrash();
         }
 
         if (givenObject.tag == tinTrashTag)
         {
-            spawnTinTrash(givenObject);
+            Debug.Log("go to Tin");
+            spawnTinTrash();
         }
 
         if (givenObject.tag == bioTrashTag)
+        
         {
-            spawnBioTrash(givenObject);
+            Debug.Log("go to Bio");
+            spawnBioTrash();
         }
     }
 } 

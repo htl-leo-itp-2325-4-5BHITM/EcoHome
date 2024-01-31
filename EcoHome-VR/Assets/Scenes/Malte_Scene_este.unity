@@ -1953,6 +1953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 851651101}
+  - component: {fileID: 851651102}
   m_Layer: 7
   m_Name: paperSpawner
   m_TagString: Untagged
@@ -1968,13 +1969,45 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851651100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.731, y: 0, z: -5.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062323938}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &851651102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851651100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f563d0e94bbb446b3f797f6b2f85ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paperTrashTag: PaperTrash
+  plasticTrashTag: PlasticTrash
+  tinTrashTag: TinTrash
+  bioTrashTag: BioTrash
+  glassTrashTag: GlassTrash
+  paperSpawner: {fileID: 851651101}
+  plasticSpawner: {fileID: 1897420706}
+  bioSpawner: {fileID: 1948135384}
+  glassSpawner: {fileID: 2121856898}
+  tinSpawner: {fileID: 1521133760}
+  paperTrashprefab: {fileID: 6211445279370861862, guid: d63286cc6a7ab16408a4274c5fe72741,
+    type: 3}
+  plasticTrashprefab: {fileID: 7511235090670825161, guid: d811523898b950a418a7f431208cba5a,
+    type: 3}
+  glassTrashprefab: {fileID: 141905505167120811, guid: bdaebf091cbff504abda2da866cba76c,
+    type: 3}
+  bioTrashprefab: {fileID: 3493738451441399482, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
+    type: 3}
+  tinTrashprefab: {fileID: 2202164570380173471, guid: 3f4f1f964aaf0a249be1a2ead15b58a6,
+    type: 3}
 --- !u!1 &1054193035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2513,6 +2546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1521133760}
+  - component: {fileID: 1521133761}
   m_Layer: 7
   m_Name: tinSpawner
   m_TagString: Untagged
@@ -2528,13 +2562,45 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521133759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062323938}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1521133761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521133759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f563d0e94bbb446b3f797f6b2f85ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paperTrashTag: PaperTrash
+  plasticTrashTag: PlasticTrash
+  tinTrashTag: TinTrash
+  bioTrashTag: BioTrash
+  glassTrashTag: GlassTrash
+  paperSpawner: {fileID: 851651101}
+  plasticSpawner: {fileID: 1897420706}
+  bioSpawner: {fileID: 1948135384}
+  glassSpawner: {fileID: 2121856898}
+  tinSpawner: {fileID: 1521133760}
+  paperTrashprefab: {fileID: 6211445279370861862, guid: d63286cc6a7ab16408a4274c5fe72741,
+    type: 3}
+  plasticTrashprefab: {fileID: 7511235090670825161, guid: d811523898b950a418a7f431208cba5a,
+    type: 3}
+  glassTrashprefab: {fileID: 141905505167120811, guid: bdaebf091cbff504abda2da866cba76c,
+    type: 3}
+  bioTrashprefab: {fileID: 3493738451441399482, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
+    type: 3}
+  tinTrashprefab: {fileID: 2202164570380173471, guid: 3f4f1f964aaf0a249be1a2ead15b58a6,
+    type: 3}
 --- !u!1 &1544118342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1897420706}
+  - component: {fileID: 1897420707}
   m_Layer: 7
   m_Name: plasticSpawner
   m_TagString: Untagged
@@ -2812,13 +2879,45 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897420705}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.452, y: 0, z: -6.598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062323938}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1897420707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897420705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f563d0e94bbb446b3f797f6b2f85ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paperTrashTag: PaperTrash
+  plasticTrashTag: PlasticTrash
+  tinTrashTag: TinTrash
+  bioTrashTag: BioTrash
+  glassTrashTag: GlassTrash
+  paperSpawner: {fileID: 1897420706}
+  plasticSpawner: {fileID: 1897420706}
+  bioSpawner: {fileID: 1948135384}
+  glassSpawner: {fileID: 2121856898}
+  tinSpawner: {fileID: 2121856898}
+  paperTrashprefab: {fileID: 6211445279370861862, guid: d63286cc6a7ab16408a4274c5fe72741,
+    type: 3}
+  plasticTrashprefab: {fileID: 7511235090670825161, guid: d811523898b950a418a7f431208cba5a,
+    type: 3}
+  glassTrashprefab: {fileID: 141905505167120811, guid: bdaebf091cbff504abda2da866cba76c,
+    type: 3}
+  bioTrashprefab: {fileID: 3493738451441399482, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
+    type: 3}
+  tinTrashprefab: {fileID: 2202164570380173471, guid: 3f4f1f964aaf0a249be1a2ead15b58a6,
+    type: 3}
 --- !u!1001 &1908426877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3047,6 +3146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1948135384}
+  - component: {fileID: 1948135385}
   m_Layer: 7
   m_Name: bioSpawner
   m_TagString: Untagged
@@ -3062,13 +3162,45 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948135383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -4.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062323938}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1948135385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948135383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f563d0e94bbb446b3f797f6b2f85ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paperTrashTag: PaperTrash
+  plasticTrashTag: PlasticTrash
+  tinTrashTag: TinTrash
+  bioTrashTag: BioTrash
+  glassTrashTag: GlassTrash
+  paperSpawner: {fileID: 851651101}
+  plasticSpawner: {fileID: 1897420706}
+  bioSpawner: {fileID: 1948135384}
+  glassSpawner: {fileID: 2121856898}
+  tinSpawner: {fileID: 1521133760}
+  paperTrashprefab: {fileID: 6211445279370861862, guid: d63286cc6a7ab16408a4274c5fe72741,
+    type: 3}
+  plasticTrashprefab: {fileID: 7511235090670825161, guid: d811523898b950a418a7f431208cba5a,
+    type: 3}
+  glassTrashprefab: {fileID: 141905505167120811, guid: bdaebf091cbff504abda2da866cba76c,
+    type: 3}
+  bioTrashprefab: {fileID: 3493738451441399482, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
+    type: 3}
+  tinTrashprefab: {fileID: 2202164570380173471, guid: 3f4f1f964aaf0a249be1a2ead15b58a6,
+    type: 3}
 --- !u!1 &2051533704
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,6 +3482,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121856898}
+  - component: {fileID: 2121856899}
   m_Layer: 7
   m_Name: glassSpawner
   m_TagString: Untagged
@@ -3365,13 +3498,45 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121856897}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -5.523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062323938}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2121856899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121856897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f563d0e94bbb446b3f797f6b2f85ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paperTrashTag: PaperTrash
+  plasticTrashTag: PlasticTrash
+  tinTrashTag: TinTrash
+  bioTrashTag: BioTrash
+  glassTrashTag: GlassTrash
+  paperSpawner: {fileID: 851651101}
+  plasticSpawner: {fileID: 1897420706}
+  bioSpawner: {fileID: 1948135384}
+  glassSpawner: {fileID: 2121856898}
+  tinSpawner: {fileID: 1521133760}
+  paperTrashprefab: {fileID: 6211445279370861862, guid: d63286cc6a7ab16408a4274c5fe72741,
+    type: 3}
+  plasticTrashprefab: {fileID: 7511235090670825161, guid: d811523898b950a418a7f431208cba5a,
+    type: 3}
+  glassTrashprefab: {fileID: 141905505167120811, guid: bdaebf091cbff504abda2da866cba76c,
+    type: 3}
+  bioTrashprefab: {fileID: 3493738451441399482, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
+    type: 3}
+  tinTrashprefab: {fileID: 2202164570380173471, guid: 3f4f1f964aaf0a249be1a2ead15b58a6,
+    type: 3}
 --- !u!1001 &129260041691126127
 PrefabInstance:
   m_ObjectHideFlags: 0
