@@ -16,30 +16,24 @@ public class TutorScript : MonoBehaviour
     public AudioClip _clip7;
     public AudioClip _clip8;
 
-    private InputData _inputData;
 
-    private float delayTime = 2f;
+    private InputData _inputData;
     // Start is called before the first frame update
     void Start()
     {
         _inputData = GetComponent<InputData>();
+        GetComponent<AudioSource>().PlayOneShot(_clip1);
+        GetComponent<AudioSource>().PlayOneShot(_clip2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_inputData._leftController.TryGetFeatureValue(CommonUsages.primaButton, out bool isPressed))
+        if (_inputData._leftController.TryGetFeatureValue(CommonUsages.primaryButton, out bool isPressed))
         {
-            //GetComponent<AudioSource>().PlayOneShot(_clip1);
-            Debug.Log("button is Pressed"); 
+            GetComponent<AudioSource>().PlayOneShot(_clip1);
         }
-        Invoke("playClip", delayTime);
     }
 
-    void playClip() {
-        if (TrashBin_Tutorial.isThrown) {
-            GetComponent<AudioSource>().PlayOneShot(_clip8y);
-        }
-        TrashBin_Tutorial.isThrown = false;
-    }
+
 }
