@@ -28,8 +28,7 @@ public class TrashbinCollider : MonoBehaviour
  
     private void OnCollisionEnter(Collision collision)
     {
-        if ((collision.gameObject.tag == paperTrashTag && this.gameObject.tag == paperBinTag)
-            || (collision.gameObject.tag == plasticTrashTag && this.gameObject.tag == plasticBinTag)
+        if ((collision.gameObject.tag == plasticTrashTag && this.gameObject.tag == plasticBinTag)
             || (collision.gameObject.tag == tinTrashTag && this.gameObject.tag == tinBinTag)
             || (collision.gameObject.tag == bioTrashTag && this.gameObject.tag == bioBinTag)
             || (collision.gameObject.tag == glassTrashTag && this.gameObject.tag == glassBinTag))

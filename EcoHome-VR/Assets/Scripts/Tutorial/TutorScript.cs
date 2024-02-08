@@ -16,12 +16,13 @@ public class TutorScript : MonoBehaviour
     public AudioClip _clip7;
     public AudioClip _clip8;
 
-    private InputData _inputData;
+    [SerializeField] ParticleSystem paperParticle; 
 
-    private float delayTime = 2f;
+    private InputData _inputData;
     // Start is called before the first frame update
     void Start()
     {
+        paperParticle = GetComponent<ParticleSystem>();
         _inputData = GetComponent<InputData>();
     }
 
@@ -31,15 +32,7 @@ public class TutorScript : MonoBehaviour
         if (_inputData._leftController.TryGetFeatureValue(CommonUsages.primaButton, out bool isPressed))
         {
             //GetComponent<AudioSource>().PlayOneShot(_clip1);
-            Debug.Log("button is Pressed"); 
+            Debug.Log("button is Pressed");
         }
-        Invoke("playClip", delayTime);
-    }
-
-    void playClip() {
-        if (TrashBin_Tutorial.isThrown) {
-            GetComponent<AudioSource>().PlayOneShot(_clip8y);
-        }
-        TrashBin_Tutorial.isThrown = false;
     }
 }
