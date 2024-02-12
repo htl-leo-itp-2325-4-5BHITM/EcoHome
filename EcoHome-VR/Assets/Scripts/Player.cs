@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -9,12 +10,12 @@ public class Player : MonoBehaviour
     public static int globalScoreCounter = 0;
     public static readonly int[] maxScorePerRoom = {0, 1, 5};
 
-    TextMesh displayScore;
+    TextMeshProUGUI displayScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        displayScore = GameObject.Find("Display Score").GetComponent<TextMesh>();
+        displayScore = GameObject.Find("Display Score").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
