@@ -9,15 +9,19 @@ public class Player : MonoBehaviour
     public static int globalScoreCounter = 0;
     public static readonly int[] maxScorePerRoom = {0, 1, 5};
 
+    TextMesh displayScore;
+
     // Start is called before the first frame update
     void Start()
     {
-          
+        displayScore = GameObject.Find("Display Score").GetComponent<TextMesh>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        displayScore.text = "Score: " + globalScoreCounter;
+
         // switch cannot check for values in maxScorePerRoom
         switch (globalScoreCounter) 
         {
