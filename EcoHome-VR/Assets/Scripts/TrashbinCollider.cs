@@ -18,6 +18,8 @@ public class TrashbinCollider : MonoBehaviour
 
     // audio system
     public AudioSource audioPlayer; 
+    public AudioClip clip_1;
+    public AudioClip clip_2;
 
     // particle system
     [SerializeField] ParticleSystem paperParticle; 
@@ -38,8 +40,14 @@ public class TrashbinCollider : MonoBehaviour
             Player.localScoreCounter += 1;
             Player.globalScoreCounter += 1;
 
-            audioPlayer.Play();
+            //GetComponent<AudioSource>().PlayOneShot(clip_1);
+            audioPlayer.PlayOneShot(clip_1);
             paperParticle.Play();
+        }
+        else {
+            audioPlayer.PlayOneShot(clip_2);
+            Player.localScoreCounter -= 1;
+            Player.globalScoreCounter -= 1;
         }
     }
 
