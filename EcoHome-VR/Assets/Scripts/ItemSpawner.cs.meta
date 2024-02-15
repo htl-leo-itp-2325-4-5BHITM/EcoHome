@@ -3,7 +3,22 @@ guid: 83f563d0e94bbb446b3f797f6b2f85ea
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - paperSpawner: {instanceID: 0}
+  - plasticSpawner: {instanceID: 0}
+  - bioSpawner: {instanceID: 0}
+  - glassSpawner: {instanceID: 0}
+  - tinSpawner: {instanceID: 0}
+  - paperTrashprefab: {fileID: 6211445279370861862, guid: d63286cc6a7ab16408a4274c5fe72741,
+      type: 3}
+  - plasticTrashprefab: {fileID: 7511235090670825161, guid: d811523898b950a418a7f431208cba5a,
+      type: 3}
+  - glassTrashprefab: {fileID: 141905505167120811, guid: bdaebf091cbff504abda2da866cba76c,
+      type: 3}
+  - bioTrashprefab: {fileID: 3493738451441399482, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
+      type: 3}
+  - tinTrashprefab: {fileID: 2202164570380173471, guid: 3f4f1f964aaf0a249be1a2ead15b58a6,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
