@@ -31,12 +31,10 @@ public class ItemSpawner : MonoBehaviour{
     [SerializeField]
     private GameObject tinTrashprefab;
 
-    public void spawnPaperTrash(GameObject gi)
+    public void spawnPaperTrash()
     {
-        paperTrashprefab = GameObject.Find("Trash Paper");
-        Instantiate(gi, 
-            paperSpawner.position,
-            Quaternion.identity);
+        Debug.Log(paperTrashprefab);
+        Instantiate(paperTrashprefab, new Vector3(0, 0, 0), Quaternion.identity);
         Debug.Log("spawned Paper");
         
     }
@@ -67,7 +65,7 @@ public class ItemSpawner : MonoBehaviour{
         if(givenObject.tag == paperTrashTag)
         {
             Debug.Log("go to Paper");
-            spawnPaperTrash(givenObject);
+            spawnPaperTrash();
         }
 
 

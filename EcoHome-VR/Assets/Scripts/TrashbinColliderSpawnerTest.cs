@@ -8,15 +8,25 @@ public class TrashbinColliderSpawnerTest : MonoBehaviour
 {
     [SerializeField] private Player player;
 
+    
     private string paperTrashTag = "PaperTrash";
+     
     private string paperBinTag = "PaperBin";
+     
     private string plasticTrashTag = "PlasticTrash";
+    
     private string plasticBinTag = "PlasticBin";
+    
     private string tinTrashTag = "TinTrash";
+    
     private string tinBinTag = "TinBin";
+    
     private string bioTrashTag = "BioTrash";
+    
     private string bioBinTag = "BioBin";
+    
     private string glassTrashTag = "GlassTrash";
+    
     private string glassBinTag = "GlassBin";
 
     
@@ -46,11 +56,6 @@ public class TrashbinColliderSpawnerTest : MonoBehaviour
             itemSpawner.identifyItem(collision.gameObject);
 
             Destroy(collision.gameObject);
-
-
-
-           
-            
 
             Player.localScoreCounter += 1;
             Player.globalScoreCounter += 1;

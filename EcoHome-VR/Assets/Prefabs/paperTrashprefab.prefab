@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4421954315084177235}
   - component: {fileID: 2426897574097405849}
   m_Layer: 0
-  m_Name: Trash Paper
+  m_Name: paperTrashprefab
   m_TagString: PaperTrash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

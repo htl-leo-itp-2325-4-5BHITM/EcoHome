@@ -15,6 +15,11 @@ TagManager:
   - BioTrash
   - GlassBin
   - GlassTrash
+  - paperSpawner
+  - plasticSpawner
+  - bioSpawner
+  - glassSpawner
+  - tinSpawner
   layers:
   - Default
   - TransparentFX
