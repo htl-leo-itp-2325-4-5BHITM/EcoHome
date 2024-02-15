@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 4eb19de5db7101b41a25cd6bdb7587c2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioPlayer: {instanceID: 0}
+  - _clip1: {fileID: 8300000, guid: f150f0a639ce32943b868a5472b461ba, type: 3}
+  - _clip2: {fileID: 8300000, guid: a60a2073fff2b24428804d64f978792e, type: 3}
+  - _clip3: {fileID: 8300000, guid: dfc2605461dd36844bb8bced08e55f2f, type: 3}
+  - _clip4: {fileID: 8300000, guid: f8fb886e5e043654688321a045059320, type: 3}
+  - _clip5: {fileID: 8300000, guid: 2a322d8d978ab6f489b645cf0973dfa3, type: 3}
+  - _clip6: {fileID: 8300000, guid: f0a641e44b5f80346b11240bde8f37ea, type: 3}
+  - _clip7: {fileID: 8300000, guid: 346eb35051f21174a9f6f68d8963c94f, type: 3}
+  - _clip8: {fileID: 8300000, guid: e70c3d0b745ce0a42957a165d2a95139, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
