@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public static int localScoreCounter = 0;
     public static int globalScoreCounter = 0;
+    public static int displayScoreCounter = 0;
     public static readonly int[] maxScorePerRoom = {0, 1, 5};
 
 
@@ -17,13 +18,12 @@ public class Player : MonoBehaviour
     void Start()
     {
         displayScore = GameObject.Find("Display Score").GetComponent<TextMeshProUGUI>();
-       
     }
 
     // Update is called once per frame
     void Update()
     {
-        displayScore.text = "Score: " + globalScoreCounter;
+        displayScore.text = "Score: " + displayScoreCounter;
 
         // switch cannot check for values in maxScorePerRoom
         switch (globalScoreCounter) 

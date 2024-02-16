@@ -39,6 +39,7 @@ public class TrashbinCollider : MonoBehaviour
             Destroy(collision.gameObject);
             Player.localScoreCounter += 1;
             Player.globalScoreCounter += 1;
+            Player.displayScoreCounter += 1;
 
             //GetComponent<AudioSource>().PlayOneShot(clip_1);
             audioPlayer.PlayOneShot(clip_1);
@@ -46,8 +47,10 @@ public class TrashbinCollider : MonoBehaviour
         }
         else {
             audioPlayer.PlayOneShot(clip_2);
-            Player.localScoreCounter -= 1;
-            Player.globalScoreCounter -= 1;
+            if (Player.displayScoreCounter > 0)
+            {
+                Player.displayScoreCounter -= 1;
+            }
         }
     }
 
