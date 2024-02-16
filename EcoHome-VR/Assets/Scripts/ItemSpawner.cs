@@ -21,7 +21,7 @@ public class ItemSpawner : MonoBehaviour{
 
     
     [SerializeField]
-    private GameObject paperTrashprefab;
+    public GameObject paperTrashprefab;
     [SerializeField]
     private GameObject plasticTrashprefab;
     [SerializeField]
@@ -34,28 +34,28 @@ public class ItemSpawner : MonoBehaviour{
     public void spawnPaperTrash()
     {
         Debug.Log(paperTrashprefab);
-        Instantiate(paperTrashprefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(paperTrashprefab, new Vector3(-1.27f, -0.16f, 0), Quaternion.identity);
         Debug.Log("spawned Paper");
         
     }
     public void spawnPlasticTrash()
     {
-        Instantiate(plasticTrashprefab, plasticSpawner.position, Quaternion.identity);
+        Instantiate(plasticTrashprefab, new Vector3(-0.38f, -0.43f, -4.14f), Quaternion.identity);
         Debug.Log("spawned plastic");
     }
     public void spawnGlassTrash()
     {
-        Instantiate(glassTrashprefab, glassSpawner.position, Quaternion.identity);
+        Instantiate(glassTrashprefab, new Vector3(-0.38f, -0.43f, -6.14f), Quaternion.identity);
         Debug.Log("spawned glass");
     }
     public void spawnBioTrash()
     {
-        Instantiate(bioTrashprefab, bioSpawner.position, Quaternion.identity);
+        Instantiate(bioTrashprefab, new Vector3(-0.38f, -0.43f, -5.4f), Quaternion.identity);
         Debug.Log("spawned Bio");
     }
     public void spawnTinTrash()
     {
-        Instantiate(tinTrashprefab, tinSpawner.position, Quaternion.identity);
+        Instantiate(tinTrashprefab, new Vector3(-0.38f, -0.43f, -6.14f), Quaternion.identity);
         Debug.Log("spawned Tin");
     }
 
