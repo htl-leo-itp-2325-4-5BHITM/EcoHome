@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using static ItemSpawner;
-
 public class TrashbinColliderSpawnerTest : MonoBehaviour
 {
     [SerializeField] private Player player;
@@ -32,11 +30,16 @@ public class TrashbinColliderSpawnerTest : MonoBehaviour
     
     // audio system
     public AudioSource audioPlayer; 
+    public AudioClip clip_1;
+    public AudioClip clip_2;
+
+
+   
 
     // particle system
     [SerializeField] ParticleSystem paperParticle; 
 
-
+    [SerializeField] ItemSpawner itemSpawner;
 
     void Start() {
         paperParticle = GetComponent<ParticleSystem>();
@@ -44,24 +47,31 @@ public class TrashbinColliderSpawnerTest : MonoBehaviour
  
     private void OnCollisionEnter(Collision collision)
     {
-
         if ((collision.gameObject.tag == paperTrashTag && this.gameObject.tag == paperBinTag)
             || (collision.gameObject.tag == plasticTrashTag && this.gameObject.tag == plasticBinTag)
             || (collision.gameObject.tag == tinTrashTag && this.gameObject.tag == tinBinTag)
             || (collision.gameObject.tag == bioTrashTag && this.gameObject.tag == bioBinTag)
             || (collision.gameObject.tag == glassTrashTag && this.gameObject.tag == glassBinTag))
         {
-            ItemSpawner itemSpawner = new ItemSpawner();
+            
 
             itemSpawner.identifyItem(collision.gameObject);
+            
 
             Destroy(collision.gameObject);
-
             Player.localScoreCounter += 1;
             Player.globalScoreCounter += 1;
+            Player.displayScoreCounter += 1;
             
             audioPlayer.Play();
             paperParticle.Play();
+        }
+        else {
+            audioPlayer.PlayOneShot(clip_2);
+            if (Player.displayScoreCounter > 0)
+            {
+                Player.displayScoreCounter -= 1;
+            }
         }
     }
 

@@ -21,7 +21,7 @@ public class ItemSpawner : MonoBehaviour{
 
     
     [SerializeField]
-    public GameObject paperTrashprefab;
+    private GameObject paperTrashprefab;
     [SerializeField]
     private GameObject plasticTrashprefab;
     [SerializeField]
@@ -34,7 +34,7 @@ public class ItemSpawner : MonoBehaviour{
     public void spawnPaperTrash()
     {
         Debug.Log(paperTrashprefab);
-        Instantiate(paperTrashprefab, new Vector3(-1.27f, -0.16f, 0), Quaternion.identity);
+        Instantiate(paperTrashprefab, new Vector3(-1.273f, 0.667f, 0), Quaternion.identity);
         Debug.Log("spawned Paper");
         
     }
