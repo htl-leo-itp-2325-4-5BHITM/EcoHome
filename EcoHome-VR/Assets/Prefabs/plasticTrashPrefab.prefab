@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 644961111836899527}
   - component: {fileID: 5891282705975523164}
   m_Layer: 0
-  m_Name: Trash Plastic
+  m_Name: plasticTrashPrefab
   m_TagString: PlasticTrash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
