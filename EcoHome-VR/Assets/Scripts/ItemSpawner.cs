@@ -34,28 +34,28 @@ public class ItemSpawner : MonoBehaviour{
     public void spawnPaperTrash()
     {
         Debug.Log(paperTrashprefab);
-        Instantiate(paperTrashprefab, new Vector3(-1.273f, 0.667f, 0), Quaternion.identity);
+        Instantiate(paperTrashprefab, new Vector3(-0.052f, -0.43f, 1.409f), Quaternion.identity);
         Debug.Log("spawned Paper");
         
     }
     public void spawnPlasticTrash()
     {
-        Instantiate(plasticTrashprefab, new Vector3(-0.38f, -0.43f, -4.14f), Quaternion.identity);
+        Instantiate(plasticTrashprefab, new Vector3(-3.253f, -0.43f, -4.43f), Quaternion.identity);
         Debug.Log("spawned plastic");
     }
     public void spawnGlassTrash()
     {
-        Instantiate(glassTrashprefab, new Vector3(-0.38f, -0.43f, -6.14f), Quaternion.identity);
+        Instantiate(glassTrashprefab, new Vector3(-3.253f, -0.43f, -6.366f), Quaternion.identity);
         Debug.Log("spawned glass");
     }
     public void spawnBioTrash()
     {
-        Instantiate(bioTrashprefab, new Vector3(-0.38f, -0.43f, -5.4f), Quaternion.identity);
+        Instantiate(bioTrashprefab, new Vector3(-3.253f, -0.43f, -4.899f), Quaternion.identity);
         Debug.Log("spawned Bio");
     }
     public void spawnTinTrash()
     {
-        Instantiate(tinTrashprefab, new Vector3(-0.38f, -0.43f, -6.14f), Quaternion.identity);
+        Instantiate(tinTrashprefab, new Vector3(-3.253f, -0.43f, -5.834f), Quaternion.identity);
         Debug.Log("spawned Tin");
     }
 
