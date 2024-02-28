@@ -23,6 +23,7 @@ public class TrashbinCollider : MonoBehaviour
 
     // particle system
     [SerializeField] ParticleSystem paperParticle; 
+    [SerializeField] ItemSpawner itemSpawner;
 
     void Start() {
         paperParticle = GetComponent<ParticleSystem>();
@@ -36,12 +37,13 @@ public class TrashbinCollider : MonoBehaviour
             || (collision.gameObject.tag == bioTrashTag && this.gameObject.tag == bioBinTag)
             || (collision.gameObject.tag == glassTrashTag && this.gameObject.tag == glassBinTag))
         {
+            itemSpawner.identifyItem(collision.gameObject);
+
             Destroy(collision.gameObject);
             Player.localScoreCounter += 1;
             Player.globalScoreCounter += 1;
             Player.displayScoreCounter += 1;
 
-            //GetComponent<AudioSource>().PlayOneShot(clip_1);
             audioPlayer.PlayOneShot(clip_1);
             paperParticle.Play();
         }

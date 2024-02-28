@@ -6,92 +6,50 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ItemSpawner : MonoBehaviour{
 
-    public string paperTrashTag = "PaperTrash";
-    public string plasticTrashTag = "PlasticTrash";
-    public string tinTrashTag = "TinTrash";
-    public string bioTrashTag = "BioTrash";
-    public string glassTrashTag = "GlassTrash";
+    public const string paperTrashTag = "PaperTrash";
+    public const string plasticTrashTag = "PlasticTrash";
+    public const string tinTrashTag = "TinTrash";
+    public const string bioTrashTag = "BioTrash";
+    public const string glassTrashTag = "GlassTrash";
 
-    
     public Transform paperSpawner;    
     public Transform plasticSpawner;    
     public Transform bioSpawner;    
     public Transform glassSpawner;
     public Transform tinSpawner;
 
-    
-    [SerializeField]
-    private GameObject paperTrashprefab;
-    [SerializeField]
-    private GameObject plasticTrashprefab;
-    [SerializeField]
-    private GameObject glassTrashprefab;
-    [SerializeField]
-    private GameObject bioTrashprefab;
-    [SerializeField]
-    private GameObject tinTrashprefab;
+    [SerializeField] private GameObject paperTrashprefab;
+    [SerializeField] private GameObject plasticTrashprefab;
+    [SerializeField] private GameObject glassTrashprefab;
+    [SerializeField] private GameObject bioTrashprefab;
+    [SerializeField] private GameObject tinTrashprefab;
 
-    public void spawnPaperTrash()
-    {
-        Debug.Log(paperTrashprefab);
-        Instantiate(paperTrashprefab, new Vector3(-0.052f, -0.43f, 1.409f), Quaternion.identity);
-        Debug.Log("spawned Paper");
-        
-    }
-    public void spawnPlasticTrash()
-    {
-        Instantiate(plasticTrashprefab, new Vector3(-3.253f, -0.43f, -4.43f), Quaternion.identity);
-        Debug.Log("spawned plastic");
-    }
-    public void spawnGlassTrash()
-    {
-        Instantiate(glassTrashprefab, new Vector3(-3.253f, -0.43f, -6.366f), Quaternion.identity);
-        Debug.Log("spawned glass");
-    }
-    public void spawnBioTrash()
-    {
-        Instantiate(bioTrashprefab, new Vector3(-3.253f, -0.43f, -4.899f), Quaternion.identity);
-        Debug.Log("spawned Bio");
-    }
-    public void spawnTinTrash()
-    {
-        Instantiate(tinTrashprefab, new Vector3(-3.253f, -0.43f, -5.834f), Quaternion.identity);
-        Debug.Log("spawned Tin");
+    public void spawnTrash(string tag) {
+        switch (tag) 
+        {
+            case paperTrashTag:
+                Instantiate(paperTrashprefab, new Vector3(-0.052f, 0.649f, 1.767f), Quaternion.identity);
+                break;
+            case plasticTrashTag:
+                Instantiate(plasticTrashprefab, new Vector3(-3.253f, 0.525f, -4.472f), Quaternion.identity);
+                break;
+            case glassTrashTag:
+                Instantiate(glassTrashprefab, new Vector3(-3.138f, 1.007f, -4.879f), Quaternion.identity);
+                break;
+            case bioTrashTag:
+                Instantiate(bioTrashprefab, new Vector3(-3.253f, 0.521f, -4.541f), Quaternion.identity);
+                break;
+            case tinTrashTag:
+                Instantiate(tinTrashprefab, new Vector3(-3.162f, 0.689f, -4.726f), Quaternion.identity);
+                break;
+            default:
+                Debug.Log("failed instantiate");
+                break;
+        }
     }
 
     public void identifyItem(GameObject givenObject)
     {
-        Debug.Log("hallo");
-        if(givenObject.tag == paperTrashTag)
-        {
-            Debug.Log("go to Paper");
-            spawnPaperTrash();
-        }
-
-
-        if (givenObject.tag == plasticTrashTag)
-        {
-            Debug.Log("go to Plastic");
-            spawnPlasticTrash();
-        }
-
-        if (givenObject.tag == glassTrashTag)
-        {
-            Debug.Log("go to glass");
-            spawnGlassTrash();
-        }
-
-        if (givenObject.tag == tinTrashTag)
-        {
-            Debug.Log("go to Tin");
-            spawnTinTrash();
-        }
-
-        if (givenObject.tag == bioTrashTag)
-        
-        {
-            Debug.Log("go to Bio");
-            spawnBioTrash();
-        }
+        spawnTrash(givenObject.tag);
     }
 } 
