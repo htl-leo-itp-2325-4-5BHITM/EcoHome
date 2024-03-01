@@ -36,48 +36,29 @@ public class TutoManager : MonoBehaviour
     public AudioClip _clip7;
     public AudioClip _clip8;
 
-    // Input Devices
-    //private InputDevice _leftController;
-    //private InputDevice _rightController;
-
+    // Input Data from right/left Controller
     private InputData _inputData;
+
     // Start is called before the first frame update
     void Start()
     {
         _inputData = GetComponent<InputData>();
-        //UpdateGameState(TutorialState.StartOfGame);
-        //_leftController = new List<UnityEngine.XR.InputDevice>();
-        //InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, leftControllers);
-        //_leftController = leftControllers[0];
-        //_inputData = GetComponent<InputData>();
+        UpdateGameState(TutorialState.StartOfGame);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 leftVelocity)){
+        /*
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 leftVelocity))
+        {
             Debug.Log("getting velocity data from Controller");
             Debug.Log("Velocity Value: " + leftVelocity);
-        }
-        //CheckButtonStatus(CommonUsages.primaryButton);
-        //CheckButtonStatus(CommonUsages.secondaryButton);
-        /*
-        if (_inputData._leftController.TryGetFeatureValue(CommonUsages.primaryButton, out bool isPressed))
+        }*/
+        
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out Vector2 leftThumbStick))
         {
-            Debug.Log("Button is Pressed");
-            playLearnMovement(isLearnMovement);
-        }
-        */
-    }
-    /*
-    void CheckButtonStatus(InputFeatureUsage<bool> button) {
-        if (_leftController.TryGetFeatureValue(button, out bool isPressed))
-        {
-            Debug.Log($"{button.name}: {isPressed}");
-        }
-        else
-        {
-            Debug.Log($"Button {button.name} ist nicht verfügbar.");
+            Debug.Log("getting thumbStick movement: " + leftThumbStick);
         }
     }
 
@@ -114,10 +95,7 @@ public class TutoManager : MonoBehaviour
         audioPlayer.PlayOneShot(_clip3);
         UpdateGameState(TutorialState.LearnMovement);
     }
-    */
 }
-    
-
 public enum TutorialState {
     StartOfGame,
     LearnMovement,
