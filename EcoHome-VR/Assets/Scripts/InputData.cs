@@ -18,7 +18,9 @@ public class InputData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_rightController.isValid || !_leftController.isValid || !_HMD.isValid) InitializeInputDevices();
+        if (!_rightController.isValid || !_leftController.isValid || !_HMD.isValid) {
+            InitializeInputDevices();
+        } 
     }
 
     private void InitializeInputDevices()
@@ -31,9 +33,14 @@ public class InputData : MonoBehaviour
             InitializeInputDevice(InputDeviceCharacteristics.HeadMounted, ref _HMD);
     }
 
-    private void InitializeInputDevice(InputDeviceCharacteristics inputDeviceCharacteristics, ref InputDevice inputDevice) {
+    private void InitializeInputDevice(InputDeviceCharacteristics inputCharacteristics, ref InputDevice inputDevice) {
         List<InputDevice> devices = new List<InputDevice>();
 
+        //Call InputDevices to see if it can find any devices with the characteristics we're looking for
+        InputDevices.GetDevicesWithCharacteristics(inputCharacteristics, devices);
+
+        //Our hands might not be active and so they will not be generated from the search
+        //We check if any devices are found here to avoid errors
         if (devices.Count > 0) {
             inputDevice = devices[0];
         }
