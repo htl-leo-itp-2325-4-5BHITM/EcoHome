@@ -39,12 +39,15 @@ public class TutoManager : MonoBehaviour
     // Input Data from right/left Controller
     private InputData _inputData;
 
-    bool playTutorial = true;
     bool endTutorial = false;
 
-    bool usedRightController = false;
-    bool usedLeftController = false;
-    bool usedHead = true;
+    private bool usedRightStickController = false;
+    private bool usedLeftStickController = false;
+
+    //bool playRight = false;
+
+    TutorialState official_State;
+
 
     // Start is called before the first frame update
     void Start()
@@ -56,41 +59,47 @@ public class TutoManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If-Anweisung muss zu einem "OnLoad" Abfrage umgeschrieben werden
-        if (playTutorial) {
-            UpdateGameState(TutorialState.StartOfGame);
-            this.playTutorial = false;
+        if (official_State == TutorialState.LearnMovement) {
+            if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out Vector2 leftThumbStick))
+            {
+                if (leftThumbStick.y >= 0.80 || leftThumbStick.y <= -0.80) {
+                    this.usedLeftStickController = true;
+                    leftUsed(this.usedLeftStickController);
+                }
+            }
+
+            if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out Vector2 rightThumbStick))
+            {
+                if (rightThumbStick.x >= 0.80 || rightThumbStick.x <= -0.80) {
+                    this.usedRightStickController = true;
+                    rightUsed(this.usedRightStickController);
+                }
+                    
+            }
         }
 
-        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out Vector2 leftThumbStick))
-        {
-            Debug.Log("getting left_thumbStick movement: " + leftThumbStick);
-            //check the distance of the movement and set the variable to true
-            this.usedLeftController = true;
-        }
-
-        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out Vector2 rightThumbStick))
-        {
-            Debug.Log("getting right_thumbStick movement: " + rightThumbStick);
-            //check the distance of the movement and set the variable to true
-            this.usedRightController = true;
-        }
+        if (Player.globalScoreCounter == 1) {
+            UpdateGameState(TutorialState.EndOfGame);
+        } 
     }
 
     public void UpdateGameState(TutorialState newState)
     {
         switch (newState) {
             case TutorialState.StartOfGame:
-                playStart();
+                this.official_State = TutorialState.StartOfGame;
                 break;
             case TutorialState.LearnMovement:
-                playLearnMovement(this.usedLeftController, this.usedRightController, this.usedHead);
+                this.official_State = TutorialState.LearnMovement;
                 break;
             case TutorialState.LearnPickUp:
+                this.official_State = TutorialState.LearnPickUp;
                 break;
             case TutorialState.ThrowObject:
+                this.official_State = TutorialState.ThrowObject;
                 break;
             case TutorialState.EndOfGame:
+                this.official_State = TutorialState.EndOfGame;
                 break;
             default:
                 throw new System.Exception();
@@ -100,36 +109,25 @@ public class TutoManager : MonoBehaviour
     }
 
     private void playStart() {
-        StartCoroutine(playClipWithDelay(_clip1, 7));
-        UpdateGameState(TutorialState.LearnMovement);
+        StartCoroutine(playClipWithDelayAndThenUpdateGameState(new AudioClip[]{_clip1, _clip2, _clip3}, new float[]{5, 7, 5}));
     }
 
-    private void playLearnMovement(bool isLeftUsed, bool isRightUsed, bool isHeadUsed) {
-        if (isLeftUsed && isRightUsed && isHeadUsed)
-        {
-            UpdateGameState(TutorialState.LearnPickUp);
-        }
-        else {
-            StartCoroutine(playClipWithDelay(_clip2, 2));
-
-            if (isHeadUsed)
-            {
-                if (isLeftUsed)
-                {
-                    StartCoroutine(playClipWithDelay(_clip3, 2));
-
-                    if (isRightUsed)
-                    {
-                        StartCoroutine(playClipWithDelay(_clip4, 2));
-                        UpdateGameState(TutorialState.LearnPickUp);
-                    }
-                }
-            }
-        }     
+    private void playLearnMovement() {   
+        Debug.Log("playLearnMovement");
+    }
+    private void leftUsed(bool isLeftUsed) {
+        Debug.Log("left Stick: " + isLeftUsed);
+    }
+    private void rightUsed(bool isRightUsed) {
+        Debug.Log("right Stick: " + isRightUsed);
     }
 
     private void playLearnPickUp() {
+        Debug.Log("playLearnPickUp Func");
+    }
 
+    private void playEndOfGame() {
+        Debug.Log("playEndOfGame Func");
     }
 
     IEnumerator playClipWithDelay(AudioClip clip, float delay)
@@ -140,6 +138,17 @@ public class TutoManager : MonoBehaviour
             audioPlayer.Stop();
             audioPlayer.PlayOneShot(clip);
         }
+    }
+    private IEnumerator playClipWithDelayAndThenUpdateGameState(AudioClip[] clips, float[] delays) {
+        for (int i = 0; i < clips.Length; i++) {
+            yield return StartCoroutine(playClipWithDelay(clips[i], delays[i]));
+        }
+
+        Invoke("DelayedGameStateUpdate_LearnMovement", 3.0f);
+    }
+
+    void DelayedGameStateUpdate_LearnMovement() {
+        UpdateGameState(TutorialState.LearnMovement);
     }
 }
 

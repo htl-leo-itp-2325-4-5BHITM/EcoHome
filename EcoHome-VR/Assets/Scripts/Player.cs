@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 {
     public static int localScoreCounter = 0;
     public static int globalScoreCounter = 0;
+
+    
     public static int displayScoreCounter = 0;
     public static readonly int[] maxScorePerRoom = {0, 1, 5};
 
