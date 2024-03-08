@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+[RequireComponent(typeof(InputData))]
 public class Player : MonoBehaviour
 {
     public static int localScoreCounter = 0;
@@ -14,6 +17,7 @@ public class Player : MonoBehaviour
 
     bool rotating = false;
 
+    private InputData _inputData;
 
     TextMeshProUGUI displayScore;
 
@@ -21,12 +25,18 @@ public class Player : MonoBehaviour
     void Start()
     {
         displayScore = GameObject.Find("Display Score").GetComponent<TextMeshProUGUI>();
+        _inputData = GetComponent<InputData>();
     }
 
     // Update is called once per frame
     void Update()
     {
         displayScore.text = "Score: " + displayScoreCounter;
+
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.menuButton, out bool buttonPressed) && buttonPressed)
+        {
+            SceneManager.LoadScene("Main Menu - Main Scene");
+        }
 
         // switch cannot check for values in maxScorePerRoom
         switch (globalScoreCounter) 
