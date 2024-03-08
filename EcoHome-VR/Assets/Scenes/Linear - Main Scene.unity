@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276807, g: 0.21589197, b: 0.29782572, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1899,7 +1899,7 @@ Transform:
   - {fileID: 572996871}
   - {fileID: 1933533412}
   m_Father: {fileID: 432787115}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &387557532
 GameObject:
@@ -2112,8 +2112,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 439812557}
-  - {fileID: 1736251780}
   - {fileID: 320396307}
+  - {fileID: 1736251780}
   m_Father: {fileID: 2077048718}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4813,6 +4813,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1253965370}
     m_Modifications:
+    - target: {fileID: 6278792543246953329, guid: add68cb67c0bc2a438ec389f5aa9b1b2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6278792543246953330, guid: add68cb67c0bc2a438ec389f5aa9b1b2,
         type: 3}
       propertyPath: m_Size.x
@@ -4898,7 +4903,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: door_01
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6278792543246953329, guid: add68cb67c0bc2a438ec389f5aa9b1b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: add68cb67c0bc2a438ec389f5aa9b1b2, type: 3}
 --- !u!4 &1532056869 stripped
 Transform:
@@ -5090,6 +5096,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 432787115}
     m_Modifications:
+    - target: {fileID: 6278792543246953329, guid: add68cb67c0bc2a438ec389f5aa9b1b2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6278792543246953330, guid: add68cb67c0bc2a438ec389f5aa9b1b2,
         type: 3}
       propertyPath: m_Size.x
@@ -5195,7 +5206,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: door_02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6278792543246953329, guid: add68cb67c0bc2a438ec389f5aa9b1b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: add68cb67c0bc2a438ec389f5aa9b1b2, type: 3}
 --- !u!4 &1736251780 stripped
 Transform:

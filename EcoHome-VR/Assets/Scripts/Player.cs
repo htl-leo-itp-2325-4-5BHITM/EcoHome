@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
             case 5:
                 if (localScoreCounter > 0) 
                 {
-                    StartCoroutine(RotateDoor(GameObject.Find("door_02"), new Vector3(-2.415f, -1.099973f, -11.566f)));
+                    StartCoroutine(RotateDoor(GameObject.Find("door_02"), new Vector3(-1.193f, -1.099973f, -10.566f)));
                     localScoreCounter = 0;
                 }
                 break;
