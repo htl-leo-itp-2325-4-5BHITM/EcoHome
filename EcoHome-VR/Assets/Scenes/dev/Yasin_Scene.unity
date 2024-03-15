@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276774, g: 0.21589115, b: 0.2978246, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -266,8 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39b71f00eee043a8af042ca11866244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioScript: {fileID: 0}
-  listenerScript: {fileID: 0}
+  audioScript: {fileID: 8507021}
+  listenerScript: {fileID: 8507024}
   clip_1: {fileID: 8300000, guid: 2a322d8d978ab6f489b645cf0973dfa3, type: 3}
   clip_2: {fileID: 8300000, guid: f8fb886e5e043654688321a045059320, type: 3}
   clips_length: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814f5660435934a6989fe6074009ea80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioScript: {fileID: 0}
+  audioScript: {fileID: 8507021}
   clip_1: {fileID: 8300000, guid: f150f0a639ce32943b868a5472b461ba, type: 3}
   clip_2: {fileID: 8300000, guid: a60a2073fff2b24428804d64f978792e, type: 3}
   clips_length: 0
@@ -728,8 +728,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 723468686}
-  - {fileID: 1142735130}
-  - {fileID: 1306513563}
+  - {fileID: 339598937}
+  - {fileID: 536358361}
   - {fileID: 208755841}
   m_Father: {fileID: 1825670646}
   m_RootOrder: 1
@@ -977,11 +977,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: add68cb67c0bc2a438ec389f5aa9b1b2, type: 3}
---- !u!4 &269483124 stripped
+--- !u!4 &339598937 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6278792543246953333, guid: add68cb67c0bc2a438ec389f5aa9b1b2,
+  m_CorrespondingSourceObject: {fileID: 358793364454557006, guid: 67b8545f52ad15a4bb7536a60310b260,
     type: 3}
-  m_PrefabInstance: {fileID: 269483123}
+  m_PrefabInstance: {fileID: 1142735129}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &345680000
 GameObject:
@@ -1735,6 +1735,12 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_DirtyAABB: 0
+--- !u!4 &536358361 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6004478020253715649, guid: add68cb67c0bc2a438ec389f5aa9b1b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1306513562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &546518149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,7 +2598,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1818059028}
-  - {fileID: 269483124}
+  - {fileID: 959208367}
   - {fileID: 546518150}
   m_Father: {fileID: 1825670646}
   m_RootOrder: 2
@@ -3276,6 +3282,12 @@ MonoBehaviour:
     m_Reference: {fileID: -6447266317303757838, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!4 &959208367 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6004478020253715649, guid: add68cb67c0bc2a438ec389f5aa9b1b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 269483123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &965730848
 GameObject:
   m_ObjectHideFlags: 0
@@ -4078,12 +4090,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67b8545f52ad15a4bb7536a60310b260, type: 3}
---- !u!4 &1142735130 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5466950491882922422, guid: 67b8545f52ad15a4bb7536a60310b260,
-    type: 3}
-  m_PrefabInstance: {fileID: 1142735129}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1168608999
 GameObject:
   m_ObjectHideFlags: 0
@@ -4302,12 +4308,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: add68cb67c0bc2a438ec389f5aa9b1b2, type: 3}
---- !u!4 &1306513563 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6278792543246953333, guid: add68cb67c0bc2a438ec389f5aa9b1b2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1306513562}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1326311580
 PrefabInstance:
   m_ObjectHideFlags: 0

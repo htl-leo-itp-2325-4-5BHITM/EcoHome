@@ -6,6 +6,7 @@ MonoImporter:
   defaultReferences:
   - audioScript: {instanceID: 0}
   - clip_1: {fileID: 8300000, guid: f150f0a639ce32943b868a5472b461ba, type: 3}
+  - clip_2: {fileID: 8300000, guid: a60a2073fff2b24428804d64f978792e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
