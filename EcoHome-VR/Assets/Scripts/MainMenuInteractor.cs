@@ -5,12 +5,40 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuInteractor : MonoBehaviour
 {
-    public void StartChallengeMode() 
+    private AsyncOperation _asyncOperation;
+
+    private IEnumerator LoadSceneAsyncProcess(string sceneName)
     {
-        SceneManager.LoadScene("Challenge - Main Scene");
+        this._asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+        this._asyncOperation.allowSceneActivation = false;
+
+        while (!this._asyncOperation.isDone)
+        {
+            yield return null;
+        }
     }
 
-    public void StartTutorialMode() {
-        SceneManager.LoadScene("Linear - Main Scene");
+    private void Update()
+    {
+        if (this._asyncOperation != null)
+        {
+            this._asyncOperation.allowSceneActivation = true;
+        }
+    }
+
+    public void StartChallengeMode() 
+    {
+        if (this._asyncOperation == null)
+        {
+            this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Challenge - Main Scene"));
+        }
+    }
+
+    public void StartTutorialMode() 
+    {
+        if (this._asyncOperation == null)
+        {
+            this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Linear - Main Scene"));
+        }
     }
 }
