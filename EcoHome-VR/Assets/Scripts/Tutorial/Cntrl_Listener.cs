@@ -7,6 +7,11 @@ public class Cntrl_Listener : MonoBehaviour
 
     private InputData _inputData;
 
+    public bool leftStickUsed = false;
+    public bool righStickUsed = false;
+
+    public bool testUsed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +27,7 @@ public class Cntrl_Listener : MonoBehaviour
         {
             if (leftThumbStick.y >= 0.80 || leftThumbStick.y <= -0.80)
             {
+                leftStickUsed = true;
                 Debug.Log("used right stick");
             }
         }
@@ -30,6 +36,7 @@ public class Cntrl_Listener : MonoBehaviour
         {
             if (rightThumbStick.x >= 0.80 || rightThumbStick.x <= -0.80)
             {
+                righStickUsed = true;
                 Debug.Log("used left stick");
             }
         }
