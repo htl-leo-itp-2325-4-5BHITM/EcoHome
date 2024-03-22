@@ -30,6 +30,28 @@ public class ThrowObject : MonoBehaviour
 
     IEnumerator WaitForAudioAndChangeState()
     {
+        audioScript.audioPlayer.clip = clip_1;
+        audioScript.audioPlayer.Play();
+        yield return new WaitForSeconds(audioScript.audioPlayer.clip.length);
+
+        // Hier können Sie Logik hinzufügen, um auf eine bestimmte Aktion oder ein Ereignis zu warten
+        // Beispiel: Warten, bis der Spieler eine Aktion durchführt
+        yield return new WaitUntil(() => listenerScript.leftGripButtonUsed);
+
+        // Spielt den zweiten Clip und wartet, bis er beendet ist
+        // Stellen Sie sicher, dass Clip 2 nur abgespielt wird, wenn Clip 1 nicht läuft.
+        if (!audioScript.audioPlayer.isPlaying)
+        {
+            audioScript.audioPlayer.clip = clip_2;
+            audioScript.audioPlayer.Play();
+            yield return new WaitForSeconds(audioScript.audioPlayer.clip.length);
+        }
+
+        if (Player.globalScoreCounter > 0) {
+            TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
+        }
+
+        /*
         audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
         yield return new WaitForSeconds(clip_1.length + 3.0f);
 
@@ -41,6 +63,6 @@ public class ThrowObject : MonoBehaviour
         yield return new WaitUntil(() => !listenerScript.leftGripButtonUsed);
         audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
 
-        TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
+        */
     }
 }

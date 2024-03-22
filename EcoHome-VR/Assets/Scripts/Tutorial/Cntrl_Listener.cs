@@ -10,6 +10,7 @@ public class Cntrl_Listener : MonoBehaviour
 
     public bool leftStickUsed = false;
     public bool righStickUsed = false;
+
     public bool leftGripButtonUsed = false;
     public bool rightGripButtonUsed = false;
 
@@ -49,23 +50,15 @@ public class Cntrl_Listener : MonoBehaviour
             if (leftGripPressed && !leftGripButtonUsed)
             {
                 leftGripButtonUsed = true;
-                Debug.Log("Left grip button pressed");
+                Debug.Log("Left grip button pressed: " + leftGripButtonUsed);
                 // Trigger the event or method to play clip_2
             }
             else if (!leftGripPressed && leftGripButtonUsed)
             {
                 leftGripButtonUsed = false;
-                Debug.Log("Left grip button released");
+                Debug.Log("Left grip button pressed: " + leftGripButtonUsed);
                 // Trigger the event or method to replay clip_1
             }
         }
-
-        /*
-        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool rightGripPressed))
-        {
-            rightGripButtonUsed = true;
-            Debug.Log("used right grip button");
-        }
-        */
     }
 }
