@@ -31,15 +31,15 @@ public class ThrowObject : MonoBehaviour
     IEnumerator WaitForAudioAndChangeState()
     {
         audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
-        yield return new WaitForSeconds(clip_1.length + 2.0f);
+        yield return new WaitForSeconds(clip_1.length + 3.0f);
 
         // Warte, bis der Grip-Button gedrückt wird
         yield return new WaitUntil(() => listenerScript.leftGripButtonUsed);
-        audioScript.PlayAudioAfterDelay(clip_2, 1.0f);
+        audioScript.PlayAudioAfterDelay(clip_2, 2.0f);
 
         // Warte, bis der Grip-Button losgelassen wird
         yield return new WaitUntil(() => !listenerScript.leftGripButtonUsed);
-        audioScript.PlayAudioAfterDelay(clip_1, 1.0f);
+        audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
 
         TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
     }

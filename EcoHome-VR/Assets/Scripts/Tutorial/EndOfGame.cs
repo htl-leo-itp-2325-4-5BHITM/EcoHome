@@ -27,9 +27,8 @@ public class EndOfGame : MonoBehaviour
 
     IEnumerator WaitForAudioAndChangeState()
     {
-        if (Player.globalScoreCounter > 0) {
-            audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
-            yield return new WaitForSeconds(clip_1.length + 2.0f);
-        }
+        yield return new WaitUntil(() => Player.globalScoreCounter > 0);
+
+        audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
     }
 }
