@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LearnMove : MonoBehaviour
 {
+    // Script References
     public Audio audioScript;
     public Cntrl_Listener listenerScript;
 

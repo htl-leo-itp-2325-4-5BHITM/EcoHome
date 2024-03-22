@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class EndOfGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Script References
+    public Audio audioScript;
+    public Player playerScript;
+
+    // Audio Clips
+    public AudioClip clip_1;
+
+    private void Awake()
     {
-        
+        TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {
-        
+        if (state == TutorialState.EndOfGame)
+        {
+            // Play the learn movement related audio clips here, for example:
+            StartCoroutine(WaitForAudioAndChangeState());
+        }
+    }
+
+    IEnumerator WaitForAudioAndChangeState()
+    {
+        if (Player.globalScoreCounter > 0) {
+            audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
+            yield return new WaitForSeconds(clip_1.length + 2.0f);
+        }
     }
 }
