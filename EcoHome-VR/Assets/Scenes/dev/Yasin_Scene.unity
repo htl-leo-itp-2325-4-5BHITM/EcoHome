@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276774, g: 0.21589115, b: 0.2978246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -227,6 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec4ec4bf1d1e4be0b4f6fbb78cdb878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioScript: {fileID: 8507021}
+  playerScript: {fileID: 8507017}
+  clip_1: {fileID: 8300000, guid: e70c3d0b745ce0a42957a165d2a95139, type: 3}
 --- !u!114 &8507023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50248e4ccc1ca4ae69454181ab37d0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioScript: {fileID: 8507021}
+  listenerScript: {fileID: 8507024}
+  clip_1: {fileID: 8300000, guid: f0a641e44b5f80346b11240bde8f37ea, type: 3}
+  clip_2: {fileID: 8300000, guid: 346eb35051f21174a9f6f68d8963c94f, type: 3}
 --- !u!114 &8507024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,8 +258,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6bbe65169e3487c92f86bb5c281ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioScript: {fileID: 0}
   leftStickUsed: 0
   righStickUsed: 0
+  leftGripButtonUsed: 0
+  rightGripButtonUsed: 0
   testUsed: 0
 --- !u!114 &8507025
 MonoBehaviour:
