@@ -1,19 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LearnMove : MonoBehaviour
 {
-    // Script References
-    public Audio audioScript;
-    public Cntrl_Listener listenerScript;
+    [SerializeField] private Audio audioScript;
+    [SerializeField] private Cntrl_Listener listenerScript;
 
-    // Audio Clips
-    public AudioClip clip_1;
-    public AudioClip clip_2;
-
-    // clips length
-    public float clips_length;
+    public AudioClip clip_1; // "Use the left stick"
+    public AudioClip clip_2; // "Use the right stick"
 
     void Awake()
     {
@@ -29,27 +23,52 @@ public class LearnMove : MonoBehaviour
     {
         if (state == TutorialState.LearnMovement)
         {
-            // Play the learn movement related audio clips here, for example:
-            StartCoroutine(WaitForAudioAndChangeState());
+            StartCoroutine(ManageMovementTutorial());
         }
     }
 
-    IEnumerator WaitForAudioAndChangeState()
+    IEnumerator ManageMovementTutorial()
     {
-        audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
+        bool leftStickInstructionGiven = false;
+        bool rightStickInstructionGiven = false;
 
-        yield return new WaitForSeconds(clip_1.length);
+        float startTime = Time.time;
+        while (Time.time - startTime < 30) // 30-second timeout for the whole movement tutorial phase
+        {
+            if (!listenerScript.leftStickUsed && !leftStickInstructionGiven)
+            {
+                audioScript.PlayAudioAfterDelay(clip_1, 0); // Play immediately for the first time
+                leftStickInstructionGiven = true;
+                yield return new WaitForSeconds(15); // Wait for 15 seconds before checking again or moving on to the right stick instruction
+            }
+            else if (listenerScript.leftStickUsed && !listenerScript.righStickUsed && !rightStickInstructionGiven)
+            {
+                audioScript.PlayAudioAfterDelay(clip_2, 0); // Play immediately for the first time
+                rightStickInstructionGiven = true;
+                yield return new WaitForSeconds(15); // Wait for 15 seconds before rechecking right stick usage
+            }
+            else if (listenerScript.leftStickUsed && listenerScript.righStickUsed)
+            {
+                break; // Both actions performed, exit the loop
+            }
 
-        while (!listenerScript.leftStickUsed) {
-            yield return null;
+            // Repeating instructions if actions not detected within 15 seconds
+            if (!listenerScript.leftStickUsed)
+            {
+                leftStickInstructionGiven = false; // Allow repeating the left stick instruction
+            }
+            if (listenerScript.leftStickUsed && !listenerScript.righStickUsed)
+            {
+                rightStickInstructionGiven = false; // Allow repeating the right stick instruction
+            }
         }
 
-        audioScript.PlayAudioAfterDelay(clip_2, 3.0f);
-
-        while (!listenerScript.righStickUsed) {
-            yield return null;
+        // Log if either input was not detected within the timeout
+        if (!listenerScript.leftStickUsed || !listenerScript.righStickUsed)
+        {
+            Debug.LogWarning("Not all inputs detected within timeout. Proceeding to next tutorial phase.");
         }
 
-        TutoManager.Instance.UpdateTutorialState(TutorialState.ThrowObject);
+        TutoManager.Instance.UpdateTutorialState(TutorialState.ThrowObject); // Proceed to the next phase
     }
 }

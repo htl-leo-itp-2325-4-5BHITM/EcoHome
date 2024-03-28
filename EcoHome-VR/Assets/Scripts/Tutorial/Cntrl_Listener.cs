@@ -6,7 +6,6 @@ public class Cntrl_Listener : MonoBehaviour
 {
 
     private InputData _inputData;
-    public Audio audioScript;
 
     public bool leftStickUsed = false;
     public bool righStickUsed = false;
@@ -29,7 +28,7 @@ public class Cntrl_Listener : MonoBehaviour
 
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out Vector2 leftThumbStick))
         {
-            if (leftThumbStick.y >= 0.80 || leftThumbStick.y <= -0.80)
+            if (Mathf.Abs(leftThumbStick.y) >= 0.80 || Mathf.Abs(leftThumbStick.y) <= -0.80)
             {
                 leftStickUsed = true;
                 Debug.Log("used right stick");
@@ -38,7 +37,7 @@ public class Cntrl_Listener : MonoBehaviour
 
         if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out Vector2 rightThumbStick))
         {
-            if (rightThumbStick.x >= 0.80 || rightThumbStick.x <= -0.80)
+            if (Mathf.Abs(rightThumbStick.x) >= 0.80 || Mathf.Abs(rightThumbStick.x) <= -0.80)
             {
                 righStickUsed = true;
                 Debug.Log("used left stick");

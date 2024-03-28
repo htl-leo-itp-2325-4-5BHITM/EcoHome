@@ -5,7 +5,19 @@ using UnityEngine;
 [RequireComponent(typeof(InputData))]
 public class TutoManager : MonoBehaviour
 {
-    public static TutoManager Instance;
+    private static TutoManager _instance;
+
+    /*
+     *  This improves the Singleton by ensuring only one instance exists across scenes, preventing multiple instances from being created.
+     */
+    public static TutoManager Instance {
+        get {
+            if (_instance == null) {
+                _instance = FindObjectOfType<TutoManager>();
+            }
+            return _instance;
+        }
+    }
 
     public TutorialState State;
 
@@ -13,7 +25,15 @@ public class TutoManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Start is called before the first frame update

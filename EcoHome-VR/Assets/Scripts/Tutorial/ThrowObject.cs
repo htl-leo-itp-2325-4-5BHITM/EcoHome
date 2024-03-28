@@ -1,68 +1,63 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ThrowObject : MonoBehaviour
 {
-    // Script References
-    public Audio audioScript;
-    public Cntrl_Listener listenerScript;
+    [SerializeField] private Audio audioScript;
+    [SerializeField] private Cntrl_Listener listenerScript;
 
-    // Audio Clips
-    public AudioClip clip_1;
-    public AudioClip clip_2;
+    public AudioClip throwInstructionClip; // Instruction to throw an object
 
-
-    private void Awake()
+    void Awake()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
+    }
+
+    void OnDestroy()
+    {
+        TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
     }
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {
         if (state == TutorialState.ThrowObject)
         {
-            // Play the learn movement related audio clips here, for example:
-            StartCoroutine(WaitForAudioAndChangeState());
+            StartCoroutine(ManageThrowTutorial());
         }
     }
 
-
-    IEnumerator WaitForAudioAndChangeState()
+    IEnumerator ManageThrowTutorial()
     {
-        audioScript.audioPlayer.clip = clip_1;
-        audioScript.audioPlayer.Play();
-        yield return new WaitForSeconds(audioScript.audioPlayer.clip.length);
+        bool instructionGiven = false;
+        float startTime = Time.time;
 
-        // Hier können Sie Logik hinzufügen, um auf eine bestimmte Aktion oder ein Ereignis zu warten
-        // Beispiel: Warten, bis der Spieler eine Aktion durchführt
-        yield return new WaitUntil(() => listenerScript.leftGripButtonUsed);
-
-        // Spielt den zweiten Clip und wartet, bis er beendet ist
-        // Stellen Sie sicher, dass Clip 2 nur abgespielt wird, wenn Clip 1 nicht läuft.
-        if (!audioScript.audioPlayer.isPlaying)
+        while (Time.time - startTime < 30) // 30-second timeout for the throw tutorial phase
         {
-            audioScript.audioPlayer.clip = clip_2;
-            audioScript.audioPlayer.Play();
-            yield return new WaitForSeconds(audioScript.audioPlayer.clip.length);
+            if (!listenerScript.leftGripButtonUsed && !instructionGiven)
+            {
+                // Play throw instruction immediately for the first time, then repeat every 15 seconds
+                audioScript.PlayAudioAfterDelay(throwInstructionClip, 0);
+                instructionGiven = true;
+                yield return new WaitForSeconds(15); // Wait for 15 seconds before checking again
+            }
+
+            // Check if the throwing action has been performed
+            if (listenerScript.leftGripButtonUsed)
+            {
+                break; // Exit loop if throwing action is detected
+            }
+
+            // Allow repeating the instruction if the action hasn't been performed within 15 seconds
+            instructionGiven = false;
         }
 
-        if (Player.globalScoreCounter > 0) {
-            TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
+        // Log if the throw action was not detected within the timeout
+        if (!listenerScript.leftGripButtonUsed)
+        {
+            Debug.LogWarning("Throw action not detected within timeout. Proceeding to next tutorial phase.");
         }
 
-        /*
-        audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
-        yield return new WaitForSeconds(clip_1.length + 3.0f);
-
-        // Warte, bis der Grip-Button gedrückt wird
-        yield return new WaitUntil(() => listenerScript.leftGripButtonUsed);
-        audioScript.PlayAudioAfterDelay(clip_2, 2.0f);
-
-        // Warte, bis der Grip-Button losgelassen wird
-        yield return new WaitUntil(() => !listenerScript.leftGripButtonUsed);
-        audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
-
-        */
+        // Proceed to the next phase regardless of throw action to prevent stalling
+        TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame); // Assuming EndOfGame is the next state
     }
 }

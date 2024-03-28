@@ -5,8 +5,8 @@ using UnityEngine;
 public class EndOfGame : MonoBehaviour
 {
     // Script References
-    public Audio audioScript;
-    public Player playerScript;
+    [SerializeField] private Audio audioScript;
+    [SerializeField] private Player playerScript;
 
     // Audio Clips
     public AudioClip clip_1;

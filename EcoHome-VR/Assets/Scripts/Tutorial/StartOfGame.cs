@@ -6,7 +6,7 @@ using UnityEngine;
 public class StartOfGame : MonoBehaviour
 {
 
-    public Audio audioScript;
+    [SerializeField] private Audio audioScript;
 
     //Audio Clips
     public AudioClip clip_1;
@@ -34,10 +34,11 @@ public class StartOfGame : MonoBehaviour
     IEnumerator WaitForAudioAndChangeState()
     {
         audioScript.PlayAudioAfterDelay(clip_1, 3.0f);
+        Debug.Log("Playing StartOfGame AudioClip");
 
-        clips_length += clip_1.length + clip_2.length;
+        //clips_length += clip_1.length + clip_2.length;
         // Wait for the audio clip to finish: delay + audio clip length
-        yield return new WaitForSeconds(3.0f + clip_1.length);
+        yield return new WaitForSeconds(clip_1.length);
         TutoManager.Instance.UpdateTutorialState(TutorialState.LearnMovement);
     }
 }
