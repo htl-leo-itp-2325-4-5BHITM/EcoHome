@@ -12,8 +12,6 @@ public class StartOfGame : MonoBehaviour
     public AudioClip clip_1;
     public AudioClip clip_2;
 
-    // clips length
-    public float clips_length;
 
     void Awake() {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
@@ -33,12 +31,15 @@ public class StartOfGame : MonoBehaviour
 
     IEnumerator WaitForAudioAndChangeState()
     {
-        audioScript.PlayAudioAfterDelay(clip_1, 3.0f);
-        Debug.Log("Playing StartOfGame AudioClip");
 
-        //clips_length += clip_1.length + clip_2.length;
-        // Wait for the audio clip to finish: delay + audio clip length
+        yield return new WaitForSeconds(3.0f); 
+        audioScript.PlayAudioAfterDelay(clip_1, 0); 
         yield return new WaitForSeconds(clip_1.length);
+
+        yield return new WaitForSeconds(2.0f); 
+        audioScript.PlayAudioAfterDelay(clip_2, 0); 
+        yield return new WaitForSeconds(clip_2.length);
+
         TutoManager.Instance.UpdateTutorialState(TutorialState.LearnMovement);
     }
 }

@@ -6,7 +6,7 @@ public class ThrowObject : MonoBehaviour
     [SerializeField] private Audio audioScript;
     [SerializeField] private Cntrl_Listener listenerScript;
 
-    public AudioClip throwInstructionClip; // Instruction to throw an object
+    public AudioClip clip_1; 
 
     void Awake()
     {
@@ -31,12 +31,12 @@ public class ThrowObject : MonoBehaviour
         bool instructionGiven = false;
         float startTime = Time.time;
 
-        while (Time.time - startTime < 30) // 30-second timeout for the throw tutorial phase
+        while (Time.time - startTime < 20) // 30-second timeout for the throw tutorial phase
         {
             if (!listenerScript.leftGripButtonUsed && !instructionGiven)
             {
                 // Play throw instruction immediately for the first time, then repeat every 15 seconds
-                audioScript.PlayAudioAfterDelay(throwInstructionClip, 0);
+                audioScript.PlayAudioAfterDelay(clip_1, 2);
                 instructionGiven = true;
                 yield return new WaitForSeconds(15); // Wait for 15 seconds before checking again
             }

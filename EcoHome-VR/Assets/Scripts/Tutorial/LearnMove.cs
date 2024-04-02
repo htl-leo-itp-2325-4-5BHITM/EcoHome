@@ -33,19 +33,19 @@ public class LearnMove : MonoBehaviour
         bool rightStickInstructionGiven = false;
 
         float startTime = Time.time;
-        while (Time.time - startTime < 30) // 30-second timeout for the whole movement tutorial phase
+        while (Time.time - startTime < 20) // 30-second timeout for the whole movement tutorial phase
         {
             if (!listenerScript.leftStickUsed && !leftStickInstructionGiven)
             {
-                audioScript.PlayAudioAfterDelay(clip_1, 0); // Play immediately for the first time
+                audioScript.PlayAudioAfterDelay(clip_1, 1); // Play immediately for the first time
                 leftStickInstructionGiven = true;
-                yield return new WaitForSeconds(15); // Wait for 15 seconds before checking again or moving on to the right stick instruction
+                yield return new WaitForSeconds(10); // Wait for 15 seconds before checking again or moving on to the right stick instruction
             }
             else if (listenerScript.leftStickUsed && !listenerScript.righStickUsed && !rightStickInstructionGiven)
             {
-                audioScript.PlayAudioAfterDelay(clip_2, 0); // Play immediately for the first time
+                audioScript.PlayAudioAfterDelay(clip_2, 1); // Play immediately for the first time
                 rightStickInstructionGiven = true;
-                yield return new WaitForSeconds(15); // Wait for 15 seconds before rechecking right stick usage
+                yield return new WaitForSeconds(10); // Wait for 15 seconds before rechecking right stick usage
             }
             else if (listenerScript.leftStickUsed && listenerScript.righStickUsed)
             {
