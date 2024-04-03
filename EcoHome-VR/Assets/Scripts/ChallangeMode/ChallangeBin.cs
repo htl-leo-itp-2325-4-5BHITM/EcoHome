@@ -26,7 +26,6 @@ public class ChallangeBin : MonoBehaviour
 
     // particle system
     [SerializeField] ParticleSystem paperParticle; 
-    [SerializeField] ChallangeSpawner challangeSpawner;
 
 
 

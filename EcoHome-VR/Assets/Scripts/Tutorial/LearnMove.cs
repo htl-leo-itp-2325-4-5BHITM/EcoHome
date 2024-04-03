@@ -9,6 +9,10 @@ public class LearnMove : MonoBehaviour
     public AudioClip clip_1; // "Use the left stick"
     public AudioClip clip_2; // "Use the right stick"
 
+    bool leftStickInstructionGiven = false;
+    bool rightStickInstructionGiven = false;
+    bool doneMovement = false;
+
     void Awake()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
@@ -29,30 +33,26 @@ public class LearnMove : MonoBehaviour
 
     IEnumerator ManageMovementTutorial()
     {
-        bool leftStickInstructionGiven = false;
-        bool rightStickInstructionGiven = false;
-
-        float startTime = Time.time;
-        while (Time.time - startTime < 20) // 30-second timeout for the whole movement tutorial phase
+        while (!doneMovement)
         {
             if (!listenerScript.leftStickUsed && !leftStickInstructionGiven)
             {
                 audioScript.PlayAudioAfterDelay(clip_1, 1); // Play immediately for the first time
                 leftStickInstructionGiven = true;
-                yield return new WaitForSeconds(10); // Wait for 15 seconds before checking again or moving on to the right stick instruction
+                yield return new WaitForSeconds(10); // Wait for 10 seconds before checking again or moving on to the right stick instruction
             }
             else if (listenerScript.leftStickUsed && !listenerScript.righStickUsed && !rightStickInstructionGiven)
             {
                 audioScript.PlayAudioAfterDelay(clip_2, 1); // Play immediately for the first time
                 rightStickInstructionGiven = true;
-                yield return new WaitForSeconds(10); // Wait for 15 seconds before rechecking right stick usage
+                yield return new WaitForSeconds(10); // Wait for 10 seconds before rechecking right stick usage
             }
             else if (listenerScript.leftStickUsed && listenerScript.righStickUsed)
             {
                 break; // Both actions performed, exit the loop
             }
 
-            // Repeating instructions if actions not detected within 15 seconds
+            // Repeating instructions if actions not detected within 10 seconds
             if (!listenerScript.leftStickUsed)
             {
                 leftStickInstructionGiven = false; // Allow repeating the left stick instruction
@@ -63,12 +63,12 @@ public class LearnMove : MonoBehaviour
             }
         }
 
-        // Log if either input was not detected within the timeout
-        if (!listenerScript.leftStickUsed || !listenerScript.righStickUsed)
-        {
-            Debug.LogWarning("Not all inputs detected within timeout. Proceeding to next tutorial phase.");
-        }
 
-        TutoManager.Instance.UpdateTutorialState(TutorialState.ThrowObject); // Proceed to the next phase
+        if (listenerScript.leftStickUsed && listenerScript.righStickUsed)
+        {
+            Debug.Log("changed state to throwobj");
+            TutoManager.Instance.UpdateTutorialState(TutorialState.ThrowObject); // Proceed to the next phase
+        }
+        
     }
 }

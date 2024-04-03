@@ -39,10 +39,7 @@ class GameHandler : MonoBehaviour{
         spawnerField[6] = spawnerLocation6;
         spawnerField[7] = spawnerLocation7;
         spawnerField[8] = spawnerLocation8;
-        
-
-   
-
+       
     }
     void Update(){
 
@@ -57,29 +54,20 @@ class GameHandler : MonoBehaviour{
 
         switch (tag) 
         {
-            case paperTrashTag:
-            
-                
+            case paperTrashTag:               
                     Instantiate(plasticTrashprefab, spawnerField[fieldToSpawn]);
-               
                 break;
             case plasticTrashTag: 
-            
-                
                     Instantiate(plasticTrashprefab, spawnerField[fieldToSpawn]);
-               
                 break;
             case glassTrashTag:
                     Instantiate(glassTrashprefab, spawnerField[fieldToSpawn]);
-               
                 break;
             case bioTrashTag: 
                     Instantiate(bioTrashprefab, spawnerField[fieldToSpawn]);
-               
                 break;
             case tinTrashTag: 
                     Instantiate(tinTrashprefab, spawnerField[fieldToSpawn]);
-               
                 break;
             default:
                 Debug.Log("failed instantiate");

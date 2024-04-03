@@ -244,8 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioScript: {fileID: 8507021}
   listenerScript: {fileID: 8507024}
-  clip_1: {fileID: 8300000, guid: f0a641e44b5f80346b11240bde8f37ea, type: 3}
-  clip_2: {fileID: 8300000, guid: 346eb35051f21174a9f6f68d8963c94f, type: 3}
+  clip_1: {fileID: 8300000, guid: 346eb35051f21174a9f6f68d8963c94f, type: 3}
 --- !u!114 &8507024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6bbe65169e3487c92f86bb5c281ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioScript: {fileID: 0}
   leftStickUsed: 0
   righStickUsed: 0
   leftGripButtonUsed: 0
@@ -280,7 +278,6 @@ MonoBehaviour:
   listenerScript: {fileID: 8507024}
   clip_1: {fileID: 8300000, guid: 2a322d8d978ab6f489b645cf0973dfa3, type: 3}
   clip_2: {fileID: 8300000, guid: f8fb886e5e043654688321a045059320, type: 3}
-  clips_length: 0
 --- !u!114 &8507026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +293,6 @@ MonoBehaviour:
   audioScript: {fileID: 8507021}
   clip_1: {fileID: 8300000, guid: f150f0a639ce32943b868a5472b461ba, type: 3}
   clip_2: {fileID: 8300000, guid: a60a2073fff2b24428804d64f978792e, type: 3}
-  clips_length: 0
 --- !u!1001 &45101336
 PrefabInstance:
   m_ObjectHideFlags: 0

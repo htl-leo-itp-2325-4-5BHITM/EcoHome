@@ -8,6 +8,10 @@ public class ThrowObject : MonoBehaviour
 
     public AudioClip clip_1; 
 
+    bool instructionGiven = false;
+
+    bool doneThrowing = false;
+
     void Awake()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
@@ -28,36 +32,31 @@ public class ThrowObject : MonoBehaviour
 
     IEnumerator ManageThrowTutorial()
     {
-        bool instructionGiven = false;
-        float startTime = Time.time;
 
-        while (Time.time - startTime < 20) // 30-second timeout for the throw tutorial phase
+        while (!doneThrowing) 
         {
-            if (!listenerScript.leftGripButtonUsed && !instructionGiven)
+            if (!listenerScript.leftGripButtonUsed && !instructionGiven || !listenerScript.rightGripButtonUsed && !instructionGiven)
             {
-                // Play throw instruction immediately for the first time, then repeat every 15 seconds
+                // Play throw instruction immediately for the first time, then repeat every 10 seconds
                 audioScript.PlayAudioAfterDelay(clip_1, 2);
                 instructionGiven = true;
-                yield return new WaitForSeconds(15); // Wait for 15 seconds before checking again
+                yield return new WaitForSeconds(10); // Wait for 10 seconds before checking again
             }
 
             // Check if the throwing action has been performed
-            if (listenerScript.leftGripButtonUsed)
+            
+            if (listenerScript.leftGripButtonUsed || listenerScript.rightGripButtonUsed)
             {
                 break; // Exit loop if throwing action is detected
             }
 
-            // Allow repeating the instruction if the action hasn't been performed within 15 seconds
+            // Allow repeating the instruction if the action hasn't been performed within 10 seconds
             instructionGiven = false;
         }
 
-        // Log if the throw action was not detected within the timeout
-        if (!listenerScript.leftGripButtonUsed)
-        {
-            Debug.LogWarning("Throw action not detected within timeout. Proceeding to next tutorial phase.");
+        if (listenerScript.rightGripButtonUsed || listenerScript.leftGripButtonUsed) {
+            TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame); // Proceed to the next phase
         }
 
-        // Proceed to the next phase regardless of throw action to prevent stalling
-        TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame); // Assuming EndOfGame is the next state
     }
 }

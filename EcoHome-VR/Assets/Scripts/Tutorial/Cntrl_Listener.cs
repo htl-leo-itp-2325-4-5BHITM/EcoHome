@@ -31,7 +31,7 @@ public class Cntrl_Listener : MonoBehaviour
             if (Mathf.Abs(leftThumbStick.y) >= 0.80 || Mathf.Abs(leftThumbStick.y) <= -0.80)
             {
                 leftStickUsed = true;
-                Debug.Log("used right stick");
+                Debug.Log("used left stick");
             }
         }
 
@@ -40,7 +40,7 @@ public class Cntrl_Listener : MonoBehaviour
             if (Mathf.Abs(rightThumbStick.x) >= 0.80 || Mathf.Abs(rightThumbStick.x) <= -0.80)
             {
                 righStickUsed = true;
-                Debug.Log("used left stick");
+                Debug.Log("used right stick");
             }
         }
 
@@ -56,6 +56,22 @@ public class Cntrl_Listener : MonoBehaviour
             {
                 leftGripButtonUsed = false;
                 Debug.Log("Left grip button pressed: " + leftGripButtonUsed);
+                // Trigger the event or method to replay clip_1
+            }
+        }
+
+        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool rightGripPressed))
+        {
+            if (rightGripPressed && !rightGripButtonUsed)
+            {
+                rightGripButtonUsed = true;
+                Debug.Log("right grip button pressed: " + rightGripButtonUsed);
+                // Trigger the event or method to play clip_2
+            }
+            else if (!rightGripPressed && rightGripButtonUsed)
+            {
+                rightGripButtonUsed = false;
+                Debug.Log("right grip button pressed: " + rightGripButtonUsed);
                 // Trigger the event or method to replay clip_1
             }
         }
