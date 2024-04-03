@@ -1,5 +1,8 @@
 using UnityEngine;
 using System;
+using System.Timers;
+using UnityEngine.SceneManagement;
+using TMPro;
 class GameHandler : MonoBehaviour{
     public const string paperTrashTag = "PaperTrash";
     public const string plasticTrashTag = "PlasticTrash";
@@ -26,7 +29,15 @@ class GameHandler : MonoBehaviour{
 
     private Transform []  spawnerField;
 
+  
+    private Timer tim;
+    TextMeshProUGUI displayTime;
+    
+    TextMeshProUGUI displayScore;
+    private MainMenuInteractor interactor;
 
+    private int timeleft = 0;
+    private int leftToWin = 20;
 
     void Start(){
         spawnerField = new Transform[9];
@@ -39,10 +50,21 @@ class GameHandler : MonoBehaviour{
         spawnerField[6] = spawnerLocation6;
         spawnerField[7] = spawnerLocation7;
         spawnerField[8] = spawnerLocation8;
+       startNewTimer();
        
+        displayTime = GameObject.Find("Display Time").GetComponent<TextMeshProUGUI>();
+        
+        displayScore = GameObject.Find("Display Score").GetComponent<TextMeshProUGUI>();
+        
     }
     void Update(){
+        if(!challangeFailedYet()){     
+         //    timeleft += tim.Elapsed;
+        displayTime.text = "Trash Left: "; //+ timeleft
+        }else{ 
+            SceneManager.LoadScene("Main Menu - Main Scene");
 
+        }
 
     }
 
@@ -56,23 +78,52 @@ class GameHandler : MonoBehaviour{
         {
             case paperTrashTag:               
                     Instantiate(plasticTrashprefab, spawnerField[fieldToSpawn]);
+                    Debug.Log("Paper Trash Spawned");
+                    leftToWin--;
                 break;
             case plasticTrashTag: 
                     Instantiate(plasticTrashprefab, spawnerField[fieldToSpawn]);
+                    Debug.Log("Plastic Trash Spawned");
+                    leftToWin--;
                 break;
             case glassTrashTag:
                     Instantiate(glassTrashprefab, spawnerField[fieldToSpawn]);
+                    Debug.Log("Glass Trash Spawned");
+                    leftToWin--;
                 break;
             case bioTrashTag: 
                     Instantiate(bioTrashprefab, spawnerField[fieldToSpawn]);
+                    Debug.Log("Bio Trash Spawned");
+                    leftToWin--;
                 break;
             case tinTrashTag: 
                     Instantiate(tinTrashprefab, spawnerField[fieldToSpawn]);
+                    Debug.Log("Tin Trash Spawned");
+                    leftToWin--;
                 break;
             default:
                 Debug.Log("failed instantiate");
                 break;
         }
+    }
+    public void startNewTimer(){
+        tim = new Timer();
+        tim.Start();       
+    }
+
+    public Boolean challangeFailedYet(){
+        if(leftToWin == 0){
+            return true;   
+        }else{          
+            return false;
+        } 
+      /*  if(tim.Elapsed > 600000){
+            tim.Stop();
+            return true;
+        }else{
+            displayTime.text = "Challange Ended!" ;
+            return false;
+        }*/
     }
 
 
