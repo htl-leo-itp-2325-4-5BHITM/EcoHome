@@ -9,6 +9,8 @@ using TMPro;
 [RequireComponent(typeof(InputData))]
 public class Player : MonoBehaviour
 {
+    public GameObject player;
+
     public static int localScoreCounter = 0;
     public static int globalScoreCounter = 0;
     
@@ -24,17 +26,19 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        displayScore = GameObject.Find("Display Score").GetComponent<TextMeshProUGUI>();
+        player = GameObject.Find("Player");
+        if (GameObject.Find("Display Score")) displayScore = GameObject.Find("Display Score").GetComponent<TextMeshProUGUI>();
         _inputData = GetComponent<InputData>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        displayScore.text = "Score: " + displayScoreCounter;
+        if(displayScore) displayScore.text = "Score: " + displayScoreCounter;
 
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.menuButton, out bool buttonPressed) && buttonPressed)
         {
+            Destroy(player);
             SceneManager.LoadScene("Main Menu - Main Scene");
         }
 

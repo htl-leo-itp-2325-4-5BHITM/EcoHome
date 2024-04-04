@@ -37,7 +37,7 @@ class GameHandler : MonoBehaviour{
     private MainMenuInteractor interactor;
 
     private int timeleft = 0;
-    private int leftToWin = 20;
+    private int leftToWin = 3;
 
     void Start(){
         spawnerField = new Transform[9];
@@ -60,7 +60,7 @@ class GameHandler : MonoBehaviour{
     void Update(){
         if(!challangeFailedYet()){     
          //    timeleft += tim.Elapsed;
-        displayTime.text = "Trash Left: "; //+ timeleft
+        displayTime.text = "Trash Left: " + leftToWin; //+ timeleft
         }else{ 
             SceneManager.LoadScene("Main Menu - Main Scene");
 

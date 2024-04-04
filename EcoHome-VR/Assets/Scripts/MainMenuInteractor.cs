@@ -7,13 +7,16 @@ using UnityEngine.SceneManagement;
 public class MainMenuInteractor : MonoBehaviour
 {
     private AsyncOperation _asyncOperation;
+    public GameObject player;
+    public Player PlayerScript;
     public GameObject LoadingScreen;
     public Slider LoadingBarFill;
 
     private void Start() 
     {
-        LoadingScreen = GameObject.Find("LoadingScreen");
-        LoadingBarFill = GameObject.Find("Slider").GetComponent<Slider>();
+        player = GameObject.Find("Player");
+        /* LoadingScreen = GameObject.Find("LoadingScreen");
+        LoadingBarFill = GameObject.Find("Slider").GetComponent<Slider>(); */
     }
 
     private IEnumerator LoadSceneAsyncProcess(string sceneName)
@@ -21,12 +24,12 @@ public class MainMenuInteractor : MonoBehaviour
         this._asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         this._asyncOperation.allowSceneActivation = false;
 
-        LoadingScreen.SetActive(true);
+        // LoadingScreen.SetActive(true);
 
         while (!this._asyncOperation.isDone)
         {
-            float progress = Mathf.Clamp01(_asyncOperation.progress / 0.9f);
-            LoadingBarFill.value = progress;
+            /* float progress = Mathf.Clamp01(_asyncOperation.progress / 0.9f);
+            LoadingBarFill.value = progress; */
 
             yield return null;
         }
@@ -44,6 +47,7 @@ public class MainMenuInteractor : MonoBehaviour
     {
         if (this._asyncOperation == null)
         {
+            Destroy(player);
             this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Challenge - Main Scene"));
         }
     }
@@ -52,6 +56,7 @@ public class MainMenuInteractor : MonoBehaviour
     {
         if (this._asyncOperation == null)
         {
+            Destroy(player);
             this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Linear - Main Scene"));
         }
     }
