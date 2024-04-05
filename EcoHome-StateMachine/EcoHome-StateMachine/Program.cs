@@ -6,7 +6,9 @@ namespace EcoHome_StateMachine
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
+            Console.WriteLine("Start Game? y/n");
+            Console.Out.Flush();
+            var startGame = Console.ReadLine();
         }
     }
 }
