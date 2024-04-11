@@ -42,6 +42,15 @@
     <ItemGroup>
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Tutorial_Controlls\End.cs" />
+        <Compile Include="Tutorial_Controlls\LearnMove_1.cs" />
+        <Compile Include="Tutorial_Controlls\LearnMove_2.cs" />
+        <Compile Include="Tutorial_Controlls\LearnGrip.cs" />
+        <Compile Include="Tutorial_Controlls\LearnThrowing.cs" />
+        <Compile Include="Tutorial_Controlls\NotUseGrip.cs" />
+        <Compile Include="Tutorial_Controlls\ObjectNotInPosition.cs" />
+        <Compile Include="Tutorial_Controlls\Start.cs" />
+        <Compile Include="Tutorial_Controlls\UseGrip.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
