@@ -47,7 +47,7 @@ namespace EcoHome_StateMachine
                     switch (input)
                     {
                         case "LJ":
-                            _currentState = "Movement learned";
+                            _currentState = "Rotation instruction given";
                             GetInput("Bewege den rechten Joystick (RJ), um dich zu drehen.");
                             break;
                         default:
