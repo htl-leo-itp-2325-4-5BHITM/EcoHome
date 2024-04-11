@@ -4,3 +4,9 @@ C:\Users\videoadmin\Desktop\EcoHome\EcoHome-StateMachine\EcoHome-StateMachine\ob
 C:\Users\videoadmin\Desktop\EcoHome\EcoHome-StateMachine\EcoHome-StateMachine\obj\Debug\EcoHome-StateMachine.csproj.CoreCompileInputs.cache
 C:\Users\videoadmin\Desktop\EcoHome\EcoHome-StateMachine\EcoHome-StateMachine\obj\Debug\EcoHome_StateMachine.exe
 C:\Users\videoadmin\Desktop\EcoHome\EcoHome-StateMachine\EcoHome-StateMachine\obj\Debug\EcoHome_StateMachine.pdb
+C:\Users\feich\Desktop\4BHITM\ITP\EcoHome\EcoHome-StateMachine\EcoHome-StateMachine\obj\Debug\EcoHome_StateMachine.exe
+C:\Users\feich\Desktop\4BHITM\ITP\EcoHome\EcoHome-StateMachine\EcoHome-StateMachine\obj\Debug\EcoHome_StateMachine.pdb
+C:\Users\feich\Desktop\4BHITM\ITP\EcoHome\EcoHome-StateMachine\EcoHome-StateMachine\bin\Debug\EcoHome_StateMachine.exe
+C:\Users\feich\Desktop\4BHITM\ITP\EcoHome\EcoHome-StateMachine\EcoHome-StateMachine\bin\Debug\EcoHome_StateMachine.pdb
+C:\Users\feich\Desktop\4BHITM\ITP\EcoHome\EcoHome-StateMachine\EcoHome-StateMachine\obj\Debug\EcoHome-StateMachine.csproj.AssemblyReference.cache
+C:\Users\feich\Desktop\4BHITM\ITP\EcoHome\EcoHome-StateMachine\EcoHome-StateMachine\obj\Debug\EcoHome-StateMachine.csproj.CoreCompileInputs.cache
