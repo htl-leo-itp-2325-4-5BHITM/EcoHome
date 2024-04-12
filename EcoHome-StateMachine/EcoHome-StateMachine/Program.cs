@@ -1,68 +1,114 @@
 ﻿using System;
-using System.Linq.Expressions;
 
 namespace EcoHome_StateMachine
 {
-    internal class Program
+    class EcoHomeContext
     {
-        private static string _currentState = "Start";
-        
-        public static void Main(string[] args)
+        private State _state = null;
+
+        public EcoHomeContext(State state)
         {
-            Console.WriteLine("Willkommen zu EcoHome!\nMöchtest du die Steuerung kennenlernen? (y/n)");
-            Console.Out.Flush();
-            var firstInput = Console.ReadLine();
-            CheckInput(firstInput);
+            this.TransitionTo(state);
         }
 
-        private static void GetInput(string message)
+        public void TransitionTo(State state)
         {
-            Console.WriteLine(message);
-            Console.Out.Flush();
-            var newInput = Console.ReadLine();
-            CheckInput(newInput);
+            // Console.WriteLine($"EcoHomeContext: Transition to {state.GetType().Name}.");
+            _state = state;
+            _state.SetContext(this);
         }
 
-        private static void CheckInput(string input)
+        public void HandleInput(string input)
         {
-            switch (_currentState)
+            _state.HandleInput(input);
+        }
+    }
+
+    abstract class State
+    {
+        protected EcoHomeContext _context;
+
+        public void SetContext(EcoHomeContext context)
+        {
+            _context = context;
+        }
+
+        public abstract void HandleInput(string input);
+    }
+
+    class StartState : State
+    {
+        public override void HandleInput(string input)
+        {
+            switch (input)
             {
-                case "Start":
-                    switch (input)
-                    {
-                        case "y":
-                            _currentState = "Movement instruction given";
-                            GetInput("Bewege den linken Joystick (LJ), um dich durch den Raum zu bewegen.");
-                            break;
-                        case "n":
-                            Console.WriteLine("Auf Wiedersehen!");
-                            Console.Out.Flush();
-                            return; 
-                        default:
-                            InputError("Möchtest du die Steuerung kennenlernen?");
-                            break;
-                    }
+                case "y":
+                    Console.WriteLine("Bewege den linken Joystick (LJ), um dich durch den Raum zu bewegen.");
+                    _context.TransitionTo(new MovementInstructionState());
                     break;
-                case "Movement instruction given":
-                    switch (input)
-                    {
-                        case "LJ":
-                            _currentState = "Rotation instruction given";
-                            GetInput("Bewege den rechten Joystick (RJ), um dich zu drehen.");
-                            break;
-                        default:
-                            GetInput("Bewege den linken Joystick (LJ), um dich durch den Raum zu bewegen.");
-                            break;
-                    }
+                case "n":
+                    Console.WriteLine("Auf Wiedersehen!");
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe. Möchtest du die Steuerung kennenlernen? (y/n)");
                     break;
             }
         }
+    }
 
-        private static void InputError(string message)
+    class MovementInstructionState : State
+    {
+        public override void HandleInput(string input)
         {
-            Console.WriteLine("Deine Eingabe ist ungültig!");
-            Console.Out.Flush();
-            GetInput(message);
+            if (input == "LJ")
+            {
+                Console.WriteLine("Bewege den rechten Joystick (RJ), um dich zu drehen.");
+                _context.TransitionTo(new RotationInstructionState());
+            }
+            else
+            {
+                Console.WriteLine("Ungültige Eingabe. Bewege den linken Joystick (LJ), um dich durch den Raum zu bewegen.");
+            }
         }
+    }
+
+    class RotationInstructionState : State
+    {
+        public override void HandleInput(string input)
+        {
+            if (input == "RJ")
+            {
+                Console.WriteLine("Steuerung abgeschlossen. Viel Spaß!");
+                _context.TransitionTo(new EndState());
+            }
+            else
+            {
+                Console.WriteLine("Ungültige Eingabe. Bewege den rechten Joystick (RJ), um dich zu drehen.");
+            }
+        }
+    }
+
+    class EndState : State
+    {
+        public override void HandleInput(string input)
+        {
+            Console.WriteLine("Steuerung abgeschlossen. Keine weiteren Aktionen möglich.");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var context = new EcoHomeContext(new StartState());
+            Console.WriteLine("Möchtest du die Steuerung kennenlernen? (y/n)");
+            while (true)
+            {
+                var input = Console.ReadLine();
+                context.HandleInput(input);
+            }
+        }
+        
     }
 }
