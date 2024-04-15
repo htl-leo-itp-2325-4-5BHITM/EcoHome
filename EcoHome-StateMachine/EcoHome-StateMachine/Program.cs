@@ -96,12 +96,12 @@ namespace EcoHome_StateMachine
         {
             if (input == "IT")
             {
-                Console.WriteLine("Behalte den Müll in der Hand und versuche, ihn in den Mülleimer zu werfen (IMW).");
+                Console.WriteLine("Behalte das Papier in der Hand und versuche, ihn in den Mülleimer zu werfen (IMW).");
                 _context.TransitionTo(new ThrowState());
             }
             else
             {
-                Console.WriteLine("Ungültige Eingabe. Ziele auf den Müll und versuche, ihn durch Drücken der inneren Taste (IT) aufzuheben.");
+                Console.WriteLine("Ungültige Eingabe. Ziele auf das Papier und versuche, ihn durch Drücken der inneren Taste (IT) aufzuheben.");
             }
         }
     }
