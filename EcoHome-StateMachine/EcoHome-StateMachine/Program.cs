@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 
 namespace EcoHome_StateMachine
 {
@@ -79,8 +80,8 @@ namespace EcoHome_StateMachine
         {
             if (input == "RJ")
             {
-                Console.WriteLine("Steuerung abgeschlossen. Viel Spaß!");
-                _context.TransitionTo(new EndState());
+                Console.WriteLine("Siehst du den Müll auf dem Tisch? Ziele darauf und versuche, den Müll durch Drücken der inneren Taste (IT) aufzuheben.");
+                _context.TransitionTo(new TableState());
             }
             else
             {
@@ -89,11 +90,69 @@ namespace EcoHome_StateMachine
         }
     }
 
+    class TableState : State
+    {
+        public override void HandleInput(string input)
+        {
+            if (input == "IT")
+            {
+                Console.WriteLine("Behalte den Müll in der Hand und versuche, ihn in den Mülleimer zu werfen (IMW).");
+                _context.TransitionTo(new ThrowState());
+            }
+            else
+            {
+                Console.WriteLine("Ungültige Eingabe. Ziele auf den Müll und versuche, ihn durch Drücken der inneren Taste (IT) aufzuheben.");
+            }
+        }
+    }
+
+    class ThrowState : State
+    {
+        public override void HandleInput(string input)
+        {
+            if (input == "IMW")
+            {
+                Console.WriteLine("Gut gemacht! Du hast den ersten Raum bestanden. Gehe in den nächsten Raum (IRG).");
+                _context.TransitionTo(new EndState());
+            }
+            else
+            {
+                Console.WriteLine("Es sieht so aus, als hättest du den Müll fallen lassen. Hebe ihn wieder auf (WA).");
+                _context.TransitionTo(new FloorState());
+            }
+        }
+    }
+    
+    class FloorState : State
+    {
+        public override void HandleInput(string input)
+        {
+            if (input == "WA")
+            {
+                Console.WriteLine("Behalte den Müll in der Hand und versuche, ihn in den Mülleimer zu werfen (IMW).");
+                _context.TransitionTo(new ThrowState());
+            }
+            else
+            {
+                Console.WriteLine("Hebe den Müll wieder auf (WA).");
+            }
+        }
+    }
+
     class EndState : State
     {
         public override void HandleInput(string input)
         {
-            Console.WriteLine("Steuerung abgeschlossen. Keine weiteren Aktionen möglich.");
+            if (input == "IRG")
+            {
+                Console.WriteLine("Du hast das Tutorial erfolgreich abgeschlossen.");
+                Environment.Exit(0);   
+            }
+            else
+            {
+                Console.WriteLine("Gehe in den nächsten Raum (IRG).");
+            }
+            
         }
     }
 
