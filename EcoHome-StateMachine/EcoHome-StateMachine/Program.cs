@@ -7,7 +7,7 @@ namespace EcoHome_StateMachine
     {
         private State _state = null;
 
-        public State GetContext()
+        public State GetCurrentState()
         {
             return _state;
         }
