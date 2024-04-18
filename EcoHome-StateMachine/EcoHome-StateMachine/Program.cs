@@ -7,9 +7,14 @@ namespace EcoHome_StateMachine
     {
         private State _state = null;
 
+        public State GetContext()
+        {
+            return _state;
+        }
+
         public EcoHomeContext(State state)
         {
-            this.TransitionTo(state);
+            TransitionTo(state);
         }
 
         public void TransitionTo(State state)
