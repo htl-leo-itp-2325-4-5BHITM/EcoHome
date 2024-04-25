@@ -1,0 +1,11 @@
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\bin\Debug\TestProject2.dll
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\bin\Debug\TestProject2.pdb
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\bin\Debug\EcoHome_StateMachine.exe
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\bin\Debug\nunit.framework.dll
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\bin\Debug\EcoHome_StateMachine.pdb
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\bin\Debug\nunit.framework.xml
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\obj\Debug\TestProject2.csproj.AssemblyReference.cache
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\obj\Debug\TestProject2.csproj.CoreCompileInputs.cache
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\obj\Debug\TestProject2.csproj.CopyComplete
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\obj\Debug\TestProject2.dll
+C:\Users\Ich\StuffFromF\EcoHome\EcoHome-StateMachine\TestProject2\obj\Debug\TestProject2.pdb
