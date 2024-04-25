@@ -20,7 +20,7 @@ public class LightSwitcher : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void PressLightswitch()
     {
         pressedPair = this.gameObject.name.Split('_')[1];
         pairedLight = GameObject.Find("ceilingLight_" + pressedPair + "/Point Light");
