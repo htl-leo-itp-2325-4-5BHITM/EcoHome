@@ -3,13 +3,19 @@ using System.Timers;
 
 namespace EcoHome_StateMachine
 {
-    class EcoHomeContext
+    public class EcoHomeContext
     {
         private State _state = null;
 
         public EcoHomeContext(State state)
         {
             this.TransitionTo(state);
+        }
+
+        public State State
+        {
+            get => _state;
+            set => _state = value;
         }
 
         public void TransitionTo(State state)
@@ -30,7 +36,7 @@ namespace EcoHome_StateMachine
         }
     }
 
-    abstract class State
+    public abstract class State
     {
         protected EcoHomeContext _context;
         protected Timer repeatTimer;
@@ -66,7 +72,7 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class StartState : State
+    public class StartState : State
     {
 
         public override void OnEnter()
@@ -92,7 +98,7 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class MovementInstructionState : State
+    public class MovementInstructionState : State
     {
 
         public override void OnEnter()
@@ -113,7 +119,7 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class RotationInstructionState : State
+    public class RotationInstructionState : State
     {
 
         public override void OnEnter()
@@ -134,7 +140,7 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class TableState : State
+    public class TableState : State
     {
         public override void OnEnter()
         {
@@ -154,7 +160,7 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class ThrowState : State
+    public class ThrowState : State
     {
 
         public override void OnEnter()
@@ -175,7 +181,7 @@ namespace EcoHome_StateMachine
         }
     }
     
-    class FloorState : State
+    public class FloorState : State
     {
         public override void OnEnter()
         {
@@ -196,7 +202,7 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class EndState : State
+    public class EndState : State
     {
         public override void OnEnter()
         {
@@ -212,7 +218,7 @@ namespace EcoHome_StateMachine
         
     }
 
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
