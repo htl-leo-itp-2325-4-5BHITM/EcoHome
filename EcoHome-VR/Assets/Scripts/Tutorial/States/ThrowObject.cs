@@ -10,8 +10,6 @@ public class ThrowObject : MonoBehaviour
 
     bool instructionGiven = false;
 
-    bool doneThrowing = false;
-
     void Awake()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
@@ -32,7 +30,14 @@ public class ThrowObject : MonoBehaviour
 
     IEnumerator ManageThrowTutorial()
     {
-
+        /*
+         * - check if the user knows grip button
+         * - check which object the player is currenty holding
+            => none object: FloorState
+            => holds object and throws into the bin: EndState 
+         */
+        yield return new WaitForSeconds(10);
+        /*
         while (!doneThrowing) 
         {
             if (!listenerScript.leftGripButtonUsed && !instructionGiven || !listenerScript.rightGripButtonUsed && !instructionGiven)
@@ -57,6 +62,7 @@ public class ThrowObject : MonoBehaviour
         if (listenerScript.rightGripButtonUsed || listenerScript.leftGripButtonUsed) {
             TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame); // Proceed to the next phase
         }
+        */
 
     }
 }
