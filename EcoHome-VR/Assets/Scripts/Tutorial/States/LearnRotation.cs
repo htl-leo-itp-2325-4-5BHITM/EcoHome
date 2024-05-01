@@ -9,7 +9,6 @@ public class LearnRotation : MonoBehaviour
     public AudioClip clip_1; // "Use the right stick"
     public AudioClip clip_2; // "Use the right stick" - short version
 
-    bool rightStickInstructionGiven = false;
 
     void Awake()
     {
@@ -31,21 +30,16 @@ public class LearnRotation : MonoBehaviour
 
     IEnumerator ManageRotationTutorial()
     {
-        if (!listenerScript.righStickUsed && !rightStickInstructionGiven)
+        if (!listenerScript.righStickUsed)
         {
-            audioScript.PlayAudioAfterDelay(clip_1, 1); // Play for the first time
-            rightStickInstructionGiven = true;
-            yield return new WaitForSeconds(5); // Wait for 5 seconds before checking again to repeat the instruction clip
+            audioScript.PlayAudioAfterDelay(clip_1, 1);
+            yield return new WaitForSeconds(5); 
+            audioScript.StartRepeatAction(() => audioScript.PlayAudioAfterDelay(clip_1, 1), 10000);
         }
         else if (listenerScript.righStickUsed)
         {
             Debug.Log("change the state");
             TutoManager.Instance.UpdateTutorialState(TutorialState.TableState); // Proceed to the next State
-        }
-        else if (rightStickInstructionGiven)
-        {
-            //audioScript.PlayAudioAfterDelay(clip_1, 1);
-            audioScript.StartRepeatAction(() => audioScript.PlayAudioAfterDelay(clip_1, 1), 10000);
         }
     }
 }

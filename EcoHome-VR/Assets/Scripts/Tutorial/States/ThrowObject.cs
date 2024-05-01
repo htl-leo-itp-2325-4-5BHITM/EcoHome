@@ -6,9 +6,33 @@ public class ThrowObject : MonoBehaviour
     [SerializeField] private Audio audioScript;
     [SerializeField] private Cntrl_Listener listenerScript;
 
-    public AudioClip clip_1; 
+    public AudioClip clip_1;
 
-    bool instructionGiven = false;
+    bool isBeingHeld = false;
+
+    void OnEnable()
+    {
+        Cntrl_Listener.OnCorrectObjectHeldStateChanged += HandleCorrectObjectHeldStateChange;
+    }
+
+    void OnDisable()
+    {
+        Cntrl_Listener.OnCorrectObjectHeldStateChanged -= HandleCorrectObjectHeldStateChange;
+    }
+
+    private void HandleCorrectObjectHeldStateChange(bool isHeld)
+    {
+        if (isHeld)
+        {
+            Debug.Log("Correct object is currently being held.");
+            isBeingHeld = true;
+        }
+        else
+        {
+            Debug.Log("Correct object is not being held.");
+            isBeingHeld = false;
+        }
+    }
 
     void Awake()
     {
@@ -31,38 +55,26 @@ public class ThrowObject : MonoBehaviour
     IEnumerator ManageThrowTutorial()
     {
         /*
-         * - check if the user knows grip button
          * - check which object the player is currenty holding
             => none object: FloorState
             => holds object and throws into the bin: EndState 
          */
-        yield return new WaitForSeconds(10);
-        /*
-        while (!doneThrowing) 
+
+
+        while(true)
         {
-            if (!listenerScript.leftGripButtonUsed && !instructionGiven || !listenerScript.rightGripButtonUsed && !instructionGiven)
-            {
-                // Play throw instruction immediately for the first time, then repeat every 10 seconds
-                audioScript.PlayAudioAfterDelay(clip_1, 2);
-                instructionGiven = true;
-                yield return new WaitForSeconds(10); // Wait for 10 seconds before checking again
+           if (!isBeingHeld)
+           {
+                TutoManager.Instance.UpdateTutorialState(TutorialState.FloorState);
+           }
+           else
+           {
+                audioScript.PlayAudioAfterDelay(clip_1, 1);
+                audioScript.StartRepeatAction(() => audioScript.PlayAudioAfterDelay(clip_1, 1), 10000);
+                yield return new WaitUntil(() => Player.globalScoreCounter > 0);
+                TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
+                break;
             }
-
-            // Check if the throwing action has been performed
-            
-            if (listenerScript.leftGripButtonUsed || listenerScript.rightGripButtonUsed)
-            {
-                break; // Exit loop if throwing action is detected
-            }
-
-            // Allow repeating the instruction if the action hasn't been performed within 10 seconds
-            instructionGiven = false;
         }
-
-        if (listenerScript.rightGripButtonUsed || listenerScript.leftGripButtonUsed) {
-            TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame); // Proceed to the next phase
-        }
-        */
-
     }
 }

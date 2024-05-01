@@ -10,8 +10,6 @@ public class LearnGrip : MonoBehaviour
     public AudioClip clip_1; // "Use the grip button"
     public AudioClip clip_2; // "Use the grip button" - short version
 
-    bool gripInstructionGiven = false;
-
     void Awake()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
@@ -32,21 +30,16 @@ public class LearnGrip : MonoBehaviour
 
     IEnumerator ManageGripTutorial()
     {
-        if (!listenerScript.rightGripButtonUsed ||  !listenerScript.leftGripButtonUsed && !gripInstructionGiven)
+        if (!listenerScript.rightGripButtonUsed ||  !listenerScript.leftGripButtonUsed)
         {
-            audioScript.PlayAudioAfterDelay(clip_1, 1); // Play for the first time
-            gripInstructionGiven = true;
-            yield return new WaitForSeconds(5); // Wait for 5 seconds before checking again to repeat the instruction clip
+            audioScript.PlayAudioAfterDelay(clip_1, 1);
+            audioScript.StartRepeatAction(() => audioScript.PlayAudioAfterDelay(clip_1, 1), 10000);
+            yield return new WaitForSeconds(5); 
         }
         else if (listenerScript.leftGripButtonUsed || listenerScript.rightGripButtonUsed)
         {
             Debug.Log("change the state");
             TutoManager.Instance.UpdateTutorialState(TutorialState.ThrowObject); // Proceed to the next State
-        }
-        else if (gripInstructionGiven)
-        {
-            //audioScript.PlayAudioAfterDelay(clip_1, 1);
-            audioScript.StartRepeatAction(() => audioScript.PlayAudioAfterDelay(clip_1, 1), 10000);
         }
     }
 }

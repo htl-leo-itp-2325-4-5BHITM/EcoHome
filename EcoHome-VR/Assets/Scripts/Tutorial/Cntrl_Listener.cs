@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,37 @@ using UnityEngine;
 public class Cntrl_Listener : MonoBehaviour
 {
 
-    private InputData _inputData;
+    public InputData _inputData;
+
+    public Transform leftControllerTransform;
+    public Transform rightControllerTransform;
 
     public bool leftStickUsed = false;
     public bool righStickUsed = false;
 
     public bool leftGripButtonUsed = false;
     public bool rightGripButtonUsed = false;
+
+    private bool _isCorrectObjectHeld = false;
+    public bool IsCorrectObjectHeld
+    {
+        get => _isCorrectObjectHeld;
+        private set
+        {
+            if (_isCorrectObjectHeld == value) return;
+            _isCorrectObjectHeld = value;
+            OnCorrectObjectHeldStateChanged?.Invoke(_isCorrectObjectHeld);
+        }
+    }
+
+    public static event Action<bool> OnCorrectObjectHeldStateChanged;
+
+
+    public GameObject leftHeldObject;
+    public GameObject rightHeldObject;
+    
+
+    public string correctObjectTag = "PaperTrash";
 
     public bool testUsed = false;
 
@@ -46,34 +71,39 @@ public class Cntrl_Listener : MonoBehaviour
 
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool leftGripPressed))
         {
-            if (leftGripPressed && !leftGripButtonUsed)
-            {
-                leftGripButtonUsed = true;
-                Debug.Log("Left grip button pressed: " + leftGripButtonUsed);
-                // Trigger the event or method to play clip_2
-            }
-            else if (!leftGripPressed && leftGripButtonUsed)
-            {
-                leftGripButtonUsed = false;
-                Debug.Log("Left grip button pressed: " + leftGripButtonUsed);
-                // Trigger the event or method to replay clip_1
-            }
+            leftGripButtonUsed = leftGripPressed;
+
+            IsCorrectObjectHeld = CheckForObjectInHand(leftControllerTransform);
         }
 
         if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool rightGripPressed))
         {
-            if (rightGripPressed && !rightGripButtonUsed)
-            {
-                rightGripButtonUsed = true;
-                Debug.Log("right grip button pressed: " + rightGripButtonUsed);
-                // Trigger the event or method to play clip_2
-            }
-            else if (!rightGripPressed && rightGripButtonUsed)
-            {
-                rightGripButtonUsed = false;
-                Debug.Log("right grip button pressed: " + rightGripButtonUsed);
-                // Trigger the event or method to replay clip_1
-            }
+            rightGripButtonUsed = rightGripPressed;
+
+            IsCorrectObjectHeld = CheckForObjectInHand(rightControllerTransform);
         }
     }
+
+    private bool CheckForObjectInHand(Transform controllerTransform)
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(controllerTransform.position, controllerTransform.forward, out hit, 1.0f))
+        {
+            if (hit.collider.gameObject.CompareTag(correctObjectTag))
+            {
+                //return hit.collider.gameObject;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
+    public bool IsHoldingCorrectObject()
+    {
+        return (leftHeldObject != null && leftHeldObject.CompareTag(correctObjectTag)) ||
+               (rightHeldObject != null && rightHeldObject.CompareTag(correctObjectTag));
+    }
+    */
 }
