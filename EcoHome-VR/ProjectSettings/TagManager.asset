@@ -21,6 +21,7 @@ TagManager:
   - glassSpawner
   - tinSpawner
   - cLightSource
+  - dLightSource
   layers:
   - Default
   - TransparentFX
