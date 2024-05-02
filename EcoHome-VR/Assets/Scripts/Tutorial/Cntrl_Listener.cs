@@ -11,13 +11,37 @@ public class Cntrl_Listener : MonoBehaviour
     public Transform leftControllerTransform;
     public Transform rightControllerTransform;
 
-    public bool leftStickUsed = false;
-    public bool righStickUsed = false;
+    public bool _leftStickUsed = false;
+    public bool leftStickUsed
+    {
+        get => _leftStickUsed;
+        private set 
+        {
+            if (_leftStickUsed == value) return;
+            _leftStickUsed = value;
+            OnLeftStickChanged?.Invoke(_leftStickUsed);
+        }
+    }
+    public static event Action<bool> OnLeftStickChanged;
+
+
+    public bool _rightStickUsed = false;
+    public bool rightStickUsed
+    {
+        get => _rightStickUsed;
+        private set 
+        {
+            if (_rightStickUsed == value) return;
+            _rightStickUsed = value;
+            OnRightStickChanged?.Invoke(_rightStickUsed);
+        }
+    }
+    public static event Action<bool> OnRightStickChanged;
 
     public bool leftGripButtonUsed = false;
     public bool rightGripButtonUsed = false;
 
-    private bool _isCorrectObjectHeld = false;
+    public bool _isCorrectObjectHeld = false;
     public bool IsCorrectObjectHeld
     {
         get => _isCorrectObjectHeld;
@@ -49,13 +73,16 @@ public class Cntrl_Listener : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Observed Variables
+        UpdateStickUsage();
+        UpdateGripStatus();
+    }
 
+    private void UpdateStickUsage() {
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out Vector2 leftThumbStick))
         {
             if (Mathf.Abs(leftThumbStick.y) >= 0.80 || Mathf.Abs(leftThumbStick.y) <= -0.80)
             {
-                leftStickUsed = true;
+                _leftStickUsed = true;
                 Debug.Log("used left stick");
             }
         }
@@ -64,11 +91,13 @@ public class Cntrl_Listener : MonoBehaviour
         {
             if (Mathf.Abs(rightThumbStick.x) >= 0.80 || Mathf.Abs(rightThumbStick.x) <= -0.80)
             {
-                righStickUsed = true;
+                _rightStickUsed = true;
                 Debug.Log("used right stick");
             }
         }
+    }
 
+    private void UpdateGripStatus() {
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool leftGripPressed))
         {
             leftGripButtonUsed = leftGripPressed;

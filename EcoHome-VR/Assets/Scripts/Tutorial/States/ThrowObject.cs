@@ -8,15 +8,19 @@ public class ThrowObject : MonoBehaviour
 
     public AudioClip clip_1;
 
+    bool tutorialActive = false;
+
     bool isBeingHeld = false;
 
     void OnEnable()
     {
+        TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
         Cntrl_Listener.OnCorrectObjectHeldStateChanged += HandleCorrectObjectHeldStateChange;
     }
 
     void OnDisable()
     {
+        TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
         Cntrl_Listener.OnCorrectObjectHeldStateChanged -= HandleCorrectObjectHeldStateChange;
     }
 
@@ -34,21 +38,15 @@ public class ThrowObject : MonoBehaviour
         }
     }
 
-    void Awake()
-    {
-        TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
-    }
-
-    void OnDestroy()
-    {
-        TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
-    }
-
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {
         if (state == TutorialState.ThrowObject)
         {
+            tutorialActive = true;
             StartCoroutine(ManageThrowTutorial());
+        }
+        else {
+            tutorialActive = false;
         }
     }
 
@@ -60,17 +58,15 @@ public class ThrowObject : MonoBehaviour
             => holds object and throws into the bin: EndState 
          */
 
-
-        while(true)
+        while(tutorialActive)
         {
-           if (!isBeingHeld)
+           if (!listenerScript._isCorrectObjectHeld)
            {
                 TutoManager.Instance.UpdateTutorialState(TutorialState.FloorState);
            }
            else
            {
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
-                audioScript.StartRepeatAction(() => audioScript.PlayAudioAfterDelay(clip_1, 1), 10000);
                 yield return new WaitUntil(() => Player.globalScoreCounter > 0);
                 TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
                 break;
