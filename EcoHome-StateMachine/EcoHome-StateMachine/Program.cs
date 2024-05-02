@@ -1,9 +1,9 @@
 ﻿using System;
-using System.CodeDom;
+using System.Timers;
 
 namespace EcoHome_StateMachine
 {
-    class EcoHomeContext
+    public class EcoHomeContext
     {
         private State _state = null;
 
@@ -12,11 +12,22 @@ namespace EcoHome_StateMachine
             this.TransitionTo(state);
         }
 
+        public State State
+        {
+            get => _state;
+            set => _state = value;
+        }
+
         public void TransitionTo(State state)
         {
-            // Console.WriteLine($"EcoHomeContext: Transition to {state.GetType().Name}.");
+            if (_state != null)
+            {
+                _state.OnExit();
+            }
+            
             _state = state;
             _state.SetContext(this);
+            _state.OnEnter();
         }
 
         public void HandleInput(string input)
@@ -25,9 +36,10 @@ namespace EcoHome_StateMachine
         }
     }
 
-    abstract class State
+    public abstract class State
     {
         protected EcoHomeContext _context;
+        protected Timer repeatTimer;
 
         public void SetContext(EcoHomeContext context)
         {
@@ -35,16 +47,44 @@ namespace EcoHome_StateMachine
         }
 
         public abstract void HandleInput(string input);
+
+        public virtual void OnEnter()
+        {}
+
+        public virtual void OnExit()
+        {
+            StopRepeatAction();
+        }
+
+        protected void StartRepeatAction(Action action, int interval)
+        {
+            repeatTimer?.Stop();    //stopping timer if already runs
+
+            repeatTimer = new Timer(interval);
+            repeatTimer.Elapsed += (sender, e) => action();
+            repeatTimer.AutoReset = true;
+            repeatTimer.Start();
+        }
+
+        protected void StopRepeatAction()
+        {
+            repeatTimer?.Stop();
+        }
     }
 
-    class StartState : State
+    public class StartState : State
     {
+
+        public override void OnEnter()
+        {
+            //base.OnEnter();
+            Console.WriteLine("Möchtest du die Steuerung kennenlernen? (y/n)");
+        }
         public override void HandleInput(string input)
         {
             switch (input)
             {
                 case "y":
-                    Console.WriteLine("Bewege den linken Joystick (LJ), um dich durch den Raum zu bewegen.");
                     _context.TransitionTo(new MovementInstructionState());
                     break;
                 case "n":
@@ -58,13 +98,18 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class MovementInstructionState : State
+    public class MovementInstructionState : State
     {
+
+        public override void OnEnter()
+        {
+            Console.WriteLine("Bewege den linken Joystick (LJ), um dich durch den Raum zu bewegen.");
+            StartRepeatAction( () => Console.WriteLine("Bewege den linken Joystick (LJ), um dich durch den Raum zu bewegen."), 5000);
+        }
         public override void HandleInput(string input)
         {
             if (input == "LJ")
             {
-                Console.WriteLine("Bewege den rechten Joystick (RJ), um dich zu drehen.");
                 _context.TransitionTo(new RotationInstructionState());
             }
             else
@@ -74,13 +119,18 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class RotationInstructionState : State
+    public class RotationInstructionState : State
     {
+
+        public override void OnEnter()
+        {
+            Console.WriteLine("Bewege den rechten Joystick (RJ), um dich zu drehen.");
+            StartRepeatAction( () => Console.WriteLine("Bewege den rechten Joystick (RJ), um dich zu drehen."), 5000);
+        }
         public override void HandleInput(string input)
         {
             if (input == "RJ")
             {
-                Console.WriteLine("Siehst du den Müll auf dem Tisch? Ziele darauf und versuche, den Müll durch Drücken der inneren Taste (IT) aufzuheben.");
                 _context.TransitionTo(new TableState());
             }
             else
@@ -90,13 +140,17 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class TableState : State
+    public class TableState : State
     {
+        public override void OnEnter()
+        {
+            Console.WriteLine("Siehst du den Müll auf dem Tisch? Ziele darauf und versuche, den Müll durch Drücken der inneren Taste (IT) aufzuheben.");
+            StartRepeatAction( () => Console.WriteLine("Siehst du den Müll auf dem Tisch? Ziele darauf und versuche, den Müll durch Drücken der inneren Taste (IT) aufzuheben."), 5000);
+        }
         public override void HandleInput(string input)
         {
             if (input == "IT")
             {
-                Console.WriteLine("Behalte das Papier in der Hand und versuche, ihn in den Mülleimer zu werfen (IMW).");
                 _context.TransitionTo(new ThrowState());
             }
             else
@@ -106,30 +160,39 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class ThrowState : State
+    public class ThrowState : State
     {
+
+        public override void OnEnter()
+        {
+            Console.WriteLine("Behalte das Papier in der Hand und versuche, ihn in den Mülleimer zu werfen (IMW).");
+            StartRepeatAction( () => Console.WriteLine("Behalte das Papier in der Hand und versuche, ihn in den Mülleimer zu werfen (IMW)."), 5000);
+        }
         public override void HandleInput(string input)
         {
             if (input == "IMW")
             {
-                Console.WriteLine("Gut gemacht! Du hast den ersten Raum bestanden. Gehe in den nächsten Raum (IRG).");
                 _context.TransitionTo(new EndState());
             }
             else
             {
-                Console.WriteLine("Es sieht so aus, als hättest du den Müll fallen lassen. Hebe ihn wieder auf (WA).");
                 _context.TransitionTo(new FloorState());
             }
         }
     }
     
-    class FloorState : State
+    public class FloorState : State
     {
+        public override void OnEnter()
+        {
+            Console.WriteLine("Es sieht so aus, als hättest du den Müll fallen lassen. Hebe ihn wieder auf (WA).");
+            StartRepeatAction( () => Console.WriteLine("Es sieht so aus, als hättest du den Müll fallen lassen. Hebe ihn wieder auf (WA)."), 5000);
+        }
+
         public override void HandleInput(string input)
         {
             if (input == "WA")
             {
-                Console.WriteLine("Behalte den Müll in der Hand und versuche, ihn in den Mülleimer zu werfen (IMW).");
                 _context.TransitionTo(new ThrowState());
             }
             else
@@ -139,29 +202,27 @@ namespace EcoHome_StateMachine
         }
     }
 
-    class EndState : State
+    public class EndState : State
     {
+        public override void OnEnter()
+        {
+            Console.WriteLine("Du hast das Tutorial erfolgreich abgeschlossen.");
+            Environment.Exit(0);   
+
+        }
+        
         public override void HandleInput(string input)
         {
-            if (input == "IRG")
-            {
-                Console.WriteLine("Du hast das Tutorial erfolgreich abgeschlossen.");
-                Environment.Exit(0);   
-            }
-            else
-            {
-                Console.WriteLine("Gehe in den nächsten Raum (IRG).");
-            }
-            
+
         }
+        
     }
 
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             var context = new EcoHomeContext(new StartState());
-            Console.WriteLine("Möchtest du die Steuerung kennenlernen? (y/n)");
             while (true)
             {
                 var input = Console.ReadLine();

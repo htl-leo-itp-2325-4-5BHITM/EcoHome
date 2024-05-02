@@ -45,8 +45,6 @@ public class TutoManager : MonoBehaviour
     // Update is called once per frame
     void Update(){}
 
-    /*-----------------------------------------------------------------------------------------------*/
-
     public void UpdateTutorialState(TutorialState newState)
     {
         switch (newState) {
@@ -56,8 +54,17 @@ public class TutoManager : MonoBehaviour
             case TutorialState.LearnMovement:
                 this.State= TutorialState.LearnMovement;
                 break;
+            case TutorialState.LearnRotation:
+                this.State = TutorialState.LearnRotation;
+                break;
+            case TutorialState.TableState:
+                this.State = TutorialState.TableState;
+                break;
             case TutorialState.ThrowObject:
                 this.State = TutorialState.ThrowObject;
+                break;
+            case TutorialState.FloorState:
+                this.State = TutorialState.FloorState;
                 break;
             case TutorialState.EndOfGame:
                 this.State = TutorialState.EndOfGame;
@@ -73,6 +80,9 @@ public class TutoManager : MonoBehaviour
 public enum TutorialState {
     StartOfGame,
     LearnMovement,
+    LearnRotation,
+    TableState,
     ThrowObject,
+    FloorState,
     EndOfGame
 }
