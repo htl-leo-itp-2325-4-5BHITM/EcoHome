@@ -36,14 +36,15 @@ public class LearnGrip : MonoBehaviour
     IEnumerator ManageGripTutorial()
     {
         while(tutorialActive) {
-            if (!listenerScript.rightGripButtonUsed ||  !listenerScript.leftGripButtonUsed)
+            
+            if (!listenerScript._usedGripButton)
             {
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
                 yield return new WaitForSeconds(10); 
             }
             else 
             {
-                Debug.Log("change the state");
+                Debug.Log("State: ThrowObject");
                 break;
             }
         }

@@ -45,7 +45,7 @@ public class LearnMove : MonoBehaviour
             }
             else
             {
-                Debug.Log("Player used the stick correctly.");
+                Debug.Log("State: LearnRotation");
                 break; // Exit loop if the correct action is performed     
             }
         }

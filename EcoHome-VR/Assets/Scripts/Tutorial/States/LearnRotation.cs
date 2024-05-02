@@ -44,7 +44,7 @@ public class LearnRotation : MonoBehaviour
             }
             else
             {
-                Debug.Log("change the state");
+                Debug.Log("State: TableState");
                 break;
             }
         }

@@ -15,13 +15,13 @@ public class ThrowObject : MonoBehaviour
     void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
-        Cntrl_Listener.OnCorrectObjectHeldStateChanged += HandleCorrectObjectHeldStateChange;
+        //Cntrl_Listener.OnCorrectObjectHeldStateChanged += HandleCorrectObjectHeldStateChange;
     }
 
     void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
-        Cntrl_Listener.OnCorrectObjectHeldStateChanged -= HandleCorrectObjectHeldStateChange;
+        //Cntrl_Listener.OnCorrectObjectHeldStateChanged -= HandleCorrectObjectHeldStateChange;
     }
 
     private void HandleCorrectObjectHeldStateChange(bool isHeld)
@@ -58,18 +58,20 @@ public class ThrowObject : MonoBehaviour
             => holds object and throws into the bin: EndState 
          */
 
-        while(tutorialActive)
-        {
-           if (!listenerScript._isCorrectObjectHeld)
-           {
-                TutoManager.Instance.UpdateTutorialState(TutorialState.FloorState);
-           }
-           else
-           {
+        while (tutorialActive) {
+            if (!listenerScript._grabPaper) {
+                Debug.Log("State: TableState");
+                TutoManager.Instance.UpdateTutorialState(TutorialState.TableState);
+            }
+            else {
+                if (Player.globalScoreCounter > 0) 
+                {
+                    yield return new WaitForSeconds(3); 
+                    Debug.Log("State: EndOfGame");
+                    TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
+                }
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
-                yield return new WaitUntil(() => Player.globalScoreCounter > 0);
-                TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
-                break;
+                yield return new WaitForSeconds(10);
             }
         }
     }
