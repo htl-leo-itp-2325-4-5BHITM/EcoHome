@@ -49,14 +49,16 @@ namespace EcoHome_StateMachine
         public abstract void HandleInput(string input);
 
         public virtual void OnEnter()
-        {}
+        {
+        }
 
         public virtual void OnExit()
         {
             StopRepeatAction();
         }
 
-        protected void StartRepeatAction(Action action, int interval)
+        
+        public virtual void StartRepeatAction(Action action, int interval)
         {
             repeatTimer?.Stop();    //stopping timer if already runs
 
@@ -66,7 +68,7 @@ namespace EcoHome_StateMachine
             repeatTimer.Start();
         }
 
-        protected void StopRepeatAction()
+        public virtual void StopRepeatAction()
         {
             repeatTimer?.Stop();
         }
@@ -86,14 +88,14 @@ namespace EcoHome_StateMachine
             {
                 case "y":
                     _context.TransitionTo(new MovementInstructionState());
-                    break;
+                    return;
                 case "n":
                     Console.WriteLine("Auf Wiedersehen!");
-                    Environment.Exit(0);
-                    break;
+                    
+                    return;
                 default:
                     Console.WriteLine("Ungültige Eingabe. Möchtest du die Steuerung kennenlernen? (y/n)");
-                    break;
+                    return;
             }
         }
     }
@@ -207,7 +209,8 @@ namespace EcoHome_StateMachine
         public override void OnEnter()
         {
             Console.WriteLine("Du hast das Tutorial erfolgreich abgeschlossen.");
-            Environment.Exit(0);   
+            //Environment.Exit(0);
+            return;
 
         }
         

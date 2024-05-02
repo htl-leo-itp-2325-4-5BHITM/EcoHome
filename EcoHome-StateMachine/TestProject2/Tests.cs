@@ -1,7 +1,12 @@
-﻿using System;
+﻿using Moq;
+using System;
 using System.IO;
+using System.Threading;
+using System.Timers;
 using NUnit.Framework;
 using EcoHome_StateMachine;
+
+using System.Threading.Tasks;
 
 namespace TestProject2
 {
@@ -244,6 +249,7 @@ namespace TestProject2
         
 
     }
+    
     [TestFixture]
     public class ThrowStateTests
     {
@@ -373,6 +379,57 @@ namespace TestProject2
              Assert.DoesNotThrow(() => _state.HandleInput(input));
          }
      }
+
+     [TestFixture]
+     public class MovementInstructionStateTestsSecond
+     {
+         
+         [Test]
+         public void Test_StartRepeatAction_AnonymousMethod()
+         {
+             // Arrange
+             var state = new MovementInstructionState();
+             var stringWriter = new StringWriter();
+             Console.SetOut(stringWriter);
+
+             // Act
+             state.StartRepeatAction(() => Console.WriteLine("Siehst du den Müll auf dem Tisch? Ziele darauf und versuche, den Müll durch Drücken der inneren Taste (IT) aufzuheben."), 5000);
+
+             // Wait for the action to be executed
+             Thread.Sleep(6000);
+
+             // Assert
+             var output = stringWriter.ToString();
+             Assert.That(output, Does.Contain("Siehst du den Müll auf dem Tisch? Ziele darauf und versuche, den Müll durch Drücken der inneren Taste (IT) aufzuheben."));
+         }
+         
+     }
+
+     [TestFixture]
+     public class TableStateTestsSecond
+     {
+         [Test]
+         public void Test_StartRepeatAction_AnonymousMethod_TableState()
+         {
+             // Arrange
+             var state = new TableState();
+             var stringWriter = new StringWriter();
+             Console.SetOut(stringWriter);
+
+             // Act
+             state.StartRepeatAction(() => Console.WriteLine("Bewege den linken Joystick (LJ), um dich durch den Raum zu bewegen."), 5000);
+
+             // Wait for the action to be executed
+             Thread.Sleep(6000);
+
+             // Assert
+             var output = stringWriter.ToString();
+             Assert.That(output, Does.Contain("Bewege den linken Joystick (LJ), um dich durch den Raum zu bewegen."));
+         }
+     }
+
+
+
 }
     
     
