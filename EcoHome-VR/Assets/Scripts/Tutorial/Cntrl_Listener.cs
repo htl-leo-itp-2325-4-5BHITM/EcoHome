@@ -12,7 +12,8 @@ public class Cntrl_Listener : MonoBehaviour
 
     public bool _rightStickUsed = false;
 
-    public bool _usedGripButton = false;
+    public bool _usedLeftGrip = false;
+    public bool _usedRightGrip = false;
 
     public bool _grabPaper = true;
 
@@ -50,12 +51,12 @@ public class Cntrl_Listener : MonoBehaviour
     private void UpdateGripStatus() {
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool leftGripPressed))
         {
-            _usedGripButton = leftGripPressed;
+            _usedLeftGrip = leftGripPressed;
         }
 
         if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool rightGripPressed))
         {
-            _usedGripButton = rightGripPressed;
+            _usedRightGrip = rightGripPressed;
         }
     }
 

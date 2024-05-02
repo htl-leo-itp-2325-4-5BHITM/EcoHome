@@ -24,20 +24,6 @@ public class ThrowObject : MonoBehaviour
         //Cntrl_Listener.OnCorrectObjectHeldStateChanged -= HandleCorrectObjectHeldStateChange;
     }
 
-    private void HandleCorrectObjectHeldStateChange(bool isHeld)
-    {
-        if (isHeld)
-        {
-            Debug.Log("Correct object is currently being held.");
-            isBeingHeld = true;
-        }
-        else
-        {
-            Debug.Log("Correct object is not being held.");
-            isBeingHeld = false;
-        }
-    }
-
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {
         if (state == TutorialState.ThrowObject)
@@ -59,19 +45,22 @@ public class ThrowObject : MonoBehaviour
          */
 
         while (tutorialActive) {
-            if (!listenerScript._grabPaper) {
+            if (!listenerScript._grabPaper && Player.globalScoreCounter == 0) {
                 Debug.Log("State: TableState");
+                yield return new WaitForSeconds(3); 
                 TutoManager.Instance.UpdateTutorialState(TutorialState.TableState);
             }
             else {
                 if (Player.globalScoreCounter > 0) 
                 {
-                    yield return new WaitForSeconds(3); 
                     Debug.Log("State: EndOfGame");
                     TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
+                    break;
                 }
-                audioScript.PlayAudioAfterDelay(clip_1, 1);
-                yield return new WaitForSeconds(10);
+                else {
+                    audioScript.PlayAudioAfterDelay(clip_1, 1);
+                    yield return new WaitForSeconds(10);
+                }
             }
         }
     }

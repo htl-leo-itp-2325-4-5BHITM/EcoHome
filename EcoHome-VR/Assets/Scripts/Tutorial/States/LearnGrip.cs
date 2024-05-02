@@ -37,7 +37,7 @@ public class LearnGrip : MonoBehaviour
     {
         while(tutorialActive) {
             
-            if (!listenerScript._usedGripButton)
+            if (!listenerScript._usedLeftGrip && !listenerScript._usedRightGrip)
             {
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
                 yield return new WaitForSeconds(10); 
@@ -45,9 +45,9 @@ public class LearnGrip : MonoBehaviour
             else 
             {
                 Debug.Log("State: ThrowObject");
-                break;
+                TutoManager.Instance.UpdateTutorialState(TutorialState.ThrowObject); // Proceed to the next State 
             }
         }
-        TutoManager.Instance.UpdateTutorialState(TutorialState.ThrowObject); // Proceed to the next State 
+        
     }
 }
