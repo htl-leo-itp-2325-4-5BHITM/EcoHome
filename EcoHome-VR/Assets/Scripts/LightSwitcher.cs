@@ -55,34 +55,34 @@ public class LightSwitcher : MonoBehaviour
                 {
                     obj.SetActive(false);
 
-                    if(scene.name == "Linear - Main Scene") 
-                    {
-                        Player.localScoreCounter += 1;
-                        Player.globalScoreCounter += 1;
-                        Player.displayScoreCounter += 1;
-                    }
-                    else if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
                         Playerchall.displayScoreCounter += 1;
+                    }
+                    else
+                    {
+                        Player.localScoreCounter += 1;
+                        Player.globalScoreCounter += 1;
+                        Player.displayScoreCounter += 1;
                     }
                 }
                 else
                 {
                     obj.SetActive(true);
 
-                    if(scene.name == "Linear - Main Scene") 
-                    {
-                        Player.localScoreCounter -= 1;
-                        Player.globalScoreCounter -= 1;
-                        Player.displayScoreCounter -= 1;
-                    }
-                    else if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
                         Playerchall.displayScoreCounter -= 1;
+                    }
+                    else
+                    {
+                        Player.localScoreCounter -= 1;
+                        Player.globalScoreCounter -= 1;
+                        Player.displayScoreCounter -= 1;
                     }
                 }
                 break;
@@ -100,39 +100,39 @@ public class LightSwitcher : MonoBehaviour
             if (obj.name == "dLightSource_" + pressedPair)
             {
                 // add sfx here
-                
+
                 if(obj.activeSelf == true) 
                 {
                     obj.SetActive(false);
                     
-                    if(scene.name == "Linear - Main Scene") 
-                    {
-                        Player.localScoreCounter += 1;
-                        Player.globalScoreCounter += 1;
-                        Player.displayScoreCounter += 1;
-                    }
-                    else if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
                         Playerchall.displayScoreCounter += 1;
+                    }
+                    else
+                    {
+                        Player.localScoreCounter += 1;
+                        Player.globalScoreCounter += 1;
+                        Player.displayScoreCounter += 1;
                     }
                 }
                 else
                 {
                     obj.SetActive(true);
 
-                    if(scene.name == "Linear - Main Scene") 
-                    {
-                        Player.localScoreCounter -= 1;
-                        Player.globalScoreCounter -= 1;
-                        Player.displayScoreCounter -= 1;
-                    }
-                    else if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
                         Playerchall.displayScoreCounter -= 1;
+                    }
+                    else
+                    {
+                        Player.localScoreCounter -= 1;
+                        Player.globalScoreCounter -= 1;
+                        Player.displayScoreCounter -= 1;
                     }
                 }
                 break;

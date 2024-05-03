@@ -62,12 +62,19 @@ public class Cntrl_Listener : MonoBehaviour
 
     public void SelectPaper()
     {
-        Debug.Log("Paper Grab");
         _grabPaper = true;
     }
 
     public void ExitPaperSelection() {
-        Debug.Log("No Paper Grab");
         _grabPaper = false;
     }
+
+    public void HoverPaper() {
+        Debug.Log("Hover Paper");
+    }
+
+    public void ExitHoverPaper() {
+        Debug.Log("Exit Hover Paper");
+    }
+
 }
