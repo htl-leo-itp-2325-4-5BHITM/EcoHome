@@ -6,6 +6,7 @@ using UnityEngine;
 public class LightSwitcher : MonoBehaviour
 {
     private Player player;
+    private Playerchall playerchall;
 
     private string pressedPair;
     private GameObject[] ceilingLights;
@@ -20,7 +21,7 @@ public class LightSwitcher : MonoBehaviour
         }
         else if(GameObject.Find("Player").GetComponent<Playerchall>()) 
         {
-            player = GameObject.Find("Player").GetComponent<Playerchall>();
+            playerchall = GameObject.Find("Player").GetComponent<Playerchall>();
         }
 
         ceilingLights = new GameObject[GameObject.FindGameObjectsWithTag("cLightSource").Length];
@@ -42,18 +43,47 @@ public class LightSwitcher : MonoBehaviour
     {
         pressedSwitch.transform.Find("Lichtschalter").transform.Rotate(0,0,180);
         pressedPair = pressedSwitch.name.Split('_')[1];
+        Scene scene = SceneManager.GetActiveScene();
 
         foreach (GameObject obj in ceilingLights)
         {
             if (obj.name == "cLightSource_" + pressedPair)
             {
+                // add sfx here
+
                 if(obj.activeSelf == true) 
                 {
                     obj.SetActive(false);
+
+                    if(scene.name == "Linear - Main Scene") 
+                    {
+                        Player.localScoreCounter += 1;
+                        Player.globalScoreCounter += 1;
+                        Player.displayScoreCounter += 1;
+                    }
+                    else if(scene.name == "Challenge - Main Scene")
+                    {
+                        Playerchall.localScoreCounter += 1;
+                        Playerchall.globalScoreCounter += 1;
+                        Playerchall.displayScoreCounter += 1;
+                    }
                 }
                 else
                 {
                     obj.SetActive(true);
+
+                    if(scene.name == "Linear - Main Scene") 
+                    {
+                        Player.localScoreCounter -= 1;
+                        Player.globalScoreCounter -= 1;
+                        Player.displayScoreCounter -= 1;
+                    }
+                    else if(scene.name == "Challenge - Main Scene")
+                    {
+                        Playerchall.localScoreCounter -= 1;
+                        Playerchall.globalScoreCounter -= 1;
+                        Playerchall.displayScoreCounter -= 1;
+                    }
                 }
                 break;
             }
@@ -69,6 +99,8 @@ public class LightSwitcher : MonoBehaviour
         {
             if (obj.name == "dLightSource_" + pressedPair)
             {
+                // add sfx here
+                
                 if(obj.activeSelf == true) 
                 {
                     obj.SetActive(false);
