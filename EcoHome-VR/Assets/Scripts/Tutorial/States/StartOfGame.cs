@@ -40,6 +40,7 @@ public class StartOfGame : MonoBehaviour
         audioScript.PlayAudioAfterDelay(clip_2, 0); 
         yield return new WaitForSeconds(clip_2.length);
 
+        Debug.Log("State: LearnMovement");
         TutoManager.Instance.UpdateTutorialState(TutorialState.LearnMovement);
     }
 }

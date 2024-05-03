@@ -7,38 +7,48 @@ public class LearnMove : MonoBehaviour
     [SerializeField] private Cntrl_Listener listenerScript;
 
     public AudioClip clip_1; // "Use the left stick"
-    public AudioClip clip_2; // "Use the left stick" - short version
 
-    void Awake()
+    bool tutorialActive = false;
+
+    void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
     }
+
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {
         if (state == TutorialState.LearnMovement)
         {
+            tutorialActive = true;
             StartCoroutine(ManageMovementTutorial());
+        }
+        else
+        {
+            tutorialActive = false;
         }
     }
 
     IEnumerator ManageMovementTutorial()
     {
-        if (!listenerScript.leftStickUsed)
+        while (tutorialActive)
         {
-            audioScript.PlayAudioAfterDelay(clip_1, 1); // Play for the first time
-            yield return new WaitForSeconds(5); 
-            audioScript.StartRepeatAction(() => audioScript.PlayAudioAfterDelay(clip_1, 1), 10000);
+            if (!listenerScript._leftStickUsed)
+            {
+                audioScript.PlayAudioAfterDelay(clip_1, 1); // Play audio
+                yield return new WaitForSeconds(10); // Adjust this timing as needed
+            }
+            else
+            {
+                Debug.Log("State: LearnRotation");
+                break; // Exit loop if the correct action is performed     
+            }
         }
-        else if (listenerScript.leftStickUsed)
-        {
-            Debug.Log("change the state");
-            TutoManager.Instance.UpdateTutorialState(TutorialState.LearnRotation); // Proceed to the next State
-        }
+        TutoManager.Instance.UpdateTutorialState(TutorialState.LearnRotation);
     }
 }
