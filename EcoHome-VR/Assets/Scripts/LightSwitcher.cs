@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -140,4 +141,26 @@ public class LightSwitcher : MonoBehaviour
         }
 
     }
+
+    public void TurnOnRandomLight()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        System.Random random = new System.Random();
+
+        if(scene.name == "Challenge - Main Scene") 
+        {
+            // generates random integer, values 0 or 1
+            var deskOrCeilingLight = random.Next(0, 2);
+
+            if (deskOrCeilingLight == 0) 
+            {
+                ceilingLights[random.Next(0, ceilingLights.Length)].SetActive(true);
+            }
+            else if (deskOrCeilingLight == 1)
+            {
+                deskLights[random.Next(0, deskLights.Length)].SetActive(true);
+            }
+        }
+    }
+
 }
