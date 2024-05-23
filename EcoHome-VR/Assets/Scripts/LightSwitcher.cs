@@ -12,6 +12,7 @@ public class LightSwitcher : MonoBehaviour
     private string pressedPair;
     private GameObject[] ceilingLights;
     private GameObject[] deskLights;
+    private GameObject[] tvLights;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,10 @@ public class LightSwitcher : MonoBehaviour
         deskLights = new GameObject[GameObject.FindGameObjectsWithTag("dLightSource").Length];
         System.Array.Copy(GameObject.FindGameObjectsWithTag("dLightSource"), 0, deskLights, 0, GameObject.FindGameObjectsWithTag("dLightSource").Length);
         System.Array.Sort(deskLights, (a,b) => { return a.name.CompareTo(b.name); });
+
+        tvLights = new GameObject[GameObject.FindGameObjectsWithTag("tvLightSource").Length];
+        System.Array.Copy(GameObject.FindGameObjectsWithTag("tvLightSource"), 0, tvLights, 0, GameObject.FindGameObjectsWithTag("tvLightSource").Length);
+        System.Array.Sort(tvLights, (a,b) => { return a.name.CompareTo(b.name); });
     }
 
     // Update is called once per frame
@@ -99,6 +104,57 @@ public class LightSwitcher : MonoBehaviour
         foreach (GameObject obj in deskLights)
         {
             if (obj.name == "dLightSource_" + pressedPair)
+            {
+                // add sfx here
+
+                if(obj.activeSelf == true) 
+                {
+                    obj.SetActive(false);
+                    
+                    if(scene.name == "Challenge - Main Scene")
+                    {
+                        Playerchall.localScoreCounter += 1;
+                        Playerchall.globalScoreCounter += 1;
+                        Playerchall.displayScoreCounter += 1;
+                    }
+                    else
+                    {
+                        Player.localScoreCounter += 1;
+                        Player.globalScoreCounter += 1;
+                        Player.displayScoreCounter += 1;
+                    }
+                }
+                else
+                {
+                    obj.SetActive(true);
+
+                    if(scene.name == "Challenge - Main Scene")
+                    {
+                        Playerchall.localScoreCounter -= 1;
+                        Playerchall.globalScoreCounter -= 1;
+                        Playerchall.displayScoreCounter -= 1;
+                    }
+                    else
+                    {
+                        Player.localScoreCounter -= 1;
+                        Player.globalScoreCounter -= 1;
+                        Player.displayScoreCounter -= 1;
+                    }
+                }
+                break;
+            }
+        }
+
+    }
+
+    public void PressTvLight(GameObject pressedSwitch)
+    {
+        pressedPair = pressedSwitch.name.Split('_')[2];
+        Scene scene = SceneManager.GetActiveScene();
+
+        foreach (GameObject obj in tvLights)
+        {
+            if (obj.name == "tvLightSource_" + pressedPair)
             {
                 // add sfx here
 
