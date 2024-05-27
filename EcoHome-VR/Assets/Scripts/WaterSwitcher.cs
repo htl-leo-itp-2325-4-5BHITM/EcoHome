@@ -83,6 +83,18 @@ public class WaterSwitcher : MonoBehaviour
                 break;
             }
         }
-
     }
+
+    // adapted from LightSwitcher.cs
+    public void TurnOnRandomWaterSource()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        System.Random random = new System.Random();
+
+        if(scene.name == "Challenge - Main Scene") 
+        {
+            basinWaterSources[random.Next(0, basinWaterSources.Length)].SetActive(true);
+        }
+    }
+
 }
