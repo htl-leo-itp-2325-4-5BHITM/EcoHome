@@ -23,6 +23,7 @@ TagManager:
   - cLightSource
   - dLightSource
   - tvLightSource
+  - bWaterSource
   layers:
   - Default
   - TransparentFX
