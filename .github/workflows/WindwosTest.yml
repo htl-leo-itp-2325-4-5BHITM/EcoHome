@@ -17,7 +17,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          key: Library-${{ hashFiles('EcoHome-VR/Assets/**', 'EcoHome-VR/Packages/**', 'EcoHome-VR/ProjectSettings/**') }}
           restore-keys: |
             Library-
 
