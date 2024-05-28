@@ -37,7 +37,7 @@ public class WaterSwitcher : MonoBehaviour
 
     public void UseBasinSwitcher(GameObject pressedSwitch)
     {
-        pressedPair = pressedSwitch.name.Split('_')[2];
+        pressedPair = pressedSwitch.name.Split('_')[1];
         Scene scene = SceneManager.GetActiveScene();
 
         foreach (GameObject obj in basinWaterSources)
@@ -45,7 +45,7 @@ public class WaterSwitcher : MonoBehaviour
             if (obj.name == "bWaterSource_" + pressedPair)
             {
                 // add sfx here
-
+                
                 if(obj.activeSelf == true) 
                 {
                     obj.SetActive(false);
