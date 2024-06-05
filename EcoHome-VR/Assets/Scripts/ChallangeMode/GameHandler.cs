@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Timers;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -32,15 +34,18 @@ class GameHandler : MonoBehaviour{
     private Transform []  spawnerField;
 
   
-    private Timer tim;
+    private Timer displayTimer;
     private Timer repeatTimer;
+
     TextMeshProUGUI displayTime;
     
     TextMeshProUGUI displayScore;
     private MainMenuInteractor interactor;
-
-    private int timeleft = 0;
+    LightSwitcher lightSwitcher ;
+    System.Random rand = new System.Random();
+    private int timeleft = 60;
     private int leftToWin = 3;
+    
 
     void Start(){
         spawnerField = new Transform[9];
@@ -53,35 +58,93 @@ class GameHandler : MonoBehaviour{
         spawnerField[6] = spawnerLocation6;
         spawnerField[7] = spawnerLocation7;
         spawnerField[8] = spawnerLocation8;
-       startNewTimer();
-       StartRepeatAction(() => newRandomEvent(), 5000);
-       
-        displayTime = GameObject.Find("Display Time").GetComponent<TextMeshProUGUI>();
         
+        StartRepeatAction(() => newRandomEvent(), 5000);
+        StartRepeatActionDisplay(() => UpdateDisplay(), 1000);
+        Debug.Log("started Actions");
+        StartCoroutine( "helpMeDaddy");
+
+
+        displayTime = GameObject.Find("Display Time").GetComponent<TextMeshProUGUI>();
+        lightSwitcher = GameObject.Find("Lightswitcher").GetComponent<LightSwitcher>();
         displayScore = GameObject.Find("Display Score").GetComponent<TextMeshProUGUI>();
+
+        Debug.Log("Finished Init");
         
     }
     void Update(){
         if(!challangeFailedYet()){     
-         //    timeleft += tim.Elapsed;
-        displayTime.text = "Trash Left: " + leftToWin;
-        //displayTime.text = "Time left: " + tim. //+ timeleft
+        displayTime.text = "Time Left: " + timeleft;
         }else{ 
+            // Destroy player here
+            
             SceneManager.LoadScene("Main Menu - Main Scene");
 
         }
 
     }
+    public void UpdateDisplay() {
+        timeleft =  timeleft-1;
+
+        displayTime = GameObject.Find("Display Time").GetComponent<TextMeshProUGUI>();
+        Debug.Log("updated Time");
+
+        
+        
+    }
+    IEnumerator helpMeDaddy() {
+
+        yield return new WaitForSeconds(1.0f); 
+        UpdateDisplay();
+        
+    }
+     public virtual void StartRepeatAction(Action action, int interval)
+        {
+            repeatTimer?.Stop();    //stopping timer if already runs
+            Debug.Log("Repeat Action Started");
+            repeatTimer = new Timer(interval);
+            repeatTimer.Elapsed += (sender, e) => action();
+            repeatTimer.AutoReset = true;
+            repeatTimer.Start();
+        }
+    public virtual void StartRepeatActionDisplay(Action action, int interval)
+        {
+            displayTimer?.Stop();    //stopping timer if already runs
+            Debug.Log("Display Action Started");
+            displayTimer = new Timer(interval);
+            displayTimer.Elapsed += (sender, e) => action();
+            displayTimer.AutoReset = true;
+            displayTimer.Start();
+        }
+
+    public Boolean challangeFailedYet(){
+        if(timeleft == 0){
+            return true;   
+        }else{          
+            return false;
+        } 
+      /*  if(tim.Elapsed > 600000){
+            tim.Stop();
+            return true;
+        }else{
+            displayTime.text = "Challange Ended!" ;
+            return false;
+        }*/
+    }
 
     
     public void spawnTrash(string tag) {
-        System.Random rand = new System.Random();
+        Debug.Log("entered Spawn Trash");
+        Debug.Log(tag);
+        //System.Random rand = new System.Random();
         int fieldToSpawn = rand.Next(0, 9);
+        Debug.Log(fieldToSpawn);
 
         switch (tag) 
         {
-            case paperTrashTag:               
-                    Instantiate(plasticTrashprefab, spawnerField[fieldToSpawn]);
+            case paperTrashTag:     
+                    Debug.Log("Spawn please");          
+                    Instantiate(paperTrashprefab, spawnerField[fieldToSpawn]);
                     Debug.Log("Paper Trash Spawned");
                     leftToWin--;
                 break;
@@ -110,41 +173,20 @@ class GameHandler : MonoBehaviour{
                 break;
         }
     }
-    public void startNewTimer(){
-        tim = new Timer(60000);
-        tim.Start();       
-    }
-     public virtual void StartRepeatAction(Action action, int interval)
-        {
-            repeatTimer?.Stop();    //stopping timer if already runs
-
-            repeatTimer = new Timer(interval);
-            repeatTimer.Elapsed += (sender, e) => action();
-            repeatTimer.AutoReset = true;
-            repeatTimer.Start();
-        }
-
-    public Boolean challangeFailedYet(){
-        if(leftToWin == 0){
-            return true;   
-        }else{          
-            return false;
-        } 
-      /*  if(tim.Elapsed > 600000){
-            tim.Stop();
-            return true;
-        }else{
-            displayTime.text = "Challange Ended!" ;
-            return false;
-        }*/
-    }
+     
     public void newRandomEvent(){
-        System.Random rand = new System.Random();
+        Debug.Log("Random new Started");
+
         int eventToTrigger = rand.Next(0, 7);
+        Debug.Log(eventToTrigger);
 
-        LightSwitcher.LightSwitcher lightSwitcher = new LightSwitcher.LightSwitcher();
+        if(eventToTrigger == 4){
+                spawnTrash(plasticTrashTag);
+                Debug.Log("paperTrash");
+       }
 
-        switch ( eventToTrigger){
+        switch (eventToTrigger)
+        {
             case 0:
                 spawnTrash(paperTrashTag);
                 Debug.Log("paperTrash");
