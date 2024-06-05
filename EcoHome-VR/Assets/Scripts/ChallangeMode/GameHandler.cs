@@ -3,6 +3,8 @@ using System;
 using System.Timers;
 using UnityEngine.SceneManagement;
 using TMPro;
+using static LightSwitcher;
+
 class GameHandler : MonoBehaviour{
     public const string paperTrashTag = "PaperTrash";
     public const string plasticTrashTag = "PlasticTrash";
@@ -31,6 +33,7 @@ class GameHandler : MonoBehaviour{
 
   
     private Timer tim;
+    private Timer repeatTimer;
     TextMeshProUGUI displayTime;
     
     TextMeshProUGUI displayScore;
@@ -51,6 +54,7 @@ class GameHandler : MonoBehaviour{
         spawnerField[7] = spawnerLocation7;
         spawnerField[8] = spawnerLocation8;
        startNewTimer();
+       StartRepeatAction(() => newRandomEvent(), 5000);
        
         displayTime = GameObject.Find("Display Time").GetComponent<TextMeshProUGUI>();
         
@@ -60,7 +64,8 @@ class GameHandler : MonoBehaviour{
     void Update(){
         if(!challangeFailedYet()){     
          //    timeleft += tim.Elapsed;
-        displayTime.text = "Trash Left: " + leftToWin; //+ timeleft
+        displayTime.text = "Trash Left: " + leftToWin;
+        //displayTime.text = "Time left: " + tim. //+ timeleft
         }else{ 
             SceneManager.LoadScene("Main Menu - Main Scene");
 
@@ -72,7 +77,6 @@ class GameHandler : MonoBehaviour{
     public void spawnTrash(string tag) {
         System.Random rand = new System.Random();
         int fieldToSpawn = rand.Next(0, 9);
-    
 
         switch (tag) 
         {
@@ -107,9 +111,18 @@ class GameHandler : MonoBehaviour{
         }
     }
     public void startNewTimer(){
-        tim = new Timer();
+        tim = new Timer(60000);
         tim.Start();       
     }
+     public virtual void StartRepeatAction(Action action, int interval)
+        {
+            repeatTimer?.Stop();    //stopping timer if already runs
+
+            repeatTimer = new Timer(interval);
+            repeatTimer.Elapsed += (sender, e) => action();
+            repeatTimer.AutoReset = true;
+            repeatTimer.Start();
+        }
 
     public Boolean challangeFailedYet(){
         if(leftToWin == 0){
@@ -124,6 +137,50 @@ class GameHandler : MonoBehaviour{
             displayTime.text = "Challange Ended!" ;
             return false;
         }*/
+    }
+    public void newRandomEvent(){
+        System.Random rand = new System.Random();
+        int eventToTrigger = rand.Next(0, 7);
+
+        LightSwitcher.LightSwitcher lightSwitcher = new LightSwitcher.LightSwitcher();
+
+        switch ( eventToTrigger){
+            case 0:
+                spawnTrash(paperTrashTag);
+                Debug.Log("paperTrash");
+                break;
+            case 1:
+                spawnTrash(plasticTrashTag);
+                Debug.Log("plasticTrash");
+                break;
+            case 2:
+                spawnTrash(glassTrashTag);
+                Debug.Log("glassTrash");
+                break;
+            case 3:
+                spawnTrash(bioTrashTag);
+                Debug.Log("bioTrash");
+                break;
+            case 4:
+                spawnTrash(tinTrashTag);
+                Debug.Log("tinTrash");
+                break;
+            case 5:
+                lightSwitcher.TurnOnRandomLight();
+                Debug.Log("Random Light");
+                break;
+            case 6: 
+                lightSwitcher.TurnOnRandomLight();
+                Debug.Log("Random Light");
+                break;
+            case 7:
+                lightSwitcher.TurnOnRandomLight();
+                Debug.Log("Random Light");
+                break;
+            default:
+                Debug.Log("failed instantiate");
+                break;
+        }
     }
 
 
