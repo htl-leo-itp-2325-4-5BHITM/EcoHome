@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        localScoreCounter = 0;
+        globalScoreCounter = 0;
+        displayScoreCounter = 0;
+
         player = GameObject.Find("Player");
         if (GameObject.Find("Display Score")) displayScore = GameObject.Find("Display Score").GetComponent<TextMeshProUGUI>();
         _inputData = GetComponent<InputData>();
