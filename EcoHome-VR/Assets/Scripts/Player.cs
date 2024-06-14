@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public static int globalScoreCounter = 0;
     
     public static int displayScoreCounter = 0;
-    public static readonly int[] maxScorePerRoom = {0, 1, 5, 7};
+    public static readonly int[] maxScorePerRoom = {0, 1, 5, 9, 15};
 
     bool rotating = false;
 
@@ -52,22 +52,29 @@ public class Player : MonoBehaviour
             case 1:
                 if (localScoreCounter > 0) 
                 {
-                    StartCoroutine(RotateDoor(GameObject.Find("door_01"), new Vector3(-1.193f, -1.099973f, -2.151f)));
                     localScoreCounter = 0;
+                    StartCoroutine(RotateDoor(GameObject.Find("door_01"), new Vector3(-1.193f, -1.099973f, -2.151f), 110));
                 }
                 break;
             case 5:
                 if (localScoreCounter > 0) 
                 {
-                    StartCoroutine(RotateDoor(GameObject.Find("door_02"), new Vector3(-1.193f, -1.099973f, -10.566f)));
                     localScoreCounter = 0;
+                    StartCoroutine(RotateDoor(GameObject.Find("door_02"), new Vector3(-1.193f, -1.099973f, -10.566f), 110));
                 }
                 break;
             case 7:
                 if (localScoreCounter > 0) 
                 {
-                    StartCoroutine(RotateDoor(GameObject.Find("door_03"), new Vector3(-1.193f, -1.099973f, -10.566f)));
                     localScoreCounter = 0;
+                    StartCoroutine(RotateDoor(GameObject.Find("door_03"), new Vector3(-1.193f, -1.099973f, -16.5f), 110));
+                }
+                break;
+            case 15:
+                if (localScoreCounter > 0) 
+                {
+                    localScoreCounter = 0;
+                    StartCoroutine(RotateDoor(GameObject.Find("door_04"), new Vector3(-1.193f, -1.099973f, -17.4), 110));
                 }
                 break;
             // case for restarting after completing level
@@ -78,7 +85,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator RotateDoor(GameObject door, Vector3 pivot) 
+    IEnumerator RotateDoor(GameObject door, Vector3 pivot, int rotationVariable) 
     {
         if (rotating)
         {
@@ -87,14 +94,13 @@ public class Player : MonoBehaviour
         rotating = true;
 
         Quaternion currentRot = door.transform.rotation;
-        Quaternion newRot = Quaternion.Euler(new Vector3(0, 110, 0));
         float duration = 3f;
 
         float counter = 0;
         while (counter < duration)
         {
             counter += Time.deltaTime;
-            door.transform.RotateAround(pivot, new Vector3(0, 110, 0), counter / duration);
+            door.transform.RotateAround(pivot, new Vector3(0, rotationVariable, 0), counter / duration);
             yield return null;
         }
         rotating = false;
