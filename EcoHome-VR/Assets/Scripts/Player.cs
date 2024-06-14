@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
                 if (localScoreCounter > 0) 
                 {
                     localScoreCounter = 0;
-                    StartCoroutine(RotateDoor(GameObject.Find("door_04"), new Vector3(-1.193f, -1.099973f, -17.4), 110));
+                    StartCoroutine(RotateDoor(GameObject.Find("door_04"), new Vector3(-1.193f, -1.099973f, -17.4f), 110));
                 }
                 break;
             // case for restarting after completing level
