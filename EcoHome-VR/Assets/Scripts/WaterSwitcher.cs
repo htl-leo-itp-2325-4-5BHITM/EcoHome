@@ -11,6 +11,7 @@ public class WaterSwitcher : MonoBehaviour
 
     private string pressedPair;
     private GameObject[] basinWaterSources;
+    private GameObject[] sinkWaterSources;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,10 @@ public class WaterSwitcher : MonoBehaviour
         basinWaterSources = new GameObject[GameObject.FindGameObjectsWithTag("bWaterSource").Length];
         System.Array.Copy(GameObject.FindGameObjectsWithTag("bWaterSource"), 0, basinWaterSources, 0, GameObject.FindGameObjectsWithTag("bWaterSource").Length);
         System.Array.Sort(basinWaterSources, (a,b) => { return a.name.CompareTo(b.name); });
+
+        sinkWaterSources = new GameObject[GameObject.FindGameObjectsWithTag("sWaterSource").Length];
+        System.Array.Copy(GameObject.FindGameObjectsWithTag("sWaterSource"), 0, sinkWaterSources, 0, GameObject.FindGameObjectsWithTag("sWaterSource").Length);
+        System.Array.Sort(sinkWaterSources, (a,b) => { return a.name.CompareTo(b.name); });
     }
 
     // Update is called once per frame
@@ -43,6 +48,56 @@ public class WaterSwitcher : MonoBehaviour
         foreach (GameObject obj in basinWaterSources)
         {
             if (obj.name == "bWaterSource_" + pressedPair)
+            {
+                // add sfx here
+                
+                if(obj.activeSelf == true) 
+                {
+                    obj.SetActive(false);
+                    
+                    if(scene.name == "Challenge - Main Scene")
+                    {
+                        Playerchall.localScoreCounter += 1;
+                        Playerchall.globalScoreCounter += 1;
+                        Playerchall.displayScoreCounter += 1;
+                    }
+                    else
+                    {
+                        Player.localScoreCounter += 1;
+                        Player.globalScoreCounter += 1;
+                        Player.displayScoreCounter += 1;
+                    }
+                }
+                else
+                {
+                    obj.SetActive(true);
+
+                    if(scene.name == "Challenge - Main Scene")
+                    {
+                        Playerchall.localScoreCounter -= 1;
+                        Playerchall.globalScoreCounter -= 1;
+                        Playerchall.displayScoreCounter -= 1;
+                    }
+                    else
+                    {
+                        Player.localScoreCounter -= 1;
+                        Player.globalScoreCounter -= 1;
+                        Player.displayScoreCounter -= 1;
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    public void UseSinkSwitcher(GameObject pressedSwitch)
+    {
+        pressedPair = pressedSwitch.name.Split('_')[1];
+        Scene scene = SceneManager.GetActiveScene();
+
+        foreach (GameObject obj in sinkWaterSources)
+        {
+            if (obj.name == "sWaterSource_" + pressedPair)
             {
                 // add sfx here
                 
