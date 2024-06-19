@@ -14,6 +14,10 @@ public class LightSwitcher : MonoBehaviour
     private GameObject[] deskLights;
     private GameObject[] tvLights;
 
+    // audio system
+    public AudioSource audioPlayer; 
+    public AudioClip clip_1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,12 +70,16 @@ public class LightSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
                         Playerchall.displayScoreCounter += 1;
+
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                     else
                     {
                         Player.localScoreCounter += 1;
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
+
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                 }
                 else
@@ -83,12 +91,14 @@ public class LightSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
                         Playerchall.displayScoreCounter -= 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                     else
                     {
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                 }
                 break;
@@ -116,12 +126,14 @@ public class LightSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
                         Playerchall.displayScoreCounter += 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                     else
                     {
                         Player.localScoreCounter += 1;
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                 }
                 else
@@ -133,12 +145,14 @@ public class LightSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
                         Playerchall.displayScoreCounter -= 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                     else
                     {
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                 }
                 break;
@@ -167,12 +181,14 @@ public class LightSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
                         Playerchall.displayScoreCounter += 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                     else
                     {
                         Player.localScoreCounter += 1;
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                 }
                 else
@@ -184,12 +200,14 @@ public class LightSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
                         Playerchall.displayScoreCounter -= 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                     else
                     {
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                 }
                 break;

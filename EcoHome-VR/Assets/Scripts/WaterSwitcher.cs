@@ -13,6 +13,10 @@ public class WaterSwitcher : MonoBehaviour
     private GameObject[] basinWaterSources;
     private GameObject[] sinkWaterSources;
 
+    // audio system
+    public AudioSource audioPlayer; 
+    public AudioClip clip_1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,12 +64,16 @@ public class WaterSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
                         Playerchall.displayScoreCounter += 1;
+                        audioPlayer.loop = false
+                        audioPlayer.Stop();
                     }
                     else
                     {
                         Player.localScoreCounter += 1;
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
+                        audioPlayer.loop = false
+                        audioPlayer.Stop();
                     }
                 }
                 else
@@ -77,12 +85,16 @@ public class WaterSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
                         Playerchall.displayScoreCounter -= 1;
+                        audioPlayer.loop = true
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                     else
                     {
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
+                        audioPlayer.loop = true 
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                 }
                 break;
@@ -110,12 +122,14 @@ public class WaterSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
                         Playerchall.displayScoreCounter += 1;
+                        audioPlayer.Stop();
                     }
                     else
                     {
                         Player.localScoreCounter += 1;
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
+                        audioPlayer.Stop();
                     }
                 }
                 else
@@ -127,12 +141,14 @@ public class WaterSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
                         Playerchall.displayScoreCounter -= 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                     else
                     {
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
+                        audioPlayer.PlayOneShot(clip_1);
                     }
                 }
                 break;

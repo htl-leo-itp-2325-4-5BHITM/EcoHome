@@ -25,7 +25,7 @@ public class ItemSpawner : MonoBehaviour{
     [SerializeField] private GameObject tinTrashprefab;
 
     public void spawnTrash(string tag) {
-        switch (tag) 
+        /* switch (tag) 
         {
             case paperTrashTag:
                 Instantiate(paperTrashprefab, new Vector3(-0.052f, 0.649f, 1.767f), Quaternion.identity);
@@ -45,7 +45,7 @@ public class ItemSpawner : MonoBehaviour{
             default:
                 Debug.Log("failed instantiate");
                 break;
-        }
+        }*/
     }
 
     public void identifyItem(GameObject givenObject)
