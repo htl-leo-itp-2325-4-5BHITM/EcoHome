@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public static int globalScoreCounter = 0;
     
     public static int displayScoreCounter = 0;
-    public static readonly int[] maxScorePerRoom = {0, 1, 5, 9, 15, 20};
+    public static readonly int[] maxScorePerRoom = {0, 1, 5, 9, 18, 24};
 
     bool rotating = false;
 
@@ -63,21 +63,21 @@ public class Player : MonoBehaviour
                     StartCoroutine(RotateDoor(GameObject.Find("door_02"), new Vector3(-1.193f, -1.099973f, -10.566f), 110));
                 }
                 break;
-            case 7:
+            case 9:
                 if (localScoreCounter > 0) 
                 {
                     localScoreCounter = 0;
                     StartCoroutine(RotateDoor(GameObject.Find("door_03"), new Vector3(-1.193f, -1.099973f, -16.5f), 110));
                 }
                 break;
-            case 15:
+            case 18:
                 if (localScoreCounter > 0) 
                 {
                     localScoreCounter = 0;
                     StartCoroutine(RotateDoor(GameObject.Find("door_04"), new Vector3(-1.193f, -1.099973f, -22.41f), 110));
                 }
                 break;
-            case 20:
+            case 24:
                 if (localScoreCounter > 0) 
                 {
                     localScoreCounter = 0;
