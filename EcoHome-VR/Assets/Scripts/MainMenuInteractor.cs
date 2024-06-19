@@ -63,10 +63,7 @@ public class MainMenuInteractor : MonoBehaviour
 
     public void BackToMenu()
     {
-        if (this._asyncOperation == null)
-        {
-            Destroy(player);
-            this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Main Menu - Main Scene"));
-        }
+        Destroy(player);
+        SceneManager.LoadScene("Main Menu - Main Scene");
     }
 }
