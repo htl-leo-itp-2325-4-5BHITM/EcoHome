@@ -64,7 +64,7 @@ public class WaterSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
                         Playerchall.displayScoreCounter += 1;
-                        audioPlayer.loop = false
+                        audioPlayer.loop = false;
                         audioPlayer.Stop();
                     }
                     else
@@ -72,7 +72,7 @@ public class WaterSwitcher : MonoBehaviour
                         Player.localScoreCounter += 1;
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
-                        audioPlayer.loop = false
+                        audioPlayer.loop = false;
                         audioPlayer.Stop();
                     }
                 }
@@ -85,7 +85,7 @@ public class WaterSwitcher : MonoBehaviour
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
                         Playerchall.displayScoreCounter -= 1;
-                        audioPlayer.loop = true
+                        audioPlayer.loop = true;
                         audioPlayer.PlayOneShot(clip_1);
                     }
                     else
@@ -93,7 +93,7 @@ public class WaterSwitcher : MonoBehaviour
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
-                        audioPlayer.loop = true 
+                        audioPlayer.loop = true;
                         audioPlayer.PlayOneShot(clip_1);
                     }
                 }
