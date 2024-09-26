@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1178,17 +1178,17 @@ PrefabInstance:
     - target: {fileID: 887881557584410050, guid: 09a9ba33a4eed6f43b509274063487f3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4411149
+      value: -0.3714
       objectReference: {fileID: 0}
     - target: {fileID: 887881557584410050, guid: 09a9ba33a4eed6f43b509274063487f3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8969394
+      value: -2.1886
       objectReference: {fileID: 0}
     - target: {fileID: 887881557584410050, guid: 09a9ba33a4eed6f43b509274063487f3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.209284
+      value: -30.0993
       objectReference: {fileID: 0}
     - target: {fileID: 887881557584410050, guid: 09a9ba33a4eed6f43b509274063487f3,
         type: 3}
@@ -2554,7 +2554,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219690896}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -7162,6 +7162,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trashbin Paper
       objectReference: {fileID: 0}
+    - target: {fileID: 3502182610516278456, guid: e5d3ba65ac0d69144a02e90e6c78ffac,
+        type: 3}
+      propertyPath: audioPlayer
+      value: 
+      objectReference: {fileID: 416973906}
+    - target: {fileID: 3502182610516278456, guid: e5d3ba65ac0d69144a02e90e6c78ffac,
+        type: 3}
+      propertyPath: itemSpawner
+      value: 
+      objectReference: {fileID: 1898984324}
     - target: {fileID: 6580243744339207025, guid: e5d3ba65ac0d69144a02e90e6c78ffac,
         type: 3}
       propertyPath: m_RootOrder
@@ -17612,6 +17622,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trashbin Glass
       objectReference: {fileID: 0}
+    - target: {fileID: 4632118904417613901, guid: 6aab526357c822b4e96c29d22854bfc8,
+        type: 3}
+      propertyPath: audioPlayer
+      value: 
+      objectReference: {fileID: 231946230}
+    - target: {fileID: 4632118904417613901, guid: 6aab526357c822b4e96c29d22854bfc8,
+        type: 3}
+      propertyPath: itemSpawner
+      value: 
+      objectReference: {fileID: 29378194}
     - target: {fileID: 8266559926113360493, guid: 6aab526357c822b4e96c29d22854bfc8,
         type: 3}
       propertyPath: m_RootOrder
@@ -18025,6 +18045,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1238237200}
     m_Modifications:
+    - target: {fileID: 344547354333739017, guid: 9d1a587f25d7f7043bd603f4937412c4,
+        type: 3}
+      propertyPath: audioPlayer
+      value: 
+      objectReference: {fileID: 231946230}
+    - target: {fileID: 344547354333739017, guid: 9d1a587f25d7f7043bd603f4937412c4,
+        type: 3}
+      propertyPath: itemSpawner
+      value: 
+      objectReference: {fileID: 102107163}
     - target: {fileID: 4136327627287972406, guid: 9d1a587f25d7f7043bd603f4937412c4,
         type: 3}
       propertyPath: m_Name
@@ -19527,6 +19557,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1238237200}
     m_Modifications:
+    - target: {fileID: 508321052237192520, guid: 4e4a9ea471dc70f4dad62e107e2a9b35,
+        type: 3}
+      propertyPath: audioPlayer
+      value: 
+      objectReference: {fileID: 231946230}
+    - target: {fileID: 508321052237192520, guid: 4e4a9ea471dc70f4dad62e107e2a9b35,
+        type: 3}
+      propertyPath: itemSpawner
+      value: 
+      objectReference: {fileID: 245778498}
     - target: {fileID: 1838258344785262846, guid: 4e4a9ea471dc70f4dad62e107e2a9b35,
         type: 3}
       propertyPath: m_Name
