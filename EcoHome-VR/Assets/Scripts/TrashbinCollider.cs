@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrashbinCollider : MonoBehaviour
 {
     [SerializeField] private Player player;
+    [SerializeField] private SecLevel_Start SecLevel_Start;
     private string paperTrashTag = "PaperTrash";
     private string paperBinTag = "PaperBin";
     private string plasticTrashTag = "PlasticTrash";
@@ -43,6 +44,8 @@ public class TrashbinCollider : MonoBehaviour
             Player.localScoreCounter += 1;
             Player.globalScoreCounter += 1;
             Player.displayScoreCounter += 1;
+
+            SecLevel_Start.localScoreCounter += 1;
 
             audioPlayer.PlayOneShot(clip_1);
             paperParticle.Play();

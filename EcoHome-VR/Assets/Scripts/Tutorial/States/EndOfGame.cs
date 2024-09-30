@@ -11,9 +11,14 @@ public class EndOfGame : MonoBehaviour
     // Audio Clips
     public AudioClip clip_1;
 
-    private void Awake()
+    void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
+    }
+
+    void OnDisable()
+    {
+        TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
     }
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
@@ -27,8 +32,9 @@ public class EndOfGame : MonoBehaviour
 
     IEnumerator WaitForAudioAndChangeState()
     {
-        audioScript.PlayAudioAfterDelay(clip_1, 2.0f);
+        audioScript.PlayAudioAfterDelay(clip_1, 1.0f);
         yield return new WaitForSeconds(5);
-
+        Debug.Log("State: SecLevel_Start");
+        TutoManager.Instance.UpdateTutorialState(TutorialState.SecLevel_Start); // Proceed to the next State
     }
 }

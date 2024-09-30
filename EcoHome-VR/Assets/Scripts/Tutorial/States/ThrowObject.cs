@@ -10,8 +10,6 @@ public class ThrowObject : MonoBehaviour
 
     bool tutorialActive = false;
 
-    bool isBeingHeld = false;
-
     void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
@@ -47,7 +45,7 @@ public class ThrowObject : MonoBehaviour
         while (tutorialActive) {
             if (!listenerScript._grabPaper && Player.globalScoreCounter == 0) {
                 Debug.Log("State: TableState");
-                yield return new WaitForSeconds(3); 
+                yield return new WaitForSeconds(1); 
                 TutoManager.Instance.UpdateTutorialState(TutorialState.TableState);
             }
             else {
@@ -59,7 +57,7 @@ public class ThrowObject : MonoBehaviour
                 }
                 else {
                     audioScript.PlayAudioAfterDelay(clip_1, 1);
-                    yield return new WaitForSeconds(10);
+                    yield return new WaitForSeconds(4);
                 }
             }
         }

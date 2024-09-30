@@ -41,7 +41,7 @@ public class LearnMove : MonoBehaviour
             if (!listenerScript._leftStickUsed)
             {
                 audioScript.PlayAudioAfterDelay(clip_1, 1); // Play audio
-                yield return new WaitForSeconds(10); // Adjust this timing as needed
+                yield return new WaitForSeconds(7); // Adjust this timing as needed
             }
             else
             {
