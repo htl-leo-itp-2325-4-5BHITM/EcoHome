@@ -42,7 +42,7 @@ public class MainMenuInteractor : MonoBehaviour
             this._asyncOperation.allowSceneActivation = true;
         }
     }
-
+    
     public void StartChallengeMode() 
     {
         if (this._asyncOperation == null)

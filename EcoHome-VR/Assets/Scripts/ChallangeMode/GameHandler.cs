@@ -45,7 +45,9 @@ class GameHandler : MonoBehaviour{
     System.Random rand = new System.Random();
     private int timeleft = 60;
     private int leftToWin = 3;
-    
+
+    public GameObject player;
+    private Playerchall player_script;
 
     void Start(){
         spawnerField = new Transform[9];
@@ -58,6 +60,8 @@ class GameHandler : MonoBehaviour{
         spawnerField[6] = spawnerLocation6;
         spawnerField[7] = spawnerLocation7;
         spawnerField[8] = spawnerLocation8;
+
+        player_script = player.GetComponent<Playerchall>();
         
         StartRepeatAction(() => newRandomEvent(), 5000);
         StartRepeatActionDisplay(() => UpdateDisplay(), 1000);
@@ -70,19 +74,44 @@ class GameHandler : MonoBehaviour{
         displayScore = GameObject.Find("Display Score").GetComponent<TextMeshProUGUI>();
 
         Debug.Log("Finished Init");
-        
     }
-    void Update(){
-        if(!challangeFailedYet()){     
-        displayTime.text = "Time Left: " + timeleft;
-        }else{ 
-            // Destroy player here
-            
-            SceneManager.LoadScene("Main Menu - Main Scene");
 
+    async void Update(){
+        if(!challangeFailedYet())
+        {     
+            displayTime.text = "Time Left: " + timeleft;
+        }
+        else{ 
+            CheckAndSaveHighscore();
+
+            // Destroy player here
+            SceneManager.LoadScene("Main Menu - Main Scene");
         }
 
     }
+
+    public void CheckAndSaveHighscore() {
+        HighscorePlayerPrefs();
+        HighscoreServer();
+    }
+    public void HighscorePlayerPrefs() {
+        int finalScore = player_script.displayScoreCounter;
+
+        if(PlayerPrefs.HasKey("HighscoreChallenge")) 
+        {
+            if(PlayerPrefs.GetInt("HighscoreChallenge") < finalScore) 
+            {
+                PlayerPrefs.SetInt("HighscoreChallenge", finalScore);
+            }
+        } 
+        else PlayerPrefs.SetInt("HighscoreChallenge", finalScore);
+
+        PlayerPrefs.Save();
+    }
+    public void HighscoreServer() {
+        
+    }
+
     public void UpdateDisplay() {
         timeleft =  timeleft-1;
 
