@@ -45,7 +45,7 @@ public class ThrowObject : MonoBehaviour
         while (tutorialActive) {
             if (!listenerScript._grabPaper && Player.globalScoreCounter == 0) {
                 Debug.Log("State: TableState");
-                yield return new WaitForSeconds(1); 
+                yield return new WaitForSeconds(10); 
                 TutoManager.Instance.UpdateTutorialState(TutorialState.TableState);
             }
             else {
