@@ -57,7 +57,7 @@ public class ThrowObject : MonoBehaviour
                 }
                 else {
                     audioScript.PlayAudioAfterDelay(clip_1, 1);
-                    yield return new WaitForSeconds(4);
+                    yield return new WaitForSeconds(20);
                 }
             }
         }

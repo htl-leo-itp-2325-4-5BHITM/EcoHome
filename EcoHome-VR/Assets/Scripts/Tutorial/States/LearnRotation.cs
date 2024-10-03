@@ -39,7 +39,7 @@ public class LearnRotation : MonoBehaviour
             if (!listenerScript._rightStickUsed)
             {
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
-                yield return new WaitForSeconds(7); 
+                yield return new WaitForSeconds(10); 
             }
             else
             {

@@ -43,7 +43,7 @@ public class SecLevel_Start : MonoBehaviour
         while(tutorialActive) {
             if (localScoreCounter <= 4) {
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
-                yield return null; 
+                yield return new WaitForSeconds(180); 
             }
             else {      
                 Debug.Log("State: SecLevel_End");
