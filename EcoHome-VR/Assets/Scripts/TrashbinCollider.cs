@@ -6,6 +6,7 @@ public class TrashbinCollider : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private SecLevel_Start SecLevel_Start;
+    [SerializeField] private Fourth_Level_Start Fourth_Level_Start;
     
     private string paperTrashTag = "PaperTrash";
     private string paperBinTag = "PaperBin";
@@ -47,6 +48,7 @@ public class TrashbinCollider : MonoBehaviour
             Player.displayScoreCounter += 1;
 
             SecLevel_Start.localScoreCounter += 1;
+            Fourth_Level_Start.localScoreCounter += 1;
 
             audioPlayer.PlayOneShot(clip_1);
             paperParticle.Play();

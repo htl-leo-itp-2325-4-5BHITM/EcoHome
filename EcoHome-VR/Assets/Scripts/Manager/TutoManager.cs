@@ -63,7 +63,7 @@ public class TutoManager : MonoBehaviour
             case TutorialState.ThrowObject:
                 this.State = TutorialState.ThrowObject;
                 break;
-            case TutorialState.FloorState:
+            case TutorialState.FloorState: //komischer State
                 this.State = TutorialState.FloorState;
                 break;
             case TutorialState.EndOfGame:
@@ -83,6 +83,12 @@ public class TutoManager : MonoBehaviour
                 break;
             case TutorialState.Third_Level_End:
                 this.State = TutorialState.Third_Level_End;
+                break;
+            case TutorialState.Fourth_Level_Start:
+                this.State = TutorialState.Fourth_Level_Start;
+                break;
+            case TutorialState.End_Of_Tutorial:
+                this.State = TutorialState.End_Of_Tutorial;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -104,5 +110,7 @@ public enum TutorialState {
     SecLevel_End,
     Third_Level_Start,
     Third_Level_LightOff,
-    Third_Level_End
+    Third_Level_End,
+    Fourth_Level_Start,
+    End_Of_Tutorial
 }

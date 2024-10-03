@@ -8,6 +8,7 @@ public class WaterSwitcher : MonoBehaviour
 {
     private Player player;
     private Playerchall playerchall;
+    [SerializeField] private Fourth_Level_Start Fourth_Level_Start;
 
     private string pressedPair;
     private GameObject[] basinWaterSources;
@@ -129,6 +130,7 @@ public class WaterSwitcher : MonoBehaviour
                         Player.localScoreCounter += 1;
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
+                        Fourth_Level_Start+=1;
                         audioPlayer.Stop();
                     }
                 }
@@ -148,6 +150,7 @@ public class WaterSwitcher : MonoBehaviour
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
+                        Fourth_Level_Start-=1;
                         audioPlayer.PlayOneShot(clip_1);
                     }
                 }
