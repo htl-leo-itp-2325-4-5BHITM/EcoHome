@@ -130,7 +130,7 @@ public class WaterSwitcher : MonoBehaviour
                         Player.localScoreCounter += 1;
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
-                        Fourth_Level_Start+=1;
+                        Fourth_Level_Start.localScoreCounter += 1;
                         audioPlayer.Stop();
                     }
                 }
@@ -150,7 +150,7 @@ public class WaterSwitcher : MonoBehaviour
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
-                        Fourth_Level_Start-=1;
+                        Fourth_Level_Start.localScoreCounter -= 1;
                         audioPlayer.PlayOneShot(clip_1);
                     }
                 }
