@@ -36,6 +36,5 @@ public class SecLevel_End : MonoBehaviour
         Debug.Log("State: Third Level Start");
         TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_Start);
         yield return new WaitForSeconds(2);
-
     }
 }

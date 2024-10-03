@@ -41,7 +41,7 @@ public class Fourth_Level_Start : MonoBehaviour
     IEnumerator ManageFourthLevelStart()
     {
     while(tutorialActive) {
-            if (localScoreCounter <= 6) {
+            if (Player.globalScoreCounter < 18) {
                 if (toBePlayed)
                 {
                     audioScript.PlayAudioAfterDelay(clip_1, 1);

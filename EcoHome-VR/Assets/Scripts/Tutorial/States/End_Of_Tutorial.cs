@@ -26,13 +26,8 @@ public class End_Of_Tutorial : MonoBehaviour
         if (state == TutorialState.End_Of_Tutorial)
         {
             // Play the learn movement related audio clips here, for example:
-            StartCoroutine(WaitForAudioAndChangeState());
+            audioScript.PlayAudioAfterDelay(clip_1, 1.0f);
         }
     }
 
-    IEnumerator WaitForAudioAndChangeState()
-    {
-        audioScript.PlayAudioAfterDelay(clip_1, 1.0f);
-        yield return new WaitForSeconds(2);
-    }
 }

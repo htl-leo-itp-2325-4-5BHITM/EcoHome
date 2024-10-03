@@ -42,7 +42,7 @@ public class Third_Level_Start : MonoBehaviour
         audioScript.PlayAudioAfterDelay(clip_1, 1);
         Debug.Log("State: Third Level LightOff");
         TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_LightOff);
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(12); 
         /*
         while(tutorialActive) {
             if (localScoreCounter <= 4) {

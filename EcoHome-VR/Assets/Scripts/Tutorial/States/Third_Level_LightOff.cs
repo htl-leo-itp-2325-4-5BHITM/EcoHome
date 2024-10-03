@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,6 @@ public class Third_Level_LightOff : MonoBehaviour
     public AudioClip clip_1;
 
     bool tutorialActive = false;
-    bool toBePlayed = true;
     public static int localScoreCounter = 0;
 
     void OnEnable()
@@ -46,14 +46,10 @@ public class Third_Level_LightOff : MonoBehaviour
         yield return new WaitForSeconds(15);
         */
         while(tutorialActive) {
-            if (localScoreCounter <= 3) {
-                if (toBePlayed)
-                {
-                    audioScript.PlayAudioAfterDelay(clip_1, 1);
-                    toBePlayed = false;
-                }
-                
-                yield return new WaitForSeconds(5); 
+            if (Player.globalScoreCounter < 18) {
+                Debug.Log("entered");       // ENTERS BUT DOESNT WORK!!!
+                audioScript.PlayAudioAfterDelay(clip_1, 1);
+                yield return new WaitForSeconds(10); 
             }
             else {      
                 Debug.Log("State: Third_Level_End");

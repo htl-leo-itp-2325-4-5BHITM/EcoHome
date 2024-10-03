@@ -42,7 +42,7 @@ public class SecLevel_Start : MonoBehaviour
     IEnumerator ManageSecLevelStart()
     {
         while(tutorialActive) {
-            if (localScoreCounter <= 4) {
+            if (Player.globalScoreCounter <= 4) {
                 if (toBePlayed)
                 {
                     audioScript.PlayAudioAfterDelay(clip_1, 1);
