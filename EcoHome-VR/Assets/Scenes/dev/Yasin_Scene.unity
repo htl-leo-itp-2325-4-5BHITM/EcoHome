@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731689, g: 0.13414702, b: 0.1210784, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5549,6 +5549,7 @@ GameObject:
   - component: {fileID: 509545770}
   - component: {fileID: 509545769}
   - component: {fileID: 509545772}
+  - component: {fileID: 509545773}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5822,6 +5823,21 @@ MonoBehaviour:
   audioScript: {fileID: 509545760}
   playerScript: {fileID: 509545763}
   clip_1: {fileID: 8300000, guid: 4ca3a29b4a2c5402382520521085f5d3, type: 3}
+--- !u!114 &509545773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509545754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 725b3d0ec91404b5d9bca81fb88f19e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioScript: {fileID: 509545760}
+  playerScript: {fileID: 509545763}
+  clip_1: {fileID: 8300000, guid: b272b07ceb60e4eccb4ea5a077887523, type: 3}
 --- !u!1 &521914203
 GameObject:
   m_ObjectHideFlags: 0
