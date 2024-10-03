@@ -35,7 +35,7 @@ public class Playerchall : MonoBehaviour
     {
         displayScore.text = "Score: " + displayScoreCounter;
 
-        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.menuButton, out bool buttonPressed) && buttonPressed)
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool buttonPressed) && buttonPressed)
         {
             SceneManager.LoadScene("Main Menu - Main Scene");
         }
