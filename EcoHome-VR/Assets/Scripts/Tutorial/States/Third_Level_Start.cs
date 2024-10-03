@@ -39,10 +39,10 @@ public class Third_Level_Start : MonoBehaviour
 
     IEnumerator ManageThirdLevelStart()
     {
-        Debug.Log("State: ThirdLevel_Start");
         audioScript.PlayAudioAfterDelay(clip_1, 1);
-        //TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_LightOff);
-        yield return new WaitForSeconds(15);
+        Debug.Log("State: Third Level LightOff");
+        TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_LightOff);
+        yield return new WaitForSeconds(7);
         /*
         while(tutorialActive) {
             if (localScoreCounter <= 4) {

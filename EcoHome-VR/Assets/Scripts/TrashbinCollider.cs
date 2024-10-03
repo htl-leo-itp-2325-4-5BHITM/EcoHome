@@ -6,6 +6,7 @@ public class TrashbinCollider : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private SecLevel_Start SecLevel_Start;
+    
     private string paperTrashTag = "PaperTrash";
     private string paperBinTag = "PaperBin";
     private string plasticTrashTag = "PlasticTrash";

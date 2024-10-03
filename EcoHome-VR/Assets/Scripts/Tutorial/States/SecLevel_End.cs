@@ -33,6 +33,8 @@ public class SecLevel_End : MonoBehaviour
     IEnumerator WaitForAudioAndChangeState()
     {
         audioScript.PlayAudioAfterDelay(clip_1, 1.0f);
+        Debug.Log("State: Third Level Start");
+        TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_Start);
         yield return new WaitForSeconds(4);
 
     }

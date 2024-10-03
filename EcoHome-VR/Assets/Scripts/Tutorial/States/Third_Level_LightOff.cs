@@ -39,22 +39,22 @@ public class Third_Level_LightOff : MonoBehaviour
 
     IEnumerator ManageThirdLevelLightOff()
     {
-        Debug.Log("State: ThirdLevel_LightOff");
-        audioScript.PlayAudioAfterDelay(clip_1, 1);
-        //TutoManager.Instance.UpdateTutorialState(TutorialState.ThirdLevel_End);
-        yield return new WaitForSeconds(15);
         /*
+        audioScript.PlayAudioAfterDelay(clip_1, 1);
+        TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_End);
+        yield return new WaitForSeconds(15);
+        */
         while(tutorialActive) {
-            if (localScoreCounter <= 4) {
+            if (localScoreCounter <= 3) {
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
-                yield return new WaitForSeconds(30); 
+                yield return new WaitForSeconds(15); 
             }
             else {      
-                Debug.Log("State: SecLevel_End");
-                TutoManager.Instance.UpdateTutorialState(TutorialState.SecLevel_End);
+                Debug.Log("State: Third_Level_End");
+                TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_End);
                 break;          
             }
         } 
-        */
+        
     }
 }

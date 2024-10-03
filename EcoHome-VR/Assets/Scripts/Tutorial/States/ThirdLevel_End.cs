@@ -23,7 +23,7 @@ public class ThirdLevel_End : MonoBehaviour
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {
-        if (state == TutorialState.ThirdLevel_End)
+        if (state == TutorialState.Third_Level_End)
         {
             // Play the learn movement related audio clips here, for example:
             StartCoroutine(WaitForAudioAndChangeState());
@@ -32,9 +32,7 @@ public class ThirdLevel_End : MonoBehaviour
 
     IEnumerator WaitForAudioAndChangeState()
     {
-        Debug.Log("State: ThirdLevelEnd");
         audioScript.PlayAudioAfterDelay(clip_1, 1.0f);
         yield return new WaitForSeconds(4);
-
     }
 }

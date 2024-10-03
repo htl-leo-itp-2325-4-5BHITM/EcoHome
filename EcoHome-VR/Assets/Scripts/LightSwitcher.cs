@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class LightSwitcher : MonoBehaviour
 {
+
+    [SerializeField] private Third_Level_LightOff Third_Level_LightOff;
     private Player player;
     private Playerchall playerchall;
 
@@ -79,6 +81,8 @@ public class LightSwitcher : MonoBehaviour
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
 
+                        Third_Level_LightOff.localScoreCounter += 1;
+
                         audioPlayer.PlayOneShot(clip_1);
                     }
                 }
@@ -98,6 +102,7 @@ public class LightSwitcher : MonoBehaviour
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
+                        Third_Level_LightOff.localScoreCounter -= 1;
                         audioPlayer.PlayOneShot(clip_1);
                     }
                 }
@@ -133,6 +138,7 @@ public class LightSwitcher : MonoBehaviour
                         Player.localScoreCounter += 1;
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
+                        Third_Level_LightOff.localScoreCounter += 1;
                         audioPlayer.PlayOneShot(clip_1);
                     }
                 }
@@ -152,6 +158,7 @@ public class LightSwitcher : MonoBehaviour
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
+                        Third_Level_LightOff.localScoreCounter -= 1;
                         audioPlayer.PlayOneShot(clip_1);
                     }
                 }
@@ -188,6 +195,7 @@ public class LightSwitcher : MonoBehaviour
                         Player.localScoreCounter += 1;
                         Player.globalScoreCounter += 1;
                         Player.displayScoreCounter += 1;
+                        Third_Level_LightOff.localScoreCounter += 1;
                         audioPlayer.PlayOneShot(clip_1);
                     }
                 }
@@ -207,6 +215,7 @@ public class LightSwitcher : MonoBehaviour
                         Player.localScoreCounter -= 1;
                         Player.globalScoreCounter -= 1;
                         Player.displayScoreCounter -= 1;
+                        Third_Level_LightOff.localScoreCounter -= 1;
                         audioPlayer.PlayOneShot(clip_1);
                     }
                 }
