@@ -9,6 +9,7 @@ public class ThrowObject : MonoBehaviour
     public AudioClip clip_1;
 
     bool tutorialActive = false;
+    bool toBePlayed = true;
 
     void OnEnable()
     {
@@ -56,8 +57,13 @@ public class ThrowObject : MonoBehaviour
                     break;
                 }
                 else {
-                    audioScript.PlayAudioAfterDelay(clip_1, 1);
-                    yield return new WaitForSeconds(20);
+                    if (toBePlayed)
+                    {
+                        audioScript.PlayAudioAfterDelay(clip_1, 1);
+                        toBePlayed = false;
+                    }
+                    
+                    yield return new WaitForSeconds(5);
                 }
             }
         }

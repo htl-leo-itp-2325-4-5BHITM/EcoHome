@@ -12,6 +12,7 @@ public class Third_Level_LightOff : MonoBehaviour
     public AudioClip clip_1;
 
     bool tutorialActive = false;
+    bool toBePlayed = true;
     public static int localScoreCounter = 0;
 
     void OnEnable()
@@ -46,8 +47,13 @@ public class Third_Level_LightOff : MonoBehaviour
         */
         while(tutorialActive) {
             if (localScoreCounter <= 3) {
-                audioScript.PlayAudioAfterDelay(clip_1, 1);
-                yield return new WaitForSeconds(15); 
+                if (toBePlayed)
+                {
+                    audioScript.PlayAudioAfterDelay(clip_1, 1);
+                    toBePlayed = false;
+                }
+                
+                yield return new WaitForSeconds(5); 
             }
             else {      
                 Debug.Log("State: Third_Level_End");
