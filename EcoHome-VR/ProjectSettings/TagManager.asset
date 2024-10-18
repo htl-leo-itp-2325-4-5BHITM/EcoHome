@@ -25,6 +25,7 @@ TagManager:
   - tvLightSource
   - bWaterSource
   - sWaterSource
+  - DoorSensor
   layers:
   - Default
   - TransparentFX
