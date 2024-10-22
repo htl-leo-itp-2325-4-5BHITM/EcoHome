@@ -31,6 +31,10 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           unityVersion: '2021.3.14f1'
+          scenes: |
+            Assets/Scenes/MainMenu.unity
+            Assets/Scenes/Linear.unity
+            Assets/Scenes/Challenge.unity
           buildsPath: 'EcoHome-Build'
       - uses: actions/upload-artifact@v3
         with:
