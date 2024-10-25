@@ -26,6 +26,11 @@ TagManager:
   - bWaterSource
   - sWaterSource
   - DoorSensor
+  - Player_Collider
+  - FirstLevel_Door_Sensor
+  - SecLevel_Door_Sensor
+  - ThirdLevel_Door_Sensor
+  - FourthLevel_Door_Sensor
   layers:
   - Default
   - TransparentFX

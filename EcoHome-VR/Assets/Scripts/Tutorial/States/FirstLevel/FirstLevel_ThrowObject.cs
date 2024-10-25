@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ThrowObject : MonoBehaviour
+public class FirstLevel_ThrowObject : MonoBehaviour
 {
     [SerializeField] private Audio audioScript;
     [SerializeField] private Cntrl_Listener listenerScript;

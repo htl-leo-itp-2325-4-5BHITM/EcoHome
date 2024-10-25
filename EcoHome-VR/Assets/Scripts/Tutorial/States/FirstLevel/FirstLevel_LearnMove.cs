@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class LearnMove : MonoBehaviour
+public class FirstLevel_LearnMove : MonoBehaviour
 {
     [SerializeField] private Audio audioScript;
     [SerializeField] private Cntrl_Listener listenerScript;

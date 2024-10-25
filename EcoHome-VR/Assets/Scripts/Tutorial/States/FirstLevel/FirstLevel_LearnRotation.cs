@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class LearnRotation : MonoBehaviour
+public class FirstLevel_LearnRotation : MonoBehaviour
 {
     [SerializeField] private Audio audioScript;
     [SerializeField] private Cntrl_Listener listenerScript;

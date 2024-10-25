@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartOfGame : MonoBehaviour
+public class FirstLevel_StartOfGame : MonoBehaviour
 {
 
     [SerializeField] private Audio audioScript;

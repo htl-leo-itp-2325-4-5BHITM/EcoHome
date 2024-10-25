@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LearnGrip : MonoBehaviour
+public class FirstLevel_LearnGrip : MonoBehaviour
 {
     [SerializeField] private Audio audioScript;
     [SerializeField] private Cntrl_Listener listenerScript;

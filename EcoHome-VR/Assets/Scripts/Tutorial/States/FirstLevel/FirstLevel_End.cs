@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndOfGame : MonoBehaviour
+public class FirstLevel_End : MonoBehaviour
 {
     // Script References
     [SerializeField] private Audio audioScript;
@@ -33,8 +33,6 @@ public class EndOfGame : MonoBehaviour
     IEnumerator WaitForAudioAndChangeState()
     {
         audioScript.PlayAudioAfterDelay(clip_1, 1.0f);
-        yield return new WaitForSeconds(3);
-        Debug.Log("State: SecLevel_Start");
-        TutoManager.Instance.UpdateTutorialState(TutorialState.SecLevel_Start); // Proceed to the next State
+        yield return new WaitForSeconds(1);
     }
 }
