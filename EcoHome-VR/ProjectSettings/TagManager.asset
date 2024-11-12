@@ -31,6 +31,8 @@ TagManager:
   - SecLevel_Door_Sensor
   - ThirdLevel_Door_Sensor
   - FourthLevel_Door_Sensor
+  - FifthLevel_Door_Sensor
+  - SixthLevel_Door_Sensor
   layers:
   - Default
   - TransparentFX
