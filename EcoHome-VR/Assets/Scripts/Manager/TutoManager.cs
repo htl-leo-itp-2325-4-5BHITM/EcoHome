@@ -87,6 +87,18 @@ public class TutoManager : MonoBehaviour
             case TutorialState.Fourth_Level_Start:
                 this.State = TutorialState.Fourth_Level_Start;
                 break;
+            case TutorialState.Fourth_Level_End:
+                this.State = TutorialState.Fourth_Level_End;
+                break;
+            case TutorialState.Fifth_Level_Start:
+                this.State = TutorialState.Fifth_Level_Start;
+                break;
+            case TutorialState.Fifth_Level_End:
+                this.State = TutorialState.Fifth_Level_End;
+                break;
+            case TutorialState.Sixth_Level_Start:
+                this.State = TutorialState.Sixth_Level_Start;
+                break;
             case TutorialState.End_Of_Tutorial:
                 this.State = TutorialState.End_Of_Tutorial;
                 break;
@@ -112,5 +124,9 @@ public enum TutorialState {
     Third_Level_LightOff,
     Third_Level_End,
     Fourth_Level_Start,
+    Fourth_Level_End,
+    Fifth_Level_Start,
+    Fifth_Level_End,
+    Sixth_Level_Start,
     End_Of_Tutorial
 }

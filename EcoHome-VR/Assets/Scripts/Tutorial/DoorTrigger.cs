@@ -16,28 +16,40 @@ public class DoorTrigger : MonoBehaviour
         Debug.Log("Collider Entered: " + other.tag);
         if (other.CompareTag("Player_Collider") && this.gameObject.CompareTag("FirstLevel_Door_Sensor") && this.State == PlayerLevel_State.FirstLevel)
         {
-            Debug.Log("Spieler ist durch die Tür First Level Door durchgegangen!");
+            Debug.Log("Spieler ist durch die Tür Sec Level Door durchgegangen!");
             UpdatePlayerLevelState(PlayerLevel_State.SecLevel);
             TutoManager.Instance.UpdateTutorialState(TutorialState.SecLevel_Start);
         }
         else if (other.CompareTag("Player_Collider") && this.gameObject.CompareTag("SecLevel_Door_Sensor") && this.State == PlayerLevel_State.SecLevel)
         {
-            Debug.Log("Spieler ist durch die Tür Sec Level Door durchgegangen!");
+            Debug.Log("Spieler ist durch die Tür Third Level Door durchgegangen!");
             UpdatePlayerLevelState(PlayerLevel_State.ThirdLevel);
             TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_Start);
         }
         else if (other.CompareTag("Player_Collider") && this.gameObject.CompareTag("ThirdLevel_Door_Sensor") && this.State == PlayerLevel_State.ThirdLevel)
         {
-            Debug.Log("Spieler ist durch die Tür Third Level Door durchgegangen!");
+            Debug.Log("Spieler ist durch die Tür Fourth Level Door durchgegangen!");
             UpdatePlayerLevelState(PlayerLevel_State.FourhtLevel);
             TutoManager.Instance.UpdateTutorialState(TutorialState.Fourth_Level_Start);
         }
         else if (other.CompareTag("Player_Collider") && this.gameObject.CompareTag("FourthLevel_Door_Sensor") && this.State == PlayerLevel_State.FourhtLevel)
         {
-            Debug.Log("Spieler ist durch die Tür Fourth Level Door durchgegangen!");
+            Debug.Log("Spieler ist durch die Tür Fifth Level Door durchgegangen!");
+            UpdatePlayerLevelState(PlayerLevel_State.FifthLevel);
+            TutoManager.Instance.UpdateTutorialState(TutorialState.Fifth_Level_Start);
+        }    
+        else if (other.CompareTag("Player_Collider") && this.gameObject.CompareTag("FifthLevel_Door_Sensor") && this.State == PlayerLevel_State.FifthLevel)
+        {
+            Debug.Log("Spieler ist durch die Tür Sixth Level Door durchgegangen!");
+            UpdatePlayerLevelState(PlayerLevel_State.SixthLevel);
+            TutoManager.Instance.UpdateTutorialState(TutorialState.Sixth_Level_Start);
+        }     
+        else if (other.CompareTag("Player_Collider") && this.gameObject.CompareTag("SixthLevel_Door_Sensor") && this.State == PlayerLevel_State.SixthLevel)
+        {
+            Debug.Log("Spieler ist durch die Tür Zero Level Door durchgegangen!");
             UpdatePlayerLevelState(PlayerLevel_State.ZeroLevel);
             TutoManager.Instance.UpdateTutorialState(TutorialState.End_Of_Tutorial);
-        }        
+        }  
     }
 
     private void OnTriggerExit(Collider other)
@@ -76,6 +88,12 @@ public class DoorTrigger : MonoBehaviour
             case PlayerLevel_State.FourhtLevel:
                 this.State = PlayerLevel_State.FourhtLevel;
                 break;
+            case PlayerLevel_State.FifthLevel:
+                this.State = PlayerLevel_State.FifthLevel;
+                break;
+            case PlayerLevel_State.SixthLevel:
+                this.State = PlayerLevel_State.SixthLevel;
+                break;
             case PlayerLevel_State.ZeroLevel:
                 this.State = PlayerLevel_State.ZeroLevel;
                 break;
@@ -88,5 +106,7 @@ public enum PlayerLevel_State {
     FirstLevel,
     SecLevel,
     ThirdLevel,
-    FourhtLevel
+    FourhtLevel,
+    FifthLevel,
+    SixthLevel
 }
