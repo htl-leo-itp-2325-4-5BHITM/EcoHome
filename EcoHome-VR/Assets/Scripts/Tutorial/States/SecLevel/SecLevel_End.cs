@@ -11,12 +11,12 @@ public class SecLevel_End : MonoBehaviour
     // Audio Clips
     public AudioClip clip_1;
 
-    void Awake()
+    void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
     }

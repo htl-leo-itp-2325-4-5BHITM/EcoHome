@@ -16,12 +16,12 @@ public class SecLevel_Start : MonoBehaviour
     bool toBePlayed = true;
     public static int localScoreCounter = 0;
 
-    void Awake() 
+    void OnEnable() 
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
     }
@@ -49,7 +49,7 @@ public class SecLevel_Start : MonoBehaviour
                 break;   
             }
 
-            yield return new WaitForSeconds(5); 
+            yield return new WaitForSeconds(60); 
             /*
             if (Player.globalScoreCounter <= 4) {
                 if (toBePlayed)

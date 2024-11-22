@@ -7,6 +7,13 @@ public class DoorTrigger : MonoBehaviour
     private String currentRoom;
     private TutorialState _entered;
 
+    private bool _leftFirstRoom = false;
+    private bool _leftSecRoom = false;
+    private bool _leftThirdRoom = false;
+    private bool _leftForthRoom = false;
+    private bool _leftFifthRoom = false;
+    private bool _leftSixthRoom = false;
+
     void Awake() {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
     }
@@ -18,9 +25,8 @@ public class DoorTrigger : MonoBehaviour
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {
-        if (state == TutorialState.StartOfGame) {
-            this._entered = state;
-        }
+        this._entered = state;
+        Debug.Log("_entered = " + this._entered);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,32 +36,36 @@ public class DoorTrigger : MonoBehaviour
 
         if (other.CompareTag("Player_Collider"))
         {
-            if (this.gameObject.CompareTag("FirstLevel_Door_Sensor") && this._entered == TutorialState.EndOfGame)
+            if (this.gameObject.CompareTag("FirstLevel_Door_Sensor") && !_leftFirstRoom)
             {
                 Debug.Log("Spieler ist durch die Tür Sec Level Door durchgegangen!");
+                this._leftFirstRoom = true;
                 TutoManager.Instance.UpdateTutorialState(TutorialState.SecLevel_Start);
             }
-            else if (this.gameObject.CompareTag("SecLevel_Door_Sensor") && this._entered == TutorialState.SecLevel_End)
+            else if (this.gameObject.CompareTag("SecLevel_Door_Sensor") && !_leftSecRoom)
             {
                 Debug.Log("Spieler ist durch die Tür Third Level Door durchgegangen!");
+                this._leftSecRoom = true;
                 TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_Start);
             }
-            else if (this.gameObject.CompareTag("ThirdLevel_Door_Sensor") && this._entered == TutorialState.Third_Level_End)
+            else if (this.gameObject.CompareTag("ThirdLevel_Door_Sensor") && !_leftThirdRoom)
             {
                 Debug.Log("Spieler ist durch die Tür Fourth Level Door durchgegangen!");
+                this._leftThirdRoom = true;
                 TutoManager.Instance.UpdateTutorialState(TutorialState.Fourth_Level_Start);
             }
-            else if (this.gameObject.CompareTag("FourthLevel_Door_Sensor") && this._entered == TutorialState.Fourth_Level_End)
+            else if (this.gameObject.CompareTag("FourthLevel_Door_Sensor") && !_leftForthRoom)
             {
                 Debug.Log("Spieler ist durch die Tür Fifth Level Door durchgegangen!");
+                this._leftForthRoom = true;
                 TutoManager.Instance.UpdateTutorialState(TutorialState.Fifth_Level_Start);
             }
-            else if (this.gameObject.CompareTag("FifthLevel_Door_Sensor") && this._entered == TutorialState.Fifth_Level_End)
+            else if (this.gameObject.CompareTag("FifthLevel_Door_Sensor") && !_leftFifthRoom)
             {
                 Debug.Log("Spieler ist durch die Tür Sixth Level Door durchgegangen!");
                 TutoManager.Instance.UpdateTutorialState(TutorialState.Sixth_Level_Start);
             }
-            else if (this.gameObject.CompareTag("SixthLevel_Door_Sensor") && this._entered == TutorialState.Sixth_Level_Start)
+            else if (this.gameObject.CompareTag("SixthLevel_Door_Sensor") && !_leftSixthRoom)
             {
                 Debug.Log("Spieler ist durch die Tür Zero Level Door durchgegangen!");
                 TutoManager.Instance.UpdateTutorialState(TutorialState.End_Of_Tutorial);

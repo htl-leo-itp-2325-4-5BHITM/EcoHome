@@ -14,18 +14,19 @@ public class Third_Level_Start : MonoBehaviour
     bool tutorialActive = false;
     public static int localScoreCounter = 0;
 
-    void Awake() 
+    void OnEnable() 
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
     }
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {
+        Debug.Log("state in thirdroom = " + state);
         if (state == TutorialState.Third_Level_Start)
         {
             tutorialActive = true;
@@ -41,6 +42,6 @@ public class Third_Level_Start : MonoBehaviour
         audioScript.PlayAudioAfterDelay(clip_1, 1);
         Debug.Log("State: Third Level LightOff");
         TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_LightOff);
-        yield return new WaitForSeconds(12); 
+        yield return new WaitForSeconds(15); 
     }
 }

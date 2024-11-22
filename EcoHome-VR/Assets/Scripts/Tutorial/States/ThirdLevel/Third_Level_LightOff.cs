@@ -45,7 +45,7 @@ public class Third_Level_LightOff : MonoBehaviour
 
             
 
-            yield return new WaitForSeconds(10); 
+            yield return new WaitForSeconds(30); 
         }
         /*
         audioScript.PlayAudioAfterDelay(clip_1, 1);
