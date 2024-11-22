@@ -40,11 +40,18 @@ public class Third_Level_LightOff : MonoBehaviour
 
     IEnumerator ManageThirdLevelLightOff()
     {
+        while (tutorialActive) {
+            audioScript.PlayAudioAfterDelay(clip_1, 1);
+
+            
+
+            yield return new WaitForSeconds(10); 
+        }
         /*
         audioScript.PlayAudioAfterDelay(clip_1, 1);
         TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_End);
         yield return new WaitForSeconds(15);
-        */
+        
         while(tutorialActive) {
             if (Player.globalScoreCounter < 18) {
                 Debug.Log("entered");       // ENTERS BUT DOESNT WORK!!!
@@ -57,6 +64,7 @@ public class Third_Level_LightOff : MonoBehaviour
                 break;          
             }
         } 
+        */
         
     }
 }

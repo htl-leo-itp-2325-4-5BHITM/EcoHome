@@ -44,18 +44,19 @@ public class FirstLevel_ThrowObject : MonoBehaviour
 
         while (tutorialActive) {
             if (!listenerScript._grabPaper && Player.globalScoreCounter == 0) {
-                Debug.Log("State: TableState");
+                Debug.Log("State: TableState: not holding");
                 yield return new WaitForSeconds(10); 
                 TutoManager.Instance.UpdateTutorialState(TutorialState.TableState);
             }
             else {
                 if (Player.globalScoreCounter > 0) 
                 {
-                    Debug.Log("State: EndOfGame");
+                    Debug.Log("State: EndOfGame: Player scored");
                     TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
                     break;
                 }
                 else {
+                    Debug.Log("holding the paper");
                     audioScript.PlayAudioAfterDelay(clip_1, 1);
                     yield return new WaitForSeconds(5);
                 }

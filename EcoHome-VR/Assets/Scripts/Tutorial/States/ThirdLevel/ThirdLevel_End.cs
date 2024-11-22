@@ -34,7 +34,7 @@ public class ThirdLevel_End : MonoBehaviour
     {
         audioScript.PlayAudioAfterDelay(clip_1, 1.0f);
         Debug.Log("State: Fourth Level Start");
-        TutoManager.Instance.UpdateTutorialState(TutorialState.Fourth_Level_Start);
+        //TutoManager.Instance.UpdateTutorialState(TutorialState.Fourth_Level_Start);
         yield return new WaitForSeconds(2);
     }
 }

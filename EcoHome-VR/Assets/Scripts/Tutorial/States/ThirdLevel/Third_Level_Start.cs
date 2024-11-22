@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+ 
 public class Third_Level_Start : MonoBehaviour
 {
 // Script References
@@ -14,16 +14,15 @@ public class Third_Level_Start : MonoBehaviour
     bool tutorialActive = false;
     public static int localScoreCounter = 0;
 
-    void OnEnable()
+    void Awake() 
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
     }
-    
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {

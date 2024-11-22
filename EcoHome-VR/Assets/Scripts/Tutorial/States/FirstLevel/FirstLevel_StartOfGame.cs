@@ -31,7 +31,6 @@ public class FirstLevel_StartOfGame : MonoBehaviour
 
     IEnumerator WaitForAudioAndChangeState()
     {
-
         yield return new WaitForSeconds(1.0f); 
         audioScript.PlayAudioAfterDelay(clip_1, 0); 
         yield return new WaitForSeconds(clip_1.length);

@@ -16,16 +16,16 @@ public class SecLevel_Start : MonoBehaviour
     bool toBePlayed = true;
     public static int localScoreCounter = 0;
 
-    void OnEnable()
+    void Awake() 
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
     }
-    
+
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {
@@ -42,6 +42,15 @@ public class SecLevel_Start : MonoBehaviour
     IEnumerator ManageSecLevelStart()
     {
         while(tutorialActive) {
+            audioScript.PlayAudioAfterDelay(clip_1, 1);          
+
+            if (Player.globalScoreCounter > 4) {
+                TutoManager.Instance.UpdateTutorialState(TutorialState.SecLevel_End);
+                break;   
+            }
+
+            yield return new WaitForSeconds(5); 
+            /*
             if (Player.globalScoreCounter <= 4) {
                 if (toBePlayed)
                 {
@@ -55,6 +64,7 @@ public class SecLevel_Start : MonoBehaviour
                 TutoManager.Instance.UpdateTutorialState(TutorialState.SecLevel_End);
                 break;          
             }
+            */
         } 
     }
 }

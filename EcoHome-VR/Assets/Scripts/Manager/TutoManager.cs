@@ -39,7 +39,6 @@ public class TutoManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateTutorialState(TutorialState.StartOfGame);
     }
 
     // Update is called once per frame

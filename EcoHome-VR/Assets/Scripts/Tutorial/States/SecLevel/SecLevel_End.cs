@@ -11,12 +11,12 @@ public class SecLevel_End : MonoBehaviour
     // Audio Clips
     public AudioClip clip_1;
 
-       void OnEnable()
+    void Awake()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
     }
@@ -33,8 +33,6 @@ public class SecLevel_End : MonoBehaviour
     IEnumerator WaitForAudioAndChangeState()
     {
         audioScript.PlayAudioAfterDelay(clip_1, 1.0f);
-        Debug.Log("State: Third Level Start");
-        TutoManager.Instance.UpdateTutorialState(TutorialState.Third_Level_Start);
         yield return new WaitForSeconds(2);
     }
 }
