@@ -51,7 +51,7 @@ public class ControlsScript : MonoBehaviour
         SetControlsSimple();
     }
 
-    private void ConfigureController(ActionBasedController controller, string gripBinding, string triggerBinding, bool combineTriggerAndGrip)
+    private void ConfigureController(ActionBasedController controller, string triggerBinding, bool combineTriggerAndGrip)
     {
         if (combineTriggerAndGrip)
         {
@@ -63,33 +63,19 @@ public class ControlsScript : MonoBehaviour
             controller.selectAction = new InputActionProperty(combinedAction); // Trigger does both
             controller.activateAction = new InputActionProperty(combinedAction); // Trigger does both
         }
-        else
-        {
-            // Configure separate actions for grip and trigger
-            InputAction gripAction = new InputAction("Grip", InputActionType.Button);
-            gripAction.AddBinding(gripBinding);
-            gripAction.Enable(); // Ensure grip action is enabled
-
-            InputAction triggerAction = new InputAction("Trigger", InputActionType.Button);
-            triggerAction.AddBinding(triggerBinding);
-            triggerAction.Enable(); // Ensure trigger action is enabled
-
-            controller.selectAction = new InputActionProperty(triggerAction); // Trigger action
-            controller.activateAction = new InputActionProperty(gripAction); // Grip action
-        }
     }
 
     public void SetControlsDefault()
     {
         // Apply default controls to both controllers
-        ConfigureController(leftController, "<XRController>{LeftHand}/gripPressed", "<XRController>{LeftHand}/triggerPressed", false);
-        ConfigureController(rightController, "<XRController>{RightHand}/gripPressed", "<XRController>{RightHand}/triggerPressed", false);
+        ConfigureController(leftController, "<XRController>{LeftHand}/triggerPressed", false);
+        ConfigureController(rightController,"<XRController>{RightHand}/triggerPressed", false);
     }
 
     public void SetControlsSimple()
     {
         // Apply simplified controls to both controllers
-        ConfigureController(leftController, "<XRController>{LeftHand}/gripPressed", "<XRController>{LeftHand}/triggerPressed", true);
-        ConfigureController(rightController, "<XRController>{RightHand}/gripPressed", "<XRController>{RightHand}/triggerPressed", true);
+        ConfigureController(leftController, "<XRController>{LeftHand}/triggerPressed", true);
+        ConfigureController(rightController,"<XRController>{RightHand}/triggerPressed", true);
     }
 }
