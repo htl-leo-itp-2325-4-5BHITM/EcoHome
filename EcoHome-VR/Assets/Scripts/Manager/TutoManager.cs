@@ -99,6 +99,9 @@ public class TutoManager : MonoBehaviour
             case TutorialState.Sixth_Level_Start:
                 this.State = TutorialState.Sixth_Level_Start;
                 break;
+            case TutorialState.Sixth_Level_End:
+                this.State = TutorialState.Sixth_Level_End;
+                break;
             case TutorialState.End_Of_Tutorial:
                 this.State = TutorialState.End_Of_Tutorial;
                 break;
@@ -128,5 +131,6 @@ public enum TutorialState {
     Fifth_Level_Start,
     Fifth_Level_End,
     Sixth_Level_Start,
+    Sixth_Level_End,
     End_Of_Tutorial
 }
