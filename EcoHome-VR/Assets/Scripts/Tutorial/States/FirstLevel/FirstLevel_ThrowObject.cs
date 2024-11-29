@@ -9,16 +9,19 @@ public class FirstLevel_ThrowObject : MonoBehaviour
     public AudioClip clip_1;
 
     bool tutorialActive = false;
+    bool _grabPaper = false;
 
     void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
+        listenerScript.OnGrabPaperChanged += HandleGrabPaperChange;
         //Cntrl_Listener.OnCorrectObjectHeldStateChanged += HandleCorrectObjectHeldStateChange;
     }
 
     void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
+        listenerScript.OnGrabPaperChanged  -= HandleGrabPaperChange;
         //Cntrl_Listener.OnCorrectObjectHeldStateChanged -= HandleCorrectObjectHeldStateChange;
     }
 
@@ -31,6 +34,17 @@ public class FirstLevel_ThrowObject : MonoBehaviour
         }
         else {
             tutorialActive = false;
+        }
+    }
+
+    private void HandleGrabPaperChange(bool isGrabbed) {
+        if (isGrabbed) {
+            _grabPaper = true;
+            Debug.Log("Paper grabbed!");
+        }
+        else {
+            _grabPaper = false;
+            Debug.Log("Paper released!");
         }
     }
 

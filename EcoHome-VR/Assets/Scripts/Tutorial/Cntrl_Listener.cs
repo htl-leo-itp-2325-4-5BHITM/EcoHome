@@ -14,7 +14,22 @@ public class Cntrl_Listener : MonoBehaviour
     public bool _usedLeftGrip = false;
     public bool _usedRightGrip = false;
 
-    public bool _grabPaper = false;
+    // observable variable
+    public bool _grabPaper;
+    public event Action<bool> OnGrabPaperChanged;
+
+    public bool GrabPaper 
+    {
+        get => _grabPaper;
+        set 
+        {
+            if (_grabPaper != value)
+            {
+                _grabPaper = value;
+                OnGrabPaperChanged?.Invoke(_grabPaper);
+            }
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -50,39 +65,28 @@ public class Cntrl_Listener : MonoBehaviour
     }
 
     private void UpdateGripStatus() {
-        // Check for left controller grip and trigger
-        bool leftGripPressed = false;
-        bool leftTriggerPressed = false;
-
-        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool gripPressed))
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool leftGripPressed))
         {
-            leftGripPressed = gripPressed;
+            _usedLeftGrip = leftGripPressed;
+            GrabPaper = leftGripPressed;
+        }
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool leftTriggerPressed))
+        {
+            _usedLeftGrip = leftTriggerPressed;
+            GrabPaper = leftTriggerPressed;
         }
 
-        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool triggerPressed))
+        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool rightGripPressed))
         {
-            leftTriggerPressed = triggerPressed;
+            _usedRightGrip = rightGripPressed;
+            GrabPaper = rightGripPressed;
         }
 
-        _usedLeftGrip = leftGripPressed || leftTriggerPressed;
-
-        // Check for right controller grip and trigger
-        bool rightGripPressed = false;
-        bool rightTriggerPressed = false;
-
-        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out gripPressed))
+        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool rightTriggerPressed))
         {
-            rightGripPressed = gripPressed;
+            _usedRightGrip = rightTriggerPressed;
+            GrabPaper = rightTriggerPressed;
         }
-
-        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerPressed))
-        {
-            rightTriggerPressed = triggerPressed;
-        }
-
-        _usedRightGrip = rightGripPressed || rightTriggerPressed;
-
-        _grabPaper = _usedRightGrip || _usedLeftGrip;
     }
 
 
