@@ -50,28 +50,39 @@ public class Cntrl_Listener : MonoBehaviour
     }
 
     private void UpdateGripStatus() {
-        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool leftGripPressed) )
+        // Check for left controller grip and trigger
+        bool leftGripPressed = false;
+        bool leftTriggerPressed = false;
+
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool gripPressed))
         {
-            _usedLeftGrip = leftGripPressed;
-            this._grabPaper = leftGripPressed;
-        }
-        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool leftTriggerPressed))
-        {
-            _usedLeftGrip = leftTriggerPressed;
-            this._grabPaper = leftTriggerPressed;
+            leftGripPressed = gripPressed;
         }
 
-        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool rightGripPressed))
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool triggerPressed))
         {
-            _usedRightGrip = rightGripPressed;
-            this._grabPaper = rightGripPressed;
+            leftTriggerPressed = triggerPressed;
         }
 
-        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool rightTriggerPressed))
+        _usedLeftGrip = leftGripPressed || leftTriggerPressed;
+
+        // Check for right controller grip and trigger
+        bool rightGripPressed = false;
+        bool rightTriggerPressed = false;
+
+        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out gripPressed))
         {
-            _usedRightGrip = rightTriggerPressed;
-            this._grabPaper = rightTriggerPressed;
+            rightGripPressed = gripPressed;
         }
+
+        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerPressed))
+        {
+            rightTriggerPressed = triggerPressed;
+        }
+
+        _usedRightGrip = rightGripPressed || rightTriggerPressed;
+
+        _grabPaper = _usedRightGrip || _usedLeftGrip;
     }
 
 
