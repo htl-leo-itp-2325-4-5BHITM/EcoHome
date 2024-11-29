@@ -9,7 +9,6 @@ public class Cntrl_Listener : MonoBehaviour
     public InputData _inputData;
 
     public bool _leftStickUsed = false;
-
     public bool _rightStickUsed = false;
 
     public bool _usedLeftGrip = false;
@@ -28,8 +27,8 @@ public class Cntrl_Listener : MonoBehaviour
     {
         UpdateStickUsage();
         UpdateGripStatus();
-        LogButtonUsage(_inputData._leftController, "Left Controller");
-        LogButtonUsage(_inputData._rightController, "Right Controller");
+        //LogButtonUsage(_inputData._leftController, "Left Controller");
+        //LogButtonUsage(_inputData._rightController, "Right Controller");
     }
 
     private void UpdateStickUsage() {
@@ -51,17 +50,29 @@ public class Cntrl_Listener : MonoBehaviour
     }
 
     private void UpdateGripStatus() {
-        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool leftGripPressed))
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool leftGripPressed) )
         {
             _usedLeftGrip = leftGripPressed;
+        }
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool leftTriggerPressed))
+        {
+            _usedLeftGrip = leftTriggerPressed;
         }
 
         if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool rightGripPressed))
         {
             _usedRightGrip = rightGripPressed;
         }
+
+        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool rightTriggerPressed))
+        {
+            _usedRightGrip = rightTriggerPressed;
+        }
     }
 
+
+/**
+    //check which button is being pressed
 
     private void LogButtonUsage(UnityEngine.XR.InputDevice device, string deviceName)
     {
@@ -81,7 +92,7 @@ public class Cntrl_Listener : MonoBehaviour
             }
         }
     }
-
+*/
     public void SelectPaper()
     {
         _grabPaper = true;
