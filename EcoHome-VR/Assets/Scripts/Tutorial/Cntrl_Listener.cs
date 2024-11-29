@@ -14,7 +14,7 @@ public class Cntrl_Listener : MonoBehaviour
     public bool _usedLeftGrip = false;
     public bool _usedRightGrip = false;
 
-    public bool _grabPaper = true;
+    public bool _grabPaper = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,20 +53,24 @@ public class Cntrl_Listener : MonoBehaviour
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool leftGripPressed) )
         {
             _usedLeftGrip = leftGripPressed;
+            this._grabPaper = leftGripPressed;
         }
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool leftTriggerPressed))
         {
             _usedLeftGrip = leftTriggerPressed;
+            this._grabPaper = leftTriggerPressed;
         }
 
         if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool rightGripPressed))
         {
             _usedRightGrip = rightGripPressed;
+            this._grabPaper = rightGripPressed;
         }
 
         if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool rightTriggerPressed))
         {
             _usedRightGrip = rightTriggerPressed;
+            this._grabPaper = rightTriggerPressed;
         }
     }
 
