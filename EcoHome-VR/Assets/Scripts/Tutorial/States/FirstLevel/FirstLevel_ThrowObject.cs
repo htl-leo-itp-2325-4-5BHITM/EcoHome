@@ -57,7 +57,7 @@ public class FirstLevel_ThrowObject : MonoBehaviour
          */
 
         while (tutorialActive) {
-            if (!listenerScript._grabPaper && Player.globalScoreCounter == 0) {
+            if (!_grabPaper && Player.globalScoreCounter == 0) {
                 Debug.Log("State: TableState: not holding");
                 yield return new WaitForSeconds(10); 
                 TutoManager.Instance.UpdateTutorialState(TutorialState.TableState);

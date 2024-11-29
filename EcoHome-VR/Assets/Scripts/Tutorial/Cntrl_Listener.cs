@@ -12,8 +12,34 @@ public class Cntrl_Listener : MonoBehaviour
     public bool _rightStickUsed = false;
 
     public bool _usedLeftGrip = false;
-    public bool _usedRightGrip = false;
+    public event Action<bool> OnUsedLeftGrip;
+    public bool UsedLeftGrip 
+    {
+        get => _usedLeftGrip;
+        set
+        {
+            if (_usedLeftGrip != value)
+            {
+                _usedLeftGrip = value;
+                OnUsedLeftGrip?.Invoke(_usedLeftGrip);
+            }
+        }
+    }
 
+    public bool _usedRightGrip = false;
+    public event Action<bool> OnUsedRightGrip;
+    public bool UsedRightGrip 
+    {
+        get => _usedRightGrip;
+        set
+        {
+            if (_usedRightGrip != value)
+            {
+                _usedRightGrip = value;
+                OnUsedRightGrip?.Invoke(_usedRightGrip);
+            }
+        }
+    }
     // observable variable
     public bool _grabPaper;
     public event Action<bool> OnGrabPaperChanged;
@@ -67,25 +93,38 @@ public class Cntrl_Listener : MonoBehaviour
     private void UpdateGripStatus() {
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool leftGripPressed))
         {
-            _usedLeftGrip = leftGripPressed;
-            GrabPaper = leftGripPressed;
+            if (leftGripPressed) {
+                UsedLeftGrip = leftGripPressed;
+                GrabPaper = leftGripPressed;
+            }
+        }
+        else {
+            UsedLeftGrip = false;
+            GrabPaper = false;
         }
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool leftTriggerPressed))
         {
-            _usedLeftGrip = leftTriggerPressed;
-            GrabPaper = leftTriggerPressed;
+            if (leftTriggerPressed) {
+                UsedLeftGrip = leftTriggerPressed;
+                GrabPaper = leftTriggerPressed;
+            }
         }
 
         if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool rightGripPressed))
         {
-            _usedRightGrip = rightGripPressed;
-            GrabPaper = rightGripPressed;
+            if (rightGripPressed) {
+                UsedRightGrip = rightGripPressed;
+                GrabPaper = rightGripPressed;
+            }
         }
 
         if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool rightTriggerPressed))
         {
-            _usedRightGrip = rightTriggerPressed;
-            GrabPaper = rightTriggerPressed;
+            if (rightTriggerPressed) {
+                UsedRightGrip = rightTriggerPressed;
+                GrabPaper = rightTriggerPressed;
+
+            }
         }
     }
 

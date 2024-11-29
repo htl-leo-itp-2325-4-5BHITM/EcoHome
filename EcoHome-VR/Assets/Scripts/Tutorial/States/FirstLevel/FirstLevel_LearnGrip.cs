@@ -10,15 +10,21 @@ public class FirstLevel_LearnGrip : MonoBehaviour
     public AudioClip clip_1; // "Use the grip button"
 
     bool tutorialActive = false;
+    bool usedRightGrip = false;
+    bool usedLeftGrip = false;
 
     void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
+        listenerScript.OnUsedRightGrip += HandleUsedRightGrip;
+        listenerScript.OnUsedLeftGrip += HandleUsedLeftGrip;
     }
 
     void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
+        listenerScript.OnUsedRightGrip -= HandleUsedRightGrip;
+        listenerScript.OnUsedLeftGrip -= HandleUsedLeftGrip;
     }
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
@@ -33,11 +39,31 @@ public class FirstLevel_LearnGrip : MonoBehaviour
         }
     }
 
+    private void HandleUsedRightGrip(bool isUsed) {
+        if(isUsed) {
+            usedRightGrip = isUsed;
+        }
+        else {
+            usedRightGrip = false;
+        }
+        Debug.Log("Subscribe usedRightGrip = " + usedRightGrip);
+    }
+
+    private void HandleUsedLeftGrip(bool isUsed) {
+        if (isUsed) {
+            usedLeftGrip = isUsed;
+        }
+        else {
+            usedLeftGrip = false;
+        }
+        Debug.Log("Subscribe usedLeftGrip = " + usedLeftGrip);
+    }
+
     IEnumerator ManageGripTutorial()
     {
         while(tutorialActive) {
             
-            if (!listenerScript._usedLeftGrip && !listenerScript._usedRightGrip)
+            if (!usedLeftGrip && !usedRightGrip)
             {
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
                 yield return new WaitForSeconds(10); 

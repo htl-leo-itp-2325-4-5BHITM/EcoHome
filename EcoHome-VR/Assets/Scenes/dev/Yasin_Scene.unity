@@ -5771,6 +5771,11 @@ GameObject:
   - component: {fileID: 509545771}
   - component: {fileID: 509545770}
   - component: {fileID: 509545769}
+  - component: {fileID: 509545777}
+  - component: {fileID: 509545776}
+  - component: {fileID: 509545775}
+  - component: {fileID: 509545774}
+  - component: {fileID: 509545773}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -6044,6 +6049,81 @@ MonoBehaviour:
   audioScript: {fileID: 509545760}
   playerScript: {fileID: 509545763}
   clip_1: {fileID: 8300000, guid: c569a1b9afd97c0458519422974a1b65, type: 3}
+--- !u!114 &509545773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509545754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377925a4798b4da4487dee91bf1c165e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioScript: {fileID: 509545760}
+  playerScript: {fileID: 509545763}
+  clip_1: {fileID: 8300000, guid: 23d4ea9490446f8499a787f314d4aef5, type: 3}
+--- !u!114 &509545774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509545754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa29ef447ece07e4784560df42c831fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioScript: {fileID: 509545760}
+  playerScript: {fileID: 509545763}
+  clip_1: {fileID: 8300000, guid: 434d1a5d679b0cf44829b3dd2a95f810, type: 3}
+--- !u!114 &509545775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509545754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7669ef9b5d8b94899db27b11a6332c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioScript: {fileID: 509545760}
+  playerScript: {fileID: 509545763}
+  clip_1: {fileID: 8300000, guid: 23d4ea9490446f8499a787f314d4aef5, type: 3}
+--- !u!114 &509545776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509545754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3323e4f96b939ca45b450a08c69c9741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioScript: {fileID: 509545760}
+  playerScript: {fileID: 509545763}
+  clip_1: {fileID: 8300000, guid: 8b6f57c03c99f8648b0ae2200b8b4305, type: 3}
+--- !u!114 &509545777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509545754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b7d6d492d115c46a17518e1d2ae693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioScript: {fileID: 509545760}
+  playerScript: {fileID: 509545763}
+  clip_1: {fileID: 8300000, guid: 23d4ea9490446f8499a787f314d4aef5, type: 3}
 --- !u!1 &521914203
 GameObject:
   m_ObjectHideFlags: 0
