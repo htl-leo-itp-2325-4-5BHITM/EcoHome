@@ -28,6 +28,8 @@ public class Cntrl_Listener : MonoBehaviour
     {
         UpdateStickUsage();
         UpdateGripStatus();
+        LogButtonUsage(_inputData._leftController, "Left Controller");
+        LogButtonUsage(_inputData._rightController, "Right Controller");
     }
 
     private void UpdateStickUsage() {
@@ -57,6 +59,26 @@ public class Cntrl_Listener : MonoBehaviour
         if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out bool rightGripPressed))
         {
             _usedRightGrip = rightGripPressed;
+        }
+    }
+
+
+    private void LogButtonUsage(UnityEngine.XR.InputDevice device, string deviceName)
+    {
+        var inputFeatures = new List<UnityEngine.XR.InputFeatureUsage>();
+        if (device.TryGetFeatureUsages(inputFeatures))
+        {
+            foreach (var feature in inputFeatures)
+            {
+                if (feature.type == typeof(bool))
+                {
+                    bool featureValue;
+                    if (device.TryGetFeatureValue(feature.As<bool>(), out featureValue) && featureValue)
+                    {
+                        Debug.Log(string.Format("{0}: Bool feature {1} is pressed.", deviceName, feature.name));
+                    }
+                }
+            }
         }
     }
 
