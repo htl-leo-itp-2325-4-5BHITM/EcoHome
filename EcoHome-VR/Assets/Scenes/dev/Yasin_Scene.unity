@@ -5831,6 +5831,8 @@ MonoBehaviour:
   _usedLeftGrip: 0
   _usedRightGrip: 0
   _grabPaper: 1
+  leftControllerTransform: {fileID: 1581955621}
+  rightControllerTransform: {fileID: 1884824236}
 --- !u!114 &509545758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12126,7 +12128,7 @@ PrefabInstance:
     - target: {fileID: 6211445279370861862, guid: d63286cc6a7ab16408a4274c5fe72741,
         type: 3}
       propertyPath: m_Name
-      value: Trash Paper
+      value: Trash Paper Tutorial
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d63286cc6a7ab16408a4274c5fe72741, type: 3}
