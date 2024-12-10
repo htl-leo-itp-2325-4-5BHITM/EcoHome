@@ -184,7 +184,7 @@ public class Cntrl_Listener : MonoBehaviour
                 // Log the name of the object being held
                 Debug.Log("Holding Object: " + heldObject.name);
                 
-                GrabPaper = true; // Update grab state
+                this.GrabPaper = true; // Update grab state
             }
         }
     }
@@ -200,27 +200,7 @@ public class Cntrl_Listener : MonoBehaviour
             heldObject.transform.SetParent(null);
             heldObject.GetComponent<Rigidbody>().isKinematic = false; // Re-enable physics
             heldObject = null; // Clear reference to held object
-            GrabPaper = false; // Reset grab state
+            this.GrabPaper = false; // Reset grab state
         }
-    }
-
-    public void SelectPaper()
-    {
-        _grabPaper = true;
-    }
-
-    public void ExitPaperSelection()
-    {
-        _grabPaper = false;
-    }
-
-    public void HoverPaper()
-    {
-        Debug.Log("Hover Paper");
-    }
-
-    public void ExitHoverPaper()
-    {
-        Debug.Log("Exit Hover Paper");
     }
 }
