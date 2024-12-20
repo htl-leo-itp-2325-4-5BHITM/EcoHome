@@ -5,26 +5,29 @@ using UnityEngine;
 public class FirstLevel_LearnGrip : MonoBehaviour
 {
     [SerializeField] private Audio audioScript;
-    [SerializeField] private Cntrl_Listener listenerScript;
+    //[SerializeField] private Cntrl_Listener listenerScript;
 
     public AudioClip clip_1; // "Use the grip button"
 
     bool tutorialActive = false;
+    bool _grabPaper = false;
     bool usedRightGrip = false;
     bool usedLeftGrip = false;
 
     void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
-        listenerScript.OnUsedRightGrip += HandleUsedRightGrip;
-        listenerScript.OnUsedLeftGrip += HandleUsedLeftGrip;
+        Cntrl_Listener.OnGrabPaperChanged += HandleGrabPaperChange;
+        //listenerScript.OnUsedRightGrip += HandleUsedRightGrip;
+        //listenerScript.OnUsedLeftGrip += HandleUsedLeftGrip;
     }
 
     void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
-        listenerScript.OnUsedRightGrip -= HandleUsedRightGrip;
-        listenerScript.OnUsedLeftGrip -= HandleUsedLeftGrip;
+        Cntrl_Listener.OnGrabPaperChanged -= HandleGrabPaperChange;
+        //listenerScript.OnUsedRightGrip -= HandleUsedRightGrip;
+        //listenerScript.OnUsedLeftGrip -= HandleUsedLeftGrip;
     }
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
@@ -38,6 +41,17 @@ public class FirstLevel_LearnGrip : MonoBehaviour
             tutorialActive = false;
         }
     }
+
+    private void HandleGrabPaperChange(bool isGrabbed) {
+        if (isGrabbed) {
+            this._grabPaper = true;
+            Debug.Log("Paper grabbed!");
+        }
+        else {
+            this._grabPaper = false;
+            Debug.Log("Paper released!");
+        }
+    } 
 
     private void HandleUsedRightGrip(bool isUsed) {
         if(isUsed) {
@@ -63,7 +77,7 @@ public class FirstLevel_LearnGrip : MonoBehaviour
     {
         while(tutorialActive) {
             
-            if (!usedLeftGrip && !usedRightGrip)
+            if (!_grabPaper)
             {
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
                 yield return new WaitForSeconds(10); 

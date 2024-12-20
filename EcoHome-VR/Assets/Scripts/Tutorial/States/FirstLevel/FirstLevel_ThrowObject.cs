@@ -4,7 +4,7 @@ using UnityEngine;
 public class FirstLevel_ThrowObject : MonoBehaviour
 {
     [SerializeField] private Audio audioScript;
-    [SerializeField] private Cntrl_Listener listenerScript;
+    //[SerializeField] private Cntrl_Listener listenerScript;
 
     public AudioClip clip_1;
 
@@ -14,14 +14,14 @@ public class FirstLevel_ThrowObject : MonoBehaviour
     void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
-        listenerScript.OnGrabPaperChanged += HandleGrabPaperChange;
+        Cntrl_Listener.OnGrabPaperChanged += HandleGrabPaperChange;
         //Cntrl_Listener.OnCorrectObjectHeldStateChanged += HandleCorrectObjectHeldStateChange;
     }
 
     void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
-        listenerScript.OnGrabPaperChanged  -= HandleGrabPaperChange;
+        Cntrl_Listener.OnGrabPaperChanged  -= HandleGrabPaperChange;
         //Cntrl_Listener.OnCorrectObjectHeldStateChanged -= HandleCorrectObjectHeldStateChange;
     }
 
@@ -39,11 +39,11 @@ public class FirstLevel_ThrowObject : MonoBehaviour
 
     private void HandleGrabPaperChange(bool isGrabbed) {
         if (isGrabbed) {
-            _grabPaper = true;
+            this._grabPaper = true;
             Debug.Log("Paper grabbed!");
         }
         else {
-            _grabPaper = false;
+            this._grabPaper = false;
             Debug.Log("Paper released!");
         }
     }
@@ -57,8 +57,10 @@ public class FirstLevel_ThrowObject : MonoBehaviour
          */
 
         while (tutorialActive) {
+            Debug.Log("_grapPaper: " + this._grabPaper);
+            Debug.Log("_globalScoreCounter: " + Player.globalScoreCounter);
             if (!_grabPaper && Player.globalScoreCounter == 0) {
-                Debug.Log("State: TableState: not holding");
+                Debug.Log("ThrowObject: not holding");
                 yield return new WaitForSeconds(10); 
                 TutoManager.Instance.UpdateTutorialState(TutorialState.TableState);
             }
@@ -70,9 +72,9 @@ public class FirstLevel_ThrowObject : MonoBehaviour
                     break;
                 }
                 else {
-                    Debug.Log("holding the paper");
+                    Debug.Log("ThrowObject: holding the paper");
                     audioScript.PlayAudioAfterDelay(clip_1, 1);
-                    yield return new WaitForSeconds(5);
+                    yield return new WaitForSeconds(10);
                 }
             }
         }

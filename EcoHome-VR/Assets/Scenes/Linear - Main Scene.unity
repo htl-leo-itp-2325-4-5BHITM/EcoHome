@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5706,7 +5706,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioScript: {fileID: 509545760}
-  listenerScript: {fileID: 509545757}
   clip_1: {fileID: 8300000, guid: a8b0b36dea819ef4ca77b895e66d85a6, type: 3}
 --- !u!114 &509545757
 MonoBehaviour:
@@ -5839,7 +5838,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioScript: {fileID: 509545760}
-  listenerScript: {fileID: 509545757}
   clip_1: {fileID: 8300000, guid: 49f85eefb77121d4681a4278ff7fd033, type: 3}
 --- !u!114 &509545766
 MonoBehaviour:
@@ -11876,7 +11874,7 @@ PrefabInstance:
     - target: {fileID: 6211445279370861862, guid: d63286cc6a7ab16408a4274c5fe72741,
         type: 3}
       propertyPath: m_Name
-      value: Trash Paper
+      value: Trash Paper Tutorial
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d63286cc6a7ab16408a4274c5fe72741, type: 3}

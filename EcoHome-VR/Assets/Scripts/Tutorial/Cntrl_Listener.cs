@@ -42,7 +42,7 @@ public class Cntrl_Listener : MonoBehaviour
 
     // observable variable for grabbing the paper
     public bool _grabPaper;
-    public event Action<bool> OnGrabPaperChanged;
+    public static event Action<bool> OnGrabPaperChanged;
 
     public bool GrabPaper 
     {
@@ -63,6 +63,30 @@ public class Cntrl_Listener : MonoBehaviour
     public Transform leftControllerTransform;
     public Transform rightControllerTransform;
 
+    //[SerializeField] private TrashbinCollider trashbincollider;
+    static bool _objectDestroyed = false;
+
+    void OnEnable()
+    {
+        TrashbinCollider.OnObjectDestroyed += HandleObjectDestroyed;
+    }
+
+    void OnDisable()
+    {
+        TrashbinCollider.OnObjectDestroyed -= HandleObjectDestroyed;
+    }
+
+    private void HandleObjectDestroyed(bool isDestroyed) {
+        if (isDestroyed) {
+            _objectDestroyed = true;
+            //StartCoroutine(HandleObjectGrab());
+        }
+        else {
+            _objectDestroyed = false;
+        }
+        Debug.Log("Subscribe objectDestroyed = "  + _objectDestroyed);
+    }
+
     void Start()
     {
         _inputData = GetComponent<InputData>();
@@ -78,7 +102,11 @@ public class Cntrl_Listener : MonoBehaviour
     {
         UpdateStickUsage();
         UpdateGripStatus();
-        HandleObjectGrab();
+
+        if (!_objectDestroyed) {
+            Debug.Log("Object NOT Destroyed");
+            HandleObjectGrab();
+        }
     }
 
     private void UpdateStickUsage()
@@ -107,13 +135,8 @@ public class Cntrl_Listener : MonoBehaviour
             if (leftGripPressed)
             {
                 UsedLeftGrip = leftGripPressed;
-                GrabPaper = leftGripPressed;
+                //GrabPaper = leftGripPressed;
             }
-        }
-        else
-        {
-            UsedLeftGrip = false;
-            GrabPaper = false;
         }
 
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool leftTriggerPressed))
@@ -121,7 +144,7 @@ public class Cntrl_Listener : MonoBehaviour
             if (leftTriggerPressed)
             {
                 UsedLeftGrip = leftTriggerPressed;
-                GrabPaper = leftTriggerPressed;
+                //GrabPaper = leftTriggerPressed;
             }
         }
 
@@ -130,7 +153,7 @@ public class Cntrl_Listener : MonoBehaviour
             if (rightGripPressed)
             {
                 UsedRightGrip = rightGripPressed;
-                GrabPaper = rightGripPressed;
+                //GrabPaper = rightGripPressed;
             }
         }
 
@@ -139,7 +162,7 @@ public class Cntrl_Listener : MonoBehaviour
             if (rightTriggerPressed)
             {
                 UsedRightGrip = rightTriggerPressed;
-                GrabPaper = rightTriggerPressed;
+                //GrabPaper = rightTriggerPressed;
             }
         }
     }

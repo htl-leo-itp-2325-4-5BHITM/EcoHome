@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,21 @@ public class TrashbinCollider : MonoBehaviour
     public AudioClip clip_1;
     public AudioClip clip_2;
 
+    public bool _objectDestroyed = false;
+    public static event Action<bool> OnObjectDestroyed;
+    public bool ObjectDestroyed
+    {
+        get => _objectDestroyed;
+        set 
+        {
+            if (_objectDestroyed != value)
+            {
+                _objectDestroyed = value;
+                OnObjectDestroyed?.Invoke(_objectDestroyed);
+            }
+        }
+    }
+
     // particle system
     [SerializeField] ParticleSystem paperParticle; 
     [SerializeField] ItemSpawner itemSpawner;
@@ -44,6 +60,8 @@ public class TrashbinCollider : MonoBehaviour
             Player.localScoreCounter += 1;
             Player.globalScoreCounter += 1;
             Player.displayScoreCounter += 1;
+
+            ObjectDestroyed = true;
 
             audioPlayer.PlayOneShot(clip_1);
             paperParticle.Play();
