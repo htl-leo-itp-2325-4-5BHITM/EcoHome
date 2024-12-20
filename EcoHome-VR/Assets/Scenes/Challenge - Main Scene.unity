@@ -1479,7 +1479,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7cacff9ef396c4496babaa2136ecd910,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.75
+      value: -0.822
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7cacff9ef396c4496babaa2136ecd910,
         type: 3}
@@ -1489,7 +1489,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7cacff9ef396c4496babaa2136ecd910,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.75
+      value: 8.715
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7cacff9ef396c4496babaa2136ecd910,
         type: 3}
@@ -1744,7 +1744,7 @@ PrefabInstance:
     - target: {fileID: 8816865110228993571, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.72049963
+      value: -0.454
       objectReference: {fileID: 0}
     - target: {fileID: 8816865110228993571, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
         type: 3}
@@ -1754,7 +1754,7 @@ PrefabInstance:
     - target: {fileID: 8816865110228993571, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.05
+      value: 6.532
       objectReference: {fileID: 0}
     - target: {fileID: 8816865110228993571, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
         type: 3}
@@ -3327,7 +3327,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299662906}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 1.468}
+  m_LocalPosition: {x: 0, y: 0, z: 1.045}
   m_LocalScale: {x: 0.001, y: 0.00225, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3336,7 +3336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.781, y: -0.499}
+  m_AnchoredPosition: {x: -0.408, y: -0.468}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299662908
@@ -3444,8 +3444,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 100, z: 49.242092}
-  m_Center: {x: 7.4781164e-14, y: 0, z: -25.378645}
+  m_Size: {x: 100, y: 100, z: 189.72144}
+  m_Center: {x: 5.0727353e-14, y: 0, z: -27.03161}
 --- !u!54 &299662912
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13086,7 +13086,7 @@ PrefabInstance:
     - target: {fileID: 8816865110228993571, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.875
+      value: 6.596
       objectReference: {fileID: 0}
     - target: {fileID: 8816865110228993571, guid: 6b9b4285a2d1d034c9daec8e27ed278c,
         type: 3}
