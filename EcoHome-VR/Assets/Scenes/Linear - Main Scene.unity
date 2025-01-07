@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12372,6 +12372,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5966738297531798903, guid: a43645dd922e35c4398b07ca0b1c0c36,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6aab362bdb4b5a469b4577f617f8c83, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a43645dd922e35c4398b07ca0b1c0c36, type: 3}
 --- !u!4 &1107682037 stripped
@@ -23091,7 +23096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1582778677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30816,6 +30821,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bilderrahmen1
       objectReference: {fileID: 0}
+    - target: {fileID: 8862644958750564841, guid: 5534d0ecd57b6c3498fe087100234607,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca1c4276cb68e474f9715d975af8fd34, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5534d0ecd57b6c3498fe087100234607, type: 3}
 --- !u!4 &1906910207682765794
@@ -36143,6 +36153,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5966738297531798903, guid: a43645dd922e35c4398b07ca0b1c0c36,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 430208f477cf0bb42a1b10c23e9624f2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a43645dd922e35c4398b07ca0b1c0c36, type: 3}
 --- !u!1 &7051617647368000110
