@@ -7,8 +7,13 @@ public class Cntrl_Listener : MonoBehaviour
 {
     public InputData _inputData;
 
+    //variables for using the movement sticks
+    //the value of these variables changes only once to true, so it doesnt need an observable pattern
     public bool _leftStickUsed = false;
     public bool _rightStickUsed = false;
+
+    //observerd variables for using the grip or trigger button for grabbing an object
+    //values: false or true
 
     public bool _usedLeftGrip = false;
     public event Action<bool> OnUsedLeftGrip;
@@ -40,73 +45,45 @@ public class Cntrl_Listener : MonoBehaviour
         }
     }
 
-    // observable variable for grabbing the paper
-    public bool _grabPaper;
-    public static event Action<bool> OnGrabPaperChanged;
-
-    public bool GrabPaper 
+    public bool _usedRightTrigger = false;
+    public event Action<bool> OnUsedRightTrigger;
+    public bool UsedRightTrigger
     {
-        get => _grabPaper;
-        set 
+        get => _usedRightTrigger;
+        set
         {
-            if (_grabPaper != value)
+            if (_usedRightTrigger != value)
             {
-                _grabPaper = value;
-                OnGrabPaperChanged?.Invoke(_grabPaper);
+                _usedRightTrigger = value;
+                OnUsedRightTrigger?.Invoke(_usedRightTrigger);
             }
         }
     }
-
-    private GameObject heldObject = null;  // To store the object being held
-
-    // References to controller transforms (Assign in Unity Inspector)
-    public Transform leftControllerTransform;
-    public Transform rightControllerTransform;
-
-    //[SerializeField] private TrashbinCollider trashbincollider;
-    static bool _objectDestroyed = false;
-
-    void OnEnable()
+    
+    public bool _usedLeftTrigger = false;
+    public event Action<bool> OnUsedLeftTrigger;
+    public bool UsedLeftTrigger
     {
-        TrashbinCollider.OnObjectDestroyed += HandleObjectDestroyed;
-    }
-
-    void OnDisable()
-    {
-        TrashbinCollider.OnObjectDestroyed -= HandleObjectDestroyed;
-    }
-
-    private void HandleObjectDestroyed(bool isDestroyed) {
-        if (isDestroyed) {
-            _objectDestroyed = true;
-            //StartCoroutine(HandleObjectGrab());
+        get => _usedLeftTrigger;
+        set
+        {
+            if (_usedLeftTrigger != value)
+            {
+                _usedLeftTrigger = value;
+                OnUsedLeftTrigger?.Invoke(_usedLeftTrigger);
+            }
         }
-        else {
-            _objectDestroyed = false;
-        }
-        Debug.Log("Subscribe objectDestroyed = "  + _objectDestroyed);
     }
-
+    
     void Start()
     {
         _inputData = GetComponent<InputData>();
-
-        // Ensure these are assigned either in the Inspector or dynamically
-        if (leftControllerTransform == null || rightControllerTransform == null)
-        {
-            Debug.LogError("Controller transforms are not assigned!");
-        }
     }
 
     void Update()
     {
         UpdateStickUsage();
         UpdateGripStatus();
-
-        if (!_objectDestroyed) {
-            Debug.Log("Object NOT Destroyed");
-            HandleObjectGrab();
-        }
     }
 
     private void UpdateStickUsage()
@@ -134,8 +111,10 @@ public class Cntrl_Listener : MonoBehaviour
         {
             if (leftGripPressed)
             {
-                UsedLeftGrip = leftGripPressed;
-                //GrabPaper = leftGripPressed;
+                UsedLeftGrip = true;
+            }
+            else {
+                UsedLeftGrip = false;
             }
         }
 
@@ -143,8 +122,10 @@ public class Cntrl_Listener : MonoBehaviour
         {
             if (leftTriggerPressed)
             {
-                UsedLeftGrip = leftTriggerPressed;
-                //GrabPaper = leftTriggerPressed;
+                UsedLeftTrigger = true;
+            }
+            else {
+                UsedLeftTrigger = false;
             }
         }
 
@@ -152,8 +133,10 @@ public class Cntrl_Listener : MonoBehaviour
         {
             if (rightGripPressed)
             {
-                UsedRightGrip = rightGripPressed;
-                //GrabPaper = rightGripPressed;
+                UsedRightGrip = true;
+            }
+            else {
+                UsedRightGrip = false;
             }
         }
 
@@ -161,69 +144,11 @@ public class Cntrl_Listener : MonoBehaviour
         {
             if (rightTriggerPressed)
             {
-                UsedRightGrip = rightTriggerPressed;
-                //GrabPaper = rightTriggerPressed;
+                UsedRightTrigger = true;
             }
-        }
-    }
-
-    private void HandleObjectGrab()
-    {
-        String tutorialTag = GameObject.Find("Trash Paper Tutorial").tag;
-        // Handle left controller grab
-        if (UsedLeftGrip)
-        {
-            TryGrabObject(leftControllerTransform, tutorialTag);
-        }
-        else if (heldObject != null && heldObject.CompareTag(tutorialTag))
-        {
-            ReleaseObject();
-        }
-
-        // Handle right controller grab
-        if (UsedRightGrip)
-        {
-            TryGrabObject(rightControllerTransform, tutorialTag);
-        }
-        else if (heldObject != null && heldObject.CompareTag(tutorialTag))
-        {
-            ReleaseObject();
-        }
-    }
-
-    private void TryGrabObject(Transform controllerTransform, string tag)
-    {
-        RaycastHit hit;
-        // Cast a ray from the controller's position to detect grabbable objects
-        if (Physics.Raycast(controllerTransform.position, controllerTransform.forward, out hit, 2f))
-        {
-            // If the hit object is grabbable
-            if (hit.collider.CompareTag(tag))
-            {
-                heldObject = hit.collider.gameObject;
-                //heldObject.transform.SetParent(controllerTransform); // Attach to controller
-                //heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
-                
-                // Log the name of the object being held
-                Debug.Log("Holding Object: " + heldObject.name);
-                
-                this.GrabPaper = true; // Update grab state
+            else {
+                UsedRightTrigger = false;
             }
-        }
-    }
-
-    private void ReleaseObject()
-    {
-        if (heldObject != null)
-        {
-            // Log the name of the object being released
-            Debug.Log("Released Object: " + heldObject.name);
-            
-            // Detach from controller
-            heldObject.transform.SetParent(null);
-            heldObject.GetComponent<Rigidbody>().isKinematic = false; // Re-enable physics
-            heldObject = null; // Clear reference to held object
-            this.GrabPaper = false; // Reset grab state
         }
     }
 }

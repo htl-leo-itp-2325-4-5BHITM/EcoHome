@@ -5,29 +5,28 @@ using UnityEngine;
 public class FirstLevel_LearnGrip : MonoBehaviour
 {
     [SerializeField] private Audio audioScript;
-    //[SerializeField] private Cntrl_Listener listenerScript;
 
     public AudioClip clip_1; // "Use the grip button"
+    public AudioClip clip_2; // "Throw that shit"
 
     bool tutorialActive = false;
-    bool _grabPaper = false;
-    bool usedRightGrip = false;
-    bool usedLeftGrip = false;
+    bool usedGripButton = false;
+    bool usedTriggerButton = false;
+    bool holdingFirstRoomPaper = false;
+    bool destroyedFirstRoomPaper = false;
 
     void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
-        Cntrl_Listener.OnGrabPaperChanged += HandleGrabPaperChange;
-        //listenerScript.OnUsedRightGrip += HandleUsedRightGrip;
-        //listenerScript.OnUsedLeftGrip += HandleUsedLeftGrip;
+        Object_Listener.OnFirstRoomPaperIsBeingHeld_Changed += HandleFirstRoomPaperBeingHeld;
+        Object_Listener.OnFirstRoomPaperIsDestroyed += HandleFirstRoomPaperIsDestroyed;
     }
 
     void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
-        Cntrl_Listener.OnGrabPaperChanged -= HandleGrabPaperChange;
-        //listenerScript.OnUsedRightGrip -= HandleUsedRightGrip;
-        //listenerScript.OnUsedLeftGrip -= HandleUsedLeftGrip;
+        Object_Listener.OnFirstRoomPaperIsBeingHeld_Changed -= HandleFirstRoomPaperBeingHeld;
+        Object_Listener.OnFirstRoomPaperIsDestroyed -= HandleFirstRoomPaperIsDestroyed;
     }
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
@@ -42,50 +41,48 @@ public class FirstLevel_LearnGrip : MonoBehaviour
         }
     }
 
-    private void HandleGrabPaperChange(bool isGrabbed) {
-        if (isGrabbed) {
-            this._grabPaper = true;
-            Debug.Log("Paper grabbed!");
+    private void HandleFirstRoomPaperBeingHeld(bool isHolding)
+    {
+        if (isHolding) {
+            this.holdingFirstRoomPaper = true;
         }
         else {
-            this._grabPaper = false;
-            Debug.Log("Paper released!");
+            this.holdingFirstRoomPaper = false;
         }
-    } 
-
-    private void HandleUsedRightGrip(bool isUsed) {
-        if(isUsed) {
-            usedRightGrip = isUsed;
-        }
-        else {
-            usedRightGrip = false;
-        }
-        Debug.Log("Subscribe usedRightGrip = " + usedRightGrip);
     }
 
-    private void HandleUsedLeftGrip(bool isUsed) {
-        if (isUsed) {
-            usedLeftGrip = isUsed;
+    private void HandleFirstRoomPaperIsDestroyed(bool isDestroyed) 
+    {
+        if (isDestroyed) {
+            this.destroyedFirstRoomPaper = true;
         }
         else {
-            usedLeftGrip = false;
+            this.destroyedFirstRoomPaper = false;
         }
-        Debug.Log("Subscribe usedLeftGrip = " + usedLeftGrip);
     }
 
+    //TODO: Combine FirstLevel_ThrowObject.cs and FirstLevel_LearnGrip.cs in on file
+    //the reason is that the player basically uses the grip/trigger btn for both of the states/scripts
+
+    //info: code below needs testing
     IEnumerator ManageGripTutorial()
     {
         while(tutorialActive) {
-            
-            if (!_grabPaper)
-            {
+
+            if (!this.holdingFirstRoomPaper && !this.destroyedFirstRoomPaper) {
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
-                yield return new WaitForSeconds(10); 
+                yield return new WaitForSeconds(10);
             }
-            else 
-            {
-                Debug.Log("State: ThrowObject");
-                TutoManager.Instance.UpdateTutorialState(TutorialState.ThrowObject); // Proceed to the next State 
+            else {
+                //check if the trash paper is destroyed
+                if (!this.destroyedFirstRoomPaper) {
+                    audioScript.PlayAudioAfterDelay(clip_2, 2);
+                    yield return new WaitForSeconds(12);
+                }
+                else {
+                    TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
+                    break;
+                }
             }
         }
         

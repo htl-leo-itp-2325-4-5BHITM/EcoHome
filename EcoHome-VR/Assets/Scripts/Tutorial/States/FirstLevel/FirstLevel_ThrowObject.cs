@@ -14,14 +14,14 @@ public class FirstLevel_ThrowObject : MonoBehaviour
     void OnEnable()
     {
         TutoManager.OnTutorialStateChanged += TutoManager_OnTutorialStateChanged;
-        Cntrl_Listener.OnGrabPaperChanged += HandleGrabPaperChange;
+       // Cntrl_Listener.OnGrabPaperChanged += HandleGrabPaperChange;
         //Cntrl_Listener.OnCorrectObjectHeldStateChanged += HandleCorrectObjectHeldStateChange;
     }
 
     void OnDisable()
     {
         TutoManager.OnTutorialStateChanged -= TutoManager_OnTutorialStateChanged;
-        Cntrl_Listener.OnGrabPaperChanged  -= HandleGrabPaperChange;
+      //  Cntrl_Listener.OnGrabPaperChanged  -= HandleGrabPaperChange;
         //Cntrl_Listener.OnCorrectObjectHeldStateChanged -= HandleCorrectObjectHeldStateChange;
     }
 
@@ -57,22 +57,18 @@ public class FirstLevel_ThrowObject : MonoBehaviour
          */
 
         while (tutorialActive) {
-            Debug.Log("_grapPaper: " + this._grabPaper);
-            Debug.Log("_globalScoreCounter: " + Player.globalScoreCounter);
+          
             if (!_grabPaper && Player.globalScoreCounter == 0) {
-                Debug.Log("ThrowObject: not holding");
                 yield return new WaitForSeconds(10); 
                 TutoManager.Instance.UpdateTutorialState(TutorialState.TableState);
             }
             else {
                 if (Player.globalScoreCounter > 0) 
                 {
-                    Debug.Log("State: EndOfGame: Player scored");
                     TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
                     break;
                 }
                 else {
-                    Debug.Log("ThrowObject: holding the paper");
                     audioScript.PlayAudioAfterDelay(clip_1, 1);
                     yield return new WaitForSeconds(10);
                 }
