@@ -92,18 +92,21 @@ public class Object_Listener : MonoBehaviour
     //using the grib button (AimingDetections.cs)
     private void HandleFirstRoomPaperBeingHeld(bool isHolding)
     {
-        string tutorialTag = GameObject.Find("Trash Paper Tutorial").tag;
-        if (isHolding)
-        {
-            if (TryGrabObject(leftControllerTransform, tutorialTag) || TryGrabObject(rightControllerTransform, tutorialTag))
+        if (GameObject.Find("Trash Paper Tutorial").tag != "") {
+            string tutorialTag = GameObject.Find("Trash Paper Tutorial").tag;
+
+            if (isHolding)
             {
-                this.FirstRoomPaperisBeingHeld = true;
+                if (TryGrabObject(leftControllerTransform, tutorialTag) || TryGrabObject(rightControllerTransform, tutorialTag))
+                {
+                    this.FirstRoomPaperisBeingHeld = true;
+                }
             }
-        }
-        else if (heldObject != null && heldObject.CompareTag(tutorialTag))
-        {
-            ReleaseObject();
-        }
+            else if (heldObject != null && heldObject.CompareTag(tutorialTag))
+            {
+                ReleaseObject();
+            }
+        }  
     }
 
     //This function checks if the player is holding a specific object

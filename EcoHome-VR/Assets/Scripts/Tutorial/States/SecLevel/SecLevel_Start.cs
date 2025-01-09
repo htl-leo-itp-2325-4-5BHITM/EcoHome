@@ -13,7 +13,6 @@ public class SecLevel_Start : MonoBehaviour
     public AudioClip clip_1;
 
     bool tutorialActive = false;
-    //bool toBePlayed = true;
     public static int localScoreCounter = 0;
 
     void OnEnable() 
@@ -50,21 +49,6 @@ public class SecLevel_Start : MonoBehaviour
             }
 
             yield return new WaitForSeconds(60); 
-            /*
-            if (Player.globalScoreCounter <= 4) {
-                if (toBePlayed)
-                {
-                    audioScript.PlayAudioAfterDelay(clip_1, 1);
-                    toBePlayed = false;
-                }
-                yield return new WaitForSeconds(5); 
-            }
-            else {      
-                Debug.Log("State: SecLevel_End");
-                TutoManager.Instance.UpdateTutorialState(TutorialState.SecLevel_End);
-                break;          
-            }
-            */
         } 
     }
 }
