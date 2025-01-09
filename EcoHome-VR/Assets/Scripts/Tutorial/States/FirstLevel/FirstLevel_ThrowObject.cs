@@ -8,8 +8,8 @@ public class FirstLevel_ThrowObject : MonoBehaviour
 
     public AudioClip clip_1;
 
-    bool tutorialActive = false;
-    bool _grabPaper = false;
+    //bool tutorialActive = false;
+    //bool _grabPaper = false;
 
     void OnEnable()
     {
@@ -29,33 +29,28 @@ public class FirstLevel_ThrowObject : MonoBehaviour
     {
         if (state == TutorialState.ThrowObject)
         {
-            tutorialActive = true;
+            //tutorialActive = true;
             StartCoroutine(ManageThrowTutorial());
         }
         else {
-            tutorialActive = false;
+            //tutorialActive = false;
         }
     }
 
     private void HandleGrabPaperChange(bool isGrabbed) {
-        if (isGrabbed) {
-            this._grabPaper = true;
-            Debug.Log("Paper grabbed!");
-        }
-        else {
-            this._grabPaper = false;
-            Debug.Log("Paper released!");
-        }
+    //code
     }
 
     IEnumerator ManageThrowTutorial()
     {
+        Debug.Log("Do Nothing in ManageThrowTutorial");
+        yield return new WaitForSeconds(60);
         /*
          * - check which object the player is currenty holding
             => none object: FloorState
             => holds object and throws into the bin: EndState 
          */
-
+        /*
         while (tutorialActive) {
           
             if (!_grabPaper && Player.globalScoreCounter == 0) {
@@ -74,5 +69,7 @@ public class FirstLevel_ThrowObject : MonoBehaviour
                 }
             }
         }
+        */
     }
+    
 }

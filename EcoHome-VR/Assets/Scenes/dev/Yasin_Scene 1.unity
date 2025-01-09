@@ -5776,6 +5776,7 @@ GameObject:
   - component: {fileID: 509545775}
   - component: {fileID: 509545774}
   - component: {fileID: 509545773}
+  - component: {fileID: 509545778}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5811,7 +5812,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioScript: {fileID: 509545760}
-  listenerScript: {fileID: 509545757}
   clip_1: {fileID: 8300000, guid: a8b0b36dea819ef4ca77b895e66d85a6, type: 3}
 --- !u!114 &509545757
 MonoBehaviour:
@@ -5830,9 +5830,8 @@ MonoBehaviour:
   _rightStickUsed: 0
   _usedLeftGrip: 0
   _usedRightGrip: 0
-  _grabPaper: 1
-  leftControllerTransform: {fileID: 1581955621}
-  rightControllerTransform: {fileID: 1884824236}
+  _usedRightTrigger: 0
+  _usedLeftTrigger: 0
 --- !u!114 &509545758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5944,8 +5943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioScript: {fileID: 509545760}
-  listenerScript: {fileID: 509545757}
   clip_1: {fileID: 8300000, guid: 49f85eefb77121d4681a4278ff7fd033, type: 3}
+  clip_2: {fileID: 8300000, guid: a8b0b36dea819ef4ca77b895e66d85a6, type: 3}
 --- !u!114 &509545766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6126,6 +6125,23 @@ MonoBehaviour:
   audioScript: {fileID: 509545760}
   playerScript: {fileID: 509545763}
   clip_1: {fileID: 8300000, guid: 23d4ea9490446f8499a787f314d4aef5, type: 3}
+--- !u!114 &509545778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509545754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81204905d15294ca891f9cfed40c9c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftControllerTransform: {fileID: 1581955621}
+  rightControllerTransform: {fileID: 1884824236}
+  cntrl_Listener: {fileID: 509545757}
+  _firstRoomPaperIsBeingHeld: 0
+  _firstRoomPaperIsDestroyed: 0
 --- !u!1 &521914203
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class SecLevel_Start : MonoBehaviour
     public AudioClip clip_1;
 
     bool tutorialActive = false;
-    bool toBePlayed = true;
+    //bool toBePlayed = true;
     public static int localScoreCounter = 0;
 
     void OnEnable() 

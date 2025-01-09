@@ -43,7 +43,6 @@ public class FirstLevel_LearnRotation : MonoBehaviour
             }
             else
             {
-                Debug.Log("State: TableState");
                 break;
             }
         }
