@@ -45,7 +45,6 @@ public class FirstLevel_LearnMove : MonoBehaviour
             }
             else
             {
-                Debug.Log("State: LearnRotation");
                 break; // Exit loop if the correct action is performed     
             }
         }

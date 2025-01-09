@@ -10,8 +10,6 @@ public class FirstLevel_LearnGrip : MonoBehaviour
     public AudioClip clip_2; // "Throw that shit"
 
     bool tutorialActive = false;
-    bool usedGripButton = false;
-    bool usedTriggerButton = false;
     bool holdingFirstRoomPaper = false;
     bool destroyedFirstRoomPaper = false;
 
@@ -69,6 +67,8 @@ public class FirstLevel_LearnGrip : MonoBehaviour
     {
         while(tutorialActive) {
 
+            Debug.Log("v_holdingFirstRoomPaper: " + this.holdingFirstRoomPaper);
+            Debug.Log("v_destroyedFirstRoomPaper: " + this.destroyedFirstRoomPaper);
             if (!this.holdingFirstRoomPaper && !this.destroyedFirstRoomPaper) {
                 audioScript.PlayAudioAfterDelay(clip_1, 1);
                 yield return new WaitForSeconds(10);

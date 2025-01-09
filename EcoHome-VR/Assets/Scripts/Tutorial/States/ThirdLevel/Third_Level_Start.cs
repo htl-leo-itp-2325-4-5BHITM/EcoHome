@@ -11,7 +11,7 @@ public class Third_Level_Start : MonoBehaviour
     // Audio Clips
     public AudioClip clip_1;
 
-    bool tutorialActive = false;
+    //bool tutorialActive = false;
     public static int localScoreCounter = 0;
 
     void OnEnable() 
@@ -29,12 +29,14 @@ public class Third_Level_Start : MonoBehaviour
         Debug.Log("state in thirdroom = " + state);
         if (state == TutorialState.Third_Level_Start)
         {
-            tutorialActive = true;
+            //tutorialActive = true;
             StartCoroutine(ManageThirdLevelStart());
         }
+        /*
         else {
             tutorialActive = false;
         }
+        */
     }
 
     IEnumerator ManageThirdLevelStart()
