@@ -60,12 +60,6 @@ public class TutoManager : MonoBehaviour
             case TutorialState.TableState:
                 this.State = TutorialState.TableState;
                 break;
-            case TutorialState.ThrowObject:
-                this.State = TutorialState.ThrowObject;
-                break;
-            case TutorialState.FloorState: //komischer State
-                this.State = TutorialState.FloorState;
-                break;
             case TutorialState.EndOfGame:
                 this.State = TutorialState.EndOfGame;
                 break;
@@ -118,8 +112,6 @@ public enum TutorialState {
     LearnMovement,
     LearnRotation,
     TableState,
-    ThrowObject,
-    FloorState,
     EndOfGame,
     SecLevel_Start,
     SecLevel_End,

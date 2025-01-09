@@ -7,6 +7,7 @@ public class FirstLevel_LearnMove : MonoBehaviour
     [SerializeField] private Cntrl_Listener listenerScript;
 
     public AudioClip clip_1; // "Use the left stick"
+    public AudioClip clip_congrats;
 
     bool tutorialActive = false;
 
@@ -48,6 +49,7 @@ public class FirstLevel_LearnMove : MonoBehaviour
                 break; // Exit loop if the correct action is performed     
             }
         }
+        audioScript.PlayAudioAfterDelay(clip_congrats, 1); // Play audio
         TutoManager.Instance.UpdateTutorialState(TutorialState.LearnRotation);
     }
 }

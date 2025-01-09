@@ -66,7 +66,6 @@ public class FirstLevel_LearnGrip : MonoBehaviour
     IEnumerator ManageGripTutorial()
     {
         while(tutorialActive) {
-
             Debug.Log("v_holdingFirstRoomPaper: " + this.holdingFirstRoomPaper);
             Debug.Log("v_destroyedFirstRoomPaper: " + this.destroyedFirstRoomPaper);
             if (!this.holdingFirstRoomPaper && !this.destroyedFirstRoomPaper) {

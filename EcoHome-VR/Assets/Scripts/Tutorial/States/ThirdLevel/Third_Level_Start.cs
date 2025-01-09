@@ -26,7 +26,6 @@ public class Third_Level_Start : MonoBehaviour
 
     private void TutoManager_OnTutorialStateChanged(TutorialState state)
     {
-        Debug.Log("state in thirdroom = " + state);
         if (state == TutorialState.Third_Level_Start)
         {
             //tutorialActive = true;

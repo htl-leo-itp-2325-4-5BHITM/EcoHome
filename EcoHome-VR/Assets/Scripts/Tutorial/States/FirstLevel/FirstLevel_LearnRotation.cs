@@ -7,6 +7,7 @@ public class FirstLevel_LearnRotation : MonoBehaviour
     [SerializeField] private Cntrl_Listener listenerScript;
 
     public AudioClip clip_1; // "Use the right stick"
+    public AudioClip clip_congrats;
 
     bool tutorialActive = false;
 
@@ -46,6 +47,7 @@ public class FirstLevel_LearnRotation : MonoBehaviour
                 break;
             }
         }
+        audioScript.PlayAudioAfterDelay(clip_congrats, 1); // Play audio
         TutoManager.Instance.UpdateTutorialState(TutorialState.TableState); // Proceed to the next State
     }
 }
