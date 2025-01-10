@@ -33,6 +33,7 @@ TagManager:
   - FourthLevel_Door_Sensor
   - FifthLevel_Door_Sensor
   - SixthLevel_Door_Sensor
+  - FloorSensor
   layers:
   - Default
   - TransparentFX
