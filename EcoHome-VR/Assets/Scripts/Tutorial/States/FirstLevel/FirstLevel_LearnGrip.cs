@@ -66,17 +66,15 @@ public class FirstLevel_LearnGrip : MonoBehaviour
     IEnumerator ManageGripTutorial()
     {
         while(tutorialActive) {
-            Debug.Log("v_holdingFirstRoomPaper: " + this.holdingFirstRoomPaper);
-            Debug.Log("v_destroyedFirstRoomPaper: " + this.destroyedFirstRoomPaper);
             if (!this.holdingFirstRoomPaper && !this.destroyedFirstRoomPaper) {
-                audioScript.PlayAudioAfterDelay(clip_1, 1);
-                yield return new WaitForSeconds(10);
+                audioScript.PlayAudioAfterDelay(clip_1, 2);
+                yield return new WaitForSeconds(25);
             }
             else {
                 //check if the trash paper is destroyed
                 if (!this.destroyedFirstRoomPaper) {
                     audioScript.PlayAudioAfterDelay(clip_2, 2);
-                    yield return new WaitForSeconds(12);
+                    yield return new WaitForSeconds(25);
                 }
                 else {
                     TutoManager.Instance.UpdateTutorialState(TutorialState.EndOfGame);
