@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731689, g: 0.13414702, b: 0.1210784, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4976,7 +4976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paperObject: {fileID: 1043289063}
-  resetPosition: {x: 0, y: 0, z: 1.464}
+  resetPosition: {x: 0, y: 1, z: 1.8}
 --- !u!65 &438127431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11954,7 +11954,7 @@ PrefabInstance:
     - target: {fileID: 3150703046556357561, guid: d63286cc6a7ab16408a4274c5fe72741,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.464
+      value: 1.496
       objectReference: {fileID: 0}
     - target: {fileID: 3150703046556357561, guid: d63286cc6a7ab16408a4274c5fe72741,
         type: 3}

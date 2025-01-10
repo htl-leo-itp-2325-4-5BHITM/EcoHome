@@ -17,6 +17,13 @@ public class FloorTrigger : MonoBehaviour
         {
             paperObject.transform.position = resetPosition;
         }
+
+        Rigidbody rb = paperObject.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
     }
 
     private void OnTriggerExit (Collider other)
