@@ -42,7 +42,7 @@ class GameHandler : MonoBehaviour{
     TextMeshProUGUI displayScore;
     private MainMenuInteractor interactor;
     LightSwitcher lightSwitcher ;
-    Networker networker;
+    Networker networker = new Networker();
     System.Random rand = new System.Random();
     private int timeleft = 60;
     private int leftToWin = 3;
@@ -102,10 +102,12 @@ class GameHandler : MonoBehaviour{
         } 
         else PlayerPrefs.SetInt("HighscoreChallenge", finalScore);
 
+        
         PlayerPrefs.Save();
     }
     public void HighscoreServer() {
-        networker.GetData("http://94.16.109.175:8000/");
+        networker.Start();
+
     }
 
     public void UpdateDisplay() {
