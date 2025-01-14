@@ -34,6 +34,8 @@ TagManager:
   - FifthLevel_Door_Sensor
   - SixthLevel_Door_Sensor
   - FloorSensor
+  - PaperTrash_Hold
+  - Hold
   layers:
   - Default
   - TransparentFX
