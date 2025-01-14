@@ -5,18 +5,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;   
+using RandomNameGen;
+
 public class Networker : MonoBehaviour {
     
-    public void saveData(){
-
-        StartCoroutine(MakeRequests());
+    RandomName randomName = new RandomName(new System.Random());
+    System.Random rand = new System.Random();
+    public void saveData(int value){
+        StartCoroutine(MakeRequests(value));
     }
 
-    private IEnumerator MakeRequests() {
+    private IEnumerator MakeRequests(int value) {
     // POST
+    value = value +1 ;
+    string scorevalue = value.ToString();
+    
+    int decider = rand.Next(0, 1);
+
     var dataToPost = new Dictionary<string, string> {
-        { "score", "8" }
+        { "sname", randomName.Generate(decider == 0 ? RandomNameGen.Sex.Male : RandomNameGen.Sex.Female, 0, false) },
+        { "score", scorevalue }
     };
+
+    /*if(decider == 0){
+        dataToPost = new Dictionary<string, string> {
+        { "sname", randomName.Generate(RandomNameGen.Sex.Male, 0, false) },
+        { "score", scorevalue }
+        };
+    }else{
+        dataToPost = new Dictionary<string, string> {
+            { "sname", randomName.Generate(RandomNameGen.Sex.Female, 0, false) },
+            { "score", scorevalue }
+        };
+    }*/
+    
+    Debug.Log(dataToPost);
     var postRequest = CreateRequest("http://127.0.0.1/database_handler.php", RequestType.POST, dataToPost);
     yield return postRequest.SendWebRequest();
 
@@ -45,7 +68,7 @@ public class Networker : MonoBehaviour {
         {
            request.SetRequestHeader(key, value);
         }
-    
+
 }
 public enum RequestType {
     GET = 0,

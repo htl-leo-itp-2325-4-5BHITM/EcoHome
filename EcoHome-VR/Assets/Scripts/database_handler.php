@@ -6,6 +6,7 @@ $password= "EcoHome";
 $dbname = "EcoHome";
 
 // Get POST data 
+$sname= $_POST['name'] ?? null;
 $score = $_POST['score'] ?? null;
 
 if ($score) {
@@ -19,7 +20,7 @@ if ($score) {
         }
 
         // Insert into table
-        $stmt = $conn->prepare("INSERT INTO punkte (score) VALUES (?)");
+        $stmt = $conn->prepare("INSERT INTO punkte (sname, score) VALUES (?,?)");
         $stmt->bind_param("si", $score);
 
         if ($stmt->execute()) {

@@ -115,7 +115,7 @@ class GameHandler : MonoBehaviour{
             Debug.LogError("Networker instance not found in the scene.");
         }else{
             Debug.Log("sending");
-            networker.saveData();
+            networker.saveData(Playerchall.displayScoreCounter);
         }
 
     }
