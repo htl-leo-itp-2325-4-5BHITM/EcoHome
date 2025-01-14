@@ -6,47 +6,47 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;   
 public class Networker : MonoBehaviour {
-    public void Start() {
+    
+    public void saveData(){
+
         StartCoroutine(MakeRequests());
     }
 
     private IEnumerator MakeRequests() {
-        // GET
-        var getRequest = CreateRequest("http://94.16.109.175:8000");
-        yield return getRequest.SendWebRequest();
-        var deserializedGetData = JsonUtility.FromJson<Todo>(getRequest.downloadHandler.text);
+    // POST
+    var dataToPost = new Dictionary<string, string> {
+        { "score", "8" }
+    };
+    var postRequest = CreateRequest("http://127.0.0.1/database_handler.php", RequestType.POST, dataToPost);
+    yield return postRequest.SendWebRequest();
 
-        // POST
-        var dataToPost = new PostData(){Hero = "John Wick", PowerLevel = 9001};
-        var postRequest = CreateRequest("http://94.16.109.175:8000", RequestType.POST, dataToPost);
-        yield return postRequest.SendWebRequest();
-        var deserializedPostData = JsonUtility.FromJson<PostResult>(postRequest.downloadHandler.text);
-
-        // Trigger continuation of game flow
+    if (postRequest.result == UnityWebRequest.Result.Success) {
+        Debug.Log("Response: " + postRequest.downloadHandler.text);
+    } else {
+        Debug.LogError("Error: " + postRequest.error);
+    }
     }
 
+    private UnityWebRequest CreateRequest(string path, RequestType type = RequestType.GET, Dictionary<string, string> data = null) {
+        UnityWebRequest request;
 
-    private UnityWebRequest CreateRequest(string path, RequestType type = RequestType.GET, object data = null) {
-        var request = new UnityWebRequest(path, type.ToString());
-
-        if (data != null) {
-            var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(data));
-            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        if (type == RequestType.POST && data != null) {
+            request = UnityWebRequest.Post(path, data);
+        } else {
+            request = new UnityWebRequest(path, type.ToString());
         }
 
         request.downloadHandler = new DownloadHandlerBuffer();
-        request.SetRequestHeader("Content-Type", "application/json");
-
-Debug.Log(request);
+        Debug.Log(request);
         return request;
     }
 
-    private void AttachHeader(UnityWebRequest request,string key,string value)
-    {
-        request.SetRequestHeader(key, value);
-    }
+        private void AttachHeader(UnityWebRequest request,string key,string value)
+        {
+           request.SetRequestHeader(key, value);
+        }
+    
 }
-
 public enum RequestType {
     GET = 0,
     POST = 1,

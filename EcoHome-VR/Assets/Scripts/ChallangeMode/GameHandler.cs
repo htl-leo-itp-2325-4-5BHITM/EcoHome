@@ -42,9 +42,11 @@ class GameHandler : MonoBehaviour{
     TextMeshProUGUI displayScore;
     private MainMenuInteractor interactor;
     LightSwitcher lightSwitcher ;
-    Networker networker = new Networker();
+
+    private Networker networker;
+
     System.Random rand = new System.Random();
-    private int timeleft = 60;
+    private int timeleft = 20;
     private int leftToWin = 3;
 
     void Start(){
@@ -61,15 +63,16 @@ class GameHandler : MonoBehaviour{
         
         StartRepeatAction(() => newRandomEvent(), 5000);
         StartRepeatActionDisplay(() => UpdateDisplay(), 1000);
-        Debug.Log("started Actions");
+        //Debug.Log("started Actions");
         StartCoroutine( "helpMeDaddy");
 
+        networker =  GameObject.Find("networkerObject").GetComponent<Networker>();
 
         displayTime = GameObject.Find("Display Time").GetComponent<TextMeshProUGUI>();
         lightSwitcher = GameObject.Find("Lightswitcher").GetComponent<LightSwitcher>();
         displayScore = GameObject.Find("Display Score").GetComponent<TextMeshProUGUI>();
 
-        Debug.Log("Finished Init");
+        //Debug.Log("Finished Init");
     }
 
     async void Update(){
@@ -106,7 +109,14 @@ class GameHandler : MonoBehaviour{
         PlayerPrefs.Save();
     }
     public void HighscoreServer() {
-        networker.Start();
+        Debug.Log("initalize sending");
+        Debug.Log(networker);
+        if (networker == null) {
+            Debug.LogError("Networker instance not found in the scene.");
+        }else{
+            Debug.Log("sending");
+            networker.saveData();
+        }
 
     }
 
@@ -114,7 +124,7 @@ class GameHandler : MonoBehaviour{
         timeleft =  timeleft-1;
 
         displayTime = GameObject.Find("Display Time").GetComponent<TextMeshProUGUI>();
-        Debug.Log("updated Time");
+        //Debug.Log("updated Time");
 
         
         
@@ -128,7 +138,7 @@ class GameHandler : MonoBehaviour{
      public virtual void StartRepeatAction(Action action, int interval)
         {
             repeatTimer?.Stop();    //stopping timer if already runs
-            Debug.Log("Repeat Action Started");
+            //Debug.Log("Repeat Action Started");
             repeatTimer = new Timer(interval);
             repeatTimer.Elapsed += (sender, e) => action();
             repeatTimer.AutoReset = true;
@@ -137,7 +147,7 @@ class GameHandler : MonoBehaviour{
     public virtual void StartRepeatActionDisplay(Action action, int interval)
         {
             displayTimer?.Stop();    //stopping timer if already runs
-            Debug.Log("Display Action Started");
+            //Debug.Log("Display Action Started");
             displayTimer = new Timer(interval);
             displayTimer.Elapsed += (sender, e) => action();
             displayTimer.AutoReset = true;
@@ -161,93 +171,93 @@ class GameHandler : MonoBehaviour{
 
     
     public void spawnTrash(string tag) {
-        Debug.Log("entered Spawn Trash");
-        Debug.Log(tag);
+        //Debug.Log("entered Spawn Trash");
+        //Debug.Log(tag);
         //System.Random rand = new System.Random();
         int fieldToSpawn = rand.Next(0, 9);
-        Debug.Log(fieldToSpawn);
+        //Debug.Log(fieldToSpawn);
 
         switch (tag) 
         {
             case paperTrashTag:     
-                    Debug.Log("Spawn please");          
+                    //Debug.Log("Spawn please");          
                     Instantiate(paperTrashprefab, spawnerField[fieldToSpawn]);
-                    Debug.Log("Paper Trash Spawned");
+                    //Debug.Log("Paper Trash Spawned");
                     leftToWin--;
                 break;
             case plasticTrashTag: 
                     Instantiate(plasticTrashprefab, spawnerField[fieldToSpawn]);
-                    Debug.Log("Plastic Trash Spawned");
+                    //Debug.Log("Plastic Trash Spawned");
                     leftToWin--;
                 break;
             case glassTrashTag:
                     Instantiate(glassTrashprefab, spawnerField[fieldToSpawn]);
-                    Debug.Log("Glass Trash Spawned");
+                    //Debug.Log("Glass Trash Spawned");
                     leftToWin--;
                 break;
             case bioTrashTag: 
                     Instantiate(bioTrashprefab, spawnerField[fieldToSpawn]);
-                    Debug.Log("Bio Trash Spawned");
+                    //Debug.Log("Bio Trash Spawned");
                     leftToWin--;
                 break;
             case tinTrashTag: 
                     Instantiate(tinTrashprefab, spawnerField[fieldToSpawn]);
-                    Debug.Log("Tin Trash Spawned");
+                    //Debug.Log("Tin Trash Spawned");
                     leftToWin--;
                 break;
             default:
-                Debug.Log("failed instantiate");
+                //Debug.Log("failed instantiate");
                 break;
         }
     }
      
     public void newRandomEvent(){
-        Debug.Log("Random new Started");
+        //Debug.Log("Random new Started");
 
         int eventToTrigger = rand.Next(0, 7);
-        Debug.Log(eventToTrigger);
+        //Debug.Log(eventToTrigger);
 
         if(eventToTrigger == 4){
                 spawnTrash(plasticTrashTag);
-                Debug.Log("paperTrash");
+                //Debug.Log("paperTrash");
        }
 
         switch (eventToTrigger)
         {
             case 0:
                 spawnTrash(paperTrashTag);
-                Debug.Log("paperTrash");
+                //Debug.Log("paperTrash");
                 break;
             case 1:
                 spawnTrash(plasticTrashTag);
-                Debug.Log("plasticTrash");
+                //Debug.Log("plasticTrash");
                 break;
             case 2:
                 spawnTrash(glassTrashTag);
-                Debug.Log("glassTrash");
+                //Debug.Log("glassTrash");
                 break;
             case 3:
                 spawnTrash(bioTrashTag);
-                Debug.Log("bioTrash");
+                //Debug.Log("bioTrash");
                 break;
             case 4:
                 spawnTrash(tinTrashTag);
-                Debug.Log("tinTrash");
+                //Debug.Log("tinTrash");
                 break;
             case 5:
                 lightSwitcher.TurnOnRandomLight();
-                Debug.Log("Random Light");
+                //Debug.Log("Random Light");
                 break;
             case 6: 
                 lightSwitcher.TurnOnRandomLight();
-                Debug.Log("Random Light");
+                //Debug.Log("Random Light");
                 break;
             case 7:
                 lightSwitcher.TurnOnRandomLight();
-                Debug.Log("Random Light");
+                //Debug.Log("Random Light");
                 break;
             default:
-                Debug.Log("failed instantiate");
+                //Debug.Log("failed instantiate");
                 break;
         }
     }
