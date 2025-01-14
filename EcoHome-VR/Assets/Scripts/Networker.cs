@@ -8,46 +8,56 @@ using UnityEngine.UI;
 using RandomNameGen;
 
 public class Networker : MonoBehaviour {
+
+    private RandomName randomName = new RandomName(new System.Random());
+    private System.Random rand = new System.Random();
     
-    RandomName randomName = new RandomName(new System.Random());
-    System.Random rand = new System.Random();
     public void saveData(int value){
         StartCoroutine(MakeRequests(value));
     }
 
     private IEnumerator MakeRequests(int value) {
-    // POST
-    value = value +1 ;
-    string scorevalue = value.ToString();
-    
-    int decider = rand.Next(0, 1);
+        // Increment the value for testing
+        value = value + 1;
+        string scorevalue = value.ToString();
 
-    var dataToPost = new Dictionary<string, string> {
-        { "sname", randomName.Generate(decider == 0 ? RandomNameGen.Sex.Male : RandomNameGen.Sex.Female, 0, false) },
-        { "score", scorevalue }
-    };
+        // Declare the dataToPost dictionary outside the if-else block
+        Dictionary<string, string> dataToPost;
 
-    /*if(decider == 0){
-        dataToPost = new Dictionary<string, string> {
-        { "sname", randomName.Generate(RandomNameGen.Sex.Male, 0, false) },
-        { "score", scorevalue }
-        };
-    }else{
-        dataToPost = new Dictionary<string, string> {
-            { "sname", randomName.Generate(RandomNameGen.Sex.Female, 0, false) },
-            { "score", scorevalue }
-        };
-    }*/
-    
-    Debug.Log(dataToPost);
-    var postRequest = CreateRequest("http://127.0.0.1/database_handler.php", RequestType.POST, dataToPost);
-    yield return postRequest.SendWebRequest();
+        // Check if PlayerPrefs has a PlayerName key
+        if (PlayerPrefs.HasKey("PlayerName")) {
+            dataToPost = new Dictionary<string, string> {
+                { "sname", PlayerPrefs.GetString("PlayerName") },
+                { "score", scorevalue }
+            };
+        } else {
+            // Ensure `decider` variable is defined
+            int decider = rand.Next(0, 2); // Randomly choose 0 or 1
+            var newName = randomName.Generate(
+                decider == 0 ? RandomNameGen.Sex.Male : RandomNameGen.Sex.Female, 
+                0, 
+                false
+            );
+            dataToPost = new Dictionary<string, string> {
+                { "sname", newName },
+                { "score", scorevalue }
+            };
+            PlayerPrefs.SetString("PlayerName", newName);
+        }
 
-    if (postRequest.result == UnityWebRequest.Result.Success) {
-        Debug.Log("Response: " + postRequest.downloadHandler.text);
-    } else {
-        Debug.LogError("Error: " + postRequest.error);
-    }
+        Debug.Log("Welcome, " + PlayerPrefs.GetString("PlayerName") + "!");
+        Debug.Log(dataToPost);
+
+        // Create and send the POST request
+        var postRequest = CreateRequest("http://127.0.0.1/database_handler.php", RequestType.POST, dataToPost);
+        yield return postRequest.SendWebRequest();
+
+        // Handle the response
+        if (postRequest.result == UnityWebRequest.Result.Success) {
+            Debug.Log("Response: " + postRequest.downloadHandler.text);
+        } else {
+            Debug.LogError("Error: " + postRequest.error);
+        }
     }
 
     private UnityWebRequest CreateRequest(string path, RequestType type = RequestType.GET, Dictionary<string, string> data = null) {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using RandomNameGen;
 
 public class MainMenuInteractor : MonoBehaviour
 {
@@ -12,11 +13,23 @@ public class MainMenuInteractor : MonoBehaviour
     public GameObject LoadingScreen;
     public Slider LoadingBarFill;
 
+    private RandomName randomName = new RandomName(new System.Random());
+    private System.Random rand = new System.Random();
+
     private void Start() 
     {
         player = GameObject.Find("Player");
         /* LoadingScreen = GameObject.Find("LoadingScreen");
         LoadingBarFill = GameObject.Find("Slider").GetComponent<Slider>(); */
+        CheckPlayerName();
+    }
+
+    private void CheckPlayerName() {
+        if(!PlayerPrefs.HasKey("PlayerName")) {
+            int decider = rand.Next(0, 1);
+            PlayerPrefs.SetString("PlayerName", randomName.Generate(decider == 0 ? RandomNameGen.Sex.Male : RandomNameGen.Sex.Female, 0, false));
+        }
+        Debug.Log("Welcome, " + PlayerPrefs.GetString("PlayerName") + "!");
     }
 
     private IEnumerator LoadSceneAsyncProcess(string sceneName)
