@@ -15,7 +15,7 @@ public class AimingDetection : MonoBehaviour
 
     void Update()
     {
-        if (rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
+        /*if (rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
             GameObject aimedObject = hit.collider.gameObject;
             Debug.Log("Currently aiming at: " + aimedObject.name);
@@ -34,7 +34,7 @@ public class AimingDetection : MonoBehaviour
             ResetTextMeshPro(lastAimedObject);
             lastAimedObject = null;
             Debug.Log("Not aiming at any object.");
-        }
+        }*/
     }
 
     void HighlightObject(GameObject obj)
