@@ -67,7 +67,7 @@ public class LightSwitcher : MonoBehaviour
                 {
                     obj.SetActive(false);
 
-                    if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
@@ -90,7 +90,7 @@ public class LightSwitcher : MonoBehaviour
                 {
                     obj.SetActive(true);
 
-                    if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
@@ -126,7 +126,7 @@ public class LightSwitcher : MonoBehaviour
                 {
                     obj.SetActive(false);
                     
-                    if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
@@ -146,7 +146,7 @@ public class LightSwitcher : MonoBehaviour
                 {
                     obj.SetActive(true);
 
-                    if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
@@ -183,7 +183,7 @@ public class LightSwitcher : MonoBehaviour
                 {
                     obj.SetActive(false);
                     
-                    if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
@@ -203,7 +203,7 @@ public class LightSwitcher : MonoBehaviour
                 {
                     obj.SetActive(true);
 
-                    if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
@@ -230,7 +230,7 @@ public class LightSwitcher : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         System.Random random = new System.Random();
 
-        if(scene.name == "Challenge - Main Scene") 
+        if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene") 
         {
             // generates random integer, values 0 or 1
             var deskOrCeilingLight = random.Next(0, 2);

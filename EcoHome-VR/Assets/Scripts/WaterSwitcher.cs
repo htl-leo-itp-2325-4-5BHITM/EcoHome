@@ -59,7 +59,7 @@ public class WaterSwitcher : MonoBehaviour
                 {
                     obj.SetActive(false);
                     
-                    if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
@@ -80,7 +80,7 @@ public class WaterSwitcher : MonoBehaviour
                 {
                     obj.SetActive(true);
 
-                    if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
@@ -117,7 +117,7 @@ public class WaterSwitcher : MonoBehaviour
                 {
                     obj.SetActive(false);
                     
-                    if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter += 1;
                         Playerchall.globalScoreCounter += 1;
@@ -136,7 +136,7 @@ public class WaterSwitcher : MonoBehaviour
                 {
                     obj.SetActive(true);
 
-                    if(scene.name == "Challenge - Main Scene")
+                    if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
                     {
                         Playerchall.localScoreCounter -= 1;
                         Playerchall.globalScoreCounter -= 1;
@@ -162,7 +162,7 @@ public class WaterSwitcher : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         System.Random random = new System.Random();
 
-        if(scene.name == "Challenge - Main Scene") 
+        if(scene.name == "Challenge - Main Scene" || scene.name == "[EN] Challenge - Main Scene")
         {
             basinWaterSources[random.Next(0, basinWaterSources.Length)].SetActive(true);
         }
