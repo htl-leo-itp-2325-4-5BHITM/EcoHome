@@ -61,7 +61,8 @@ public class MainMenuInteractor : MonoBehaviour
         if (this._asyncOperation == null)
         {
             Destroy(player);
-            this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Challenge - Main Scene"));
+            if (SceneManager.GetActiveScene().name.StartsWith("[EN]")) this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "[EN] Challenge - Main Scene"));
+            else this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Challenge - Main Scene"));
         }
     }
 
@@ -70,13 +71,15 @@ public class MainMenuInteractor : MonoBehaviour
         if (this._asyncOperation == null)
         {
             Destroy(player);
-            this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Linear - Main Scene"));
+            if (SceneManager.GetActiveScene().name.StartsWith("[EN]")) this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "[EN] Linear - Main Scene"));
+            else this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Linear - Main Scene"));
         }
     }
 
     public void BackToMenu()
     {
         Destroy(player);
-        SceneManager.LoadScene("Main Menu - Main Scene");
+        if (SceneManager.GetActiveScene().name.StartsWith("[EN]")) SceneManager.LoadScene("[EN] Main Menu - Main Scene");
+        else SceneManager.LoadScene("Main Menu - Main Scene");
     }
 }

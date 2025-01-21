@@ -38,7 +38,8 @@ public class Playerchall : MonoBehaviour
 
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool buttonPressed) && buttonPressed)
         {
-            SceneManager.LoadScene("Main Menu - Main Scene");
+            if (SceneManager.GetActiveScene().name.StartsWith("[EN]")) SceneManager.LoadScene("[EN] Main Menu - Main Scene");
+            else SceneManager.LoadScene("Main Menu - Main Scene");
         }
     }
 

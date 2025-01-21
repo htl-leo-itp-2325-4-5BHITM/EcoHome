@@ -80,7 +80,8 @@ class MuseumHandler : MonoBehaviour{
             CheckAndSaveHighscore();
 
             // Destroy player here
-            SceneManager.LoadScene("Main Menu - Main Scene");
+            if (SceneManager.GetActiveScene().name.StartsWith("[EN]")) SceneManager.LoadScene("[EN] Main Menu - Main Scene");
+            else SceneManager.LoadScene("Main Menu - Main Scene");
         }
 
     }
