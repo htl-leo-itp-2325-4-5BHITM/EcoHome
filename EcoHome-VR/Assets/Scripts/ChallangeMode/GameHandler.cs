@@ -46,7 +46,7 @@ class GameHandler : MonoBehaviour{
     private Networker networker;
 
     System.Random rand = new System.Random();
-    private int timeleft = 20;
+    private int timeleft = 60;
     private int leftToWin = 3;
 
     void Start(){
@@ -78,7 +78,8 @@ class GameHandler : MonoBehaviour{
     async void Update(){
         if(!challangeFailedYet())
         {     
-            displayTime.text = "Time Left: " + timeleft;
+            if (SceneManager.GetActiveScene().name.StartsWith("[EN]")) displayTime.text = "Time Left: " + timeleft;
+            else displayTime.text = "Übrige Zeit: " + timeleft;
         }
         else{ 
             CheckAndSaveHighscore();

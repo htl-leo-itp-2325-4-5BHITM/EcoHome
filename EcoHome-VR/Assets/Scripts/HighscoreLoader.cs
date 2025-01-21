@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HighscoreLoader : MonoBehaviour
@@ -11,7 +12,8 @@ public class HighscoreLoader : MonoBehaviour
         if (PlayerPrefs.HasKey("HighscoreChallenge"))
         {
             int score = PlayerPrefs.GetInt("HighscoreChallenge");
-            GameObject.Find("Highscore").GetComponent<TextMeshProUGUI>().text = "Highscore: " + score;
+            if (SceneManager.GetActiveScene().name.StartsWith("[EN]")) GameObject.Find("Highscore").GetComponent<TextMeshProUGUI>().text = "Highscore: " + score;
+            else GameObject.Find("Highscore").GetComponent<TextMeshProUGUI>().text = "Höchstpunktzahl: " + score;
         }
     }
 

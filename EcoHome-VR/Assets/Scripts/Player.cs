@@ -38,7 +38,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(displayScore) displayScore.text = "Score: " + displayScoreCounter;
+        if(displayScore)
+        {
+            if (SceneManager.GetActiveScene().name.StartsWith("[EN]")) displayScore.text = "Score: " + displayScoreCounter;
+            else displayScore.text = "Punktzahl: " + displayScoreCounter;
+        }
 
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool buttonPressed) && buttonPressed)
         {
