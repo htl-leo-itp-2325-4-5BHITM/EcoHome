@@ -76,6 +76,24 @@ public class MainMenuInteractor : MonoBehaviour
         }
     }
 
+    public void LoadMenuDE() 
+    {
+        if (this._asyncOperation == null && SceneManager.GetActiveScene().name.StartsWith("[EN]"))
+        {
+            Destroy(player);
+            this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Main Menu - Main Scene"));
+        }
+    }
+
+    public void LoadMenuEN() 
+    {
+        if (this._asyncOperation == null && !SceneManager.GetActiveScene().name.StartsWith("[EN]"))
+        {
+            Destroy(player);
+            this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "[EN] Main Menu - Main Scene"));
+        }
+    }
+
     public void BackToMenu()
     {
         Destroy(player);
