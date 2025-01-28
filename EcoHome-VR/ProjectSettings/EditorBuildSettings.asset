@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/scene-en/[EN] Main Menu - Main Scene.unity
+    guid: 02a50a51137ff114d8cf9e1275e1c326
+  - enabled: 1
+    path: Assets/Scenes/scene-en/[EN] Linear - Main Scene.unity
+    guid: 672076fad63b501489e3fbe43e71e51e
+  - enabled: 1
+    path: Assets/Scenes/scene-en/[EN] Challenge - Main Scene.unity
+    guid: 0fa117f66e43f9f4d9fd3dfc98417de8
+  - enabled: 1
     path: Assets/Scenes/Main Menu - Main Scene.unity
     guid: e4c72e97ab3f0c941a29f8b0d4e19069
   - enabled: 1
