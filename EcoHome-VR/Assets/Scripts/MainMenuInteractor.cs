@@ -112,6 +112,13 @@ public class MainMenuInteractor : MonoBehaviour
         }
     }
 
+    public void LoadLeaderboards()
+    {
+        Destroy(player);
+        if (SceneManager.GetActiveScene().name.StartsWith("[EN]")) this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "[EN] HoF - Main Scene"));
+        else this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "HoF - Main Scene"));
+    }
+
     public void BackToMenu()
     {
         Destroy(player);

@@ -36,6 +36,8 @@ TagManager:
   - FloorSensor
   - PaperTrash_Hold
   - Hold
+  - Leaderboard Score
+  - Leaderboard Name
   layers:
   - Default
   - TransparentFX
