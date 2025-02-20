@@ -268,7 +268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 10619191}
   m_Layer: 5
-  m_Name: Line (5)
+  m_Name: Line (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,7 +290,7 @@ RectTransform:
   - {fileID: 575063424}
   - {fileID: 508084879}
   m_Father: {fileID: 1834411034}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 176604817}
   - component: {fileID: 176604816}
   m_Layer: 5
-  m_Name: NamePlacement6
+  m_Name: NamePlacement5
   m_TagString: Leaderboard Name
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2139,7 +2139,7 @@ GameObject:
   - component: {fileID: 290059303}
   - component: {fileID: 290059302}
   m_Layer: 5
-  m_Name: ScorePlacement3
+  m_Name: ScorePlacement4
   m_TagString: Leaderboard Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2719,7 +2719,7 @@ GameObject:
   - component: {fileID: 508084881}
   - component: {fileID: 508084880}
   m_Layer: 5
-  m_Name: ScorePlacement5
+  m_Name: ScorePlacement6
   m_TagString: Leaderboard Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2893,7 +2893,7 @@ GameObject:
   - component: {fileID: 549824444}
   - component: {fileID: 549824443}
   m_Layer: 5
-  m_Name: NamePlacement3
+  m_Name: NamePlacement4
   m_TagString: Leaderboard Name
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3163,7 +3163,7 @@ GameObject:
   - component: {fileID: 575063426}
   - component: {fileID: 575063425}
   m_Layer: 5
-  m_Name: NamePlacement5
+  m_Name: NamePlacement6
   m_TagString: Leaderboard Name
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3296,7 +3296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 610804980}
   m_Layer: 5
-  m_Name: Line (6)
+  m_Name: Line (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3318,7 +3318,7 @@ RectTransform:
   - {fileID: 176604815}
   - {fileID: 1876604937}
   m_Father: {fileID: 1834411034}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3528,7 +3528,7 @@ GameObject:
   - component: {fileID: 640180778}
   - component: {fileID: 640180777}
   m_Layer: 5
-  m_Name: NamePlacement7
+  m_Name: NamePlacement8
   m_TagString: Leaderboard Name
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4384,7 +4384,7 @@ GameObject:
   - component: {fileID: 849670399}
   - component: {fileID: 849670398}
   m_Layer: 5
-  m_Name: ScorePlacement7
+  m_Name: ScorePlacement8
   m_TagString: Leaderboard Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5373,7 +5373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6049,7 +6049,7 @@ GameObject:
   - component: {fileID: 1281342539}
   - component: {fileID: 1281342538}
   m_Layer: 5
-  m_Name: NamePlacement4
+  m_Name: NamePlacement3
   m_TagString: Leaderboard Name
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6769,7 +6769,7 @@ GameObject:
   - component: {fileID: 1412957206}
   - component: {fileID: 1412957205}
   m_Layer: 5
-  m_Name: NamePlacement8
+  m_Name: NamePlacement7
   m_TagString: Leaderboard Name
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6950,7 +6950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7078,7 +7078,7 @@ GameObject:
   - component: {fileID: 1487333153}
   - component: {fileID: 1487333152}
   m_Layer: 5
-  m_Name: ScorePlacement4
+  m_Name: ScorePlacement3
   m_TagString: Leaderboard Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8454,7 +8454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8589,7 +8589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 7
+  m_text: 8
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8859,7 +8859,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 8
+  m_text: 7
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8946,7 +8946,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1722763966}
   m_Layer: 5
-  m_Name: Line (8)
+  m_Name: Line (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8968,7 +8968,7 @@ RectTransform:
   - {fileID: 1412957204}
   - {fileID: 1892979054}
   m_Father: {fileID: 1834411034}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9202,7 +9202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787711347}
   m_Layer: 5
-  m_Name: Line (3)
+  m_Name: Line (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9224,7 +9224,7 @@ RectTransform:
   - {fileID: 549824442}
   - {fileID: 290059301}
   m_Father: {fileID: 1834411034}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9539,12 +9539,12 @@ RectTransform:
   m_Children:
   - {fileID: 328857285}
   - {fileID: 340756956}
-  - {fileID: 1787711347}
   - {fileID: 2126013179}
-  - {fileID: 10619191}
+  - {fileID: 1787711347}
   - {fileID: 610804980}
-  - {fileID: 2053932202}
+  - {fileID: 10619191}
   - {fileID: 1722763966}
+  - {fileID: 2053932202}
   - {fileID: 518248718}
   - {fileID: 1478950569}
   m_Father: {fileID: 1203634617}
@@ -9613,7 +9613,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9702,7 +9702,7 @@ GameObject:
   - component: {fileID: 1876604939}
   - component: {fileID: 1876604938}
   m_Layer: 5
-  m_Name: ScorePlacement6
+  m_Name: ScorePlacement5
   m_TagString: Leaderboard Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9837,7 +9837,7 @@ GameObject:
   - component: {fileID: 1892979056}
   - component: {fileID: 1892979055}
   m_Layer: 5
-  m_Name: ScorePlacement8
+  m_Name: ScorePlacement7
   m_TagString: Leaderboard Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10296,7 +10296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2053932202}
   m_Layer: 5
-  m_Name: Line (7)
+  m_Name: Line (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10318,7 +10318,7 @@ RectTransform:
   - {fileID: 640180776}
   - {fileID: 849670397}
   m_Father: {fileID: 1834411034}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10730,7 +10730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2126013179}
   m_Layer: 5
-  m_Name: Line (4)
+  m_Name: Line (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10752,7 +10752,7 @@ RectTransform:
   - {fileID: 1281342537}
   - {fileID: 1487333151}
   m_Father: {fileID: 1834411034}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

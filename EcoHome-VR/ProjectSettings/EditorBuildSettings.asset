@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Challenge - Main Scene.unity
     guid: ed5efa7b963f0f7418299e497541f91a
+  - enabled: 1
+    path: Assets/Scenes/HoF - Main Scene.unity
+    guid: 8518e0f83faf4e3429d2fbf60af15f2c
+  - enabled: 1
+    path: Assets/Scenes/scene-en/[EN] HoF - Main Scene.unity
+    guid: fca9f78bc94b17e449caa8d3e7aa7fc3
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0f201d24f00ac1246aac334b84968490,
       type: 2}
