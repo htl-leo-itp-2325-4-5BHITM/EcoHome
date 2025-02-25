@@ -1,8 +1,8 @@
 <?php
 // database_handler.php
-$servername = "127.0.0.1";
+$servername = "https://phpmyadmin.blauregen.dev";
 $username = "EcoHome";
-$password= "EcoHome";
+$password= "ITPLeonding2425EcoHome";
 $dbname = "EcoHome";
 
 // Get POST data 

@@ -49,7 +49,7 @@ public class Networker : MonoBehaviour {
         Debug.Log(dataToPost);
 
         // Create and send the POST request
-        var postRequest = CreateRequest("http://127.0.0.1/database_handler.php", RequestType.POST, dataToPost);
+        var postRequest = CreateRequest("https://ecohome.blauregen.dev/database_handler.php", RequestType.POST, dataToPost);
         yield return postRequest.SendWebRequest();
 
         // Handle the response
