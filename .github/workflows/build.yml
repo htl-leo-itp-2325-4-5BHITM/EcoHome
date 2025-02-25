@@ -43,7 +43,7 @@ jobs:
           buildsPath: '../EcoHome-Build'  # Build output outside the Unity project folder
           buildMethod: 'BuildScript.BuildGame'  # Specify the method to execute
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: EcoHome-Build  # Path to the build output folder

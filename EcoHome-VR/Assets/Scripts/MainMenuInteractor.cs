@@ -21,7 +21,23 @@ public class MainMenuInteractor : MonoBehaviour
         player = GameObject.Find("Player");
         /* LoadingScreen = GameObject.Find("LoadingScreen");
         LoadingBarFill = GameObject.Find("Slider").GetComponent<Slider>(); */
+        CheckLanguageSettings();
         CheckPlayerName();
+    }
+
+    private void CheckLanguageSettings() {
+        switch (PlayerPrefs.GetString("Language"))
+        {
+            case "[EN]":
+                if(!SceneManager.GetActiveScene().name.StartsWith("[EN]")) LoadMenuEN();
+                break;
+            case "[DE]":
+                if(SceneManager.GetActiveScene().name.StartsWith("[EN]")) LoadMenuDE();
+                break;
+            default:
+                PlayerPrefs.SetString("Language", "[EN]");
+                break;
+        }
     }
 
     private void CheckPlayerName() {
@@ -81,6 +97,7 @@ public class MainMenuInteractor : MonoBehaviour
         if (this._asyncOperation == null && SceneManager.GetActiveScene().name.StartsWith("[EN]"))
         {
             Destroy(player);
+            PlayerPrefs.SetString("Language", "[DE]");
             this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "Main Menu - Main Scene"));
         }
     }
@@ -90,8 +107,16 @@ public class MainMenuInteractor : MonoBehaviour
         if (this._asyncOperation == null && !SceneManager.GetActiveScene().name.StartsWith("[EN]"))
         {
             Destroy(player);
+            PlayerPrefs.SetString("Language", "[EN]");
             this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "[EN] Main Menu - Main Scene"));
         }
+    }
+
+    public void LoadLeaderboards()
+    {
+        Destroy(player);
+        if (SceneManager.GetActiveScene().name.StartsWith("[EN]")) this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "[EN] HoF - Main Scene"));
+        else this.StartCoroutine(this.LoadSceneAsyncProcess(sceneName: "HoF - Main Scene"));
     }
 
     public void BackToMenu()

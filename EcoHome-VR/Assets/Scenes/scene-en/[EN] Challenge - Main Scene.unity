@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14891,6 +14891,7 @@ GameObject:
   - component: {fileID: 1093232730}
   - component: {fileID: 1093232732}
   - component: {fileID: 1093232731}
+  - component: {fileID: 1093232733}
   m_Layer: 0
   m_Name: "W\xFCrfel_1_2"
   m_TagString: Untagged
@@ -14963,6 +14964,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093232729}
   m_Mesh: {fileID: -4112505972845080003, guid: 581b4de80c0a625448e7fea32f120d84, type: 3}
+--- !u!65 &1093232733
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093232729}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.70000017, y: 0.23805833, z: 0.6000001}
+  m_Center: {x: 0, y: -0.020341378, z: 0.006370486}
 --- !u!1 &1097548952
 GameObject:
   m_ObjectHideFlags: 0
