@@ -21,7 +21,9 @@ if ($score) {
 
         // Insert into table
         $stmt = $conn->prepare("INSERT INTO punkte (sname, score) VALUES (?,?)");
-        $stmt->bind_param("si", $score);
+        $stmt->bind_param("score", $score);
+        $stmt->bind_param("sname", $sname);
+
 
         if ($stmt->execute()) {
             echo json_encode(["success" => true, "message" => "Data inserted successfully."]);
