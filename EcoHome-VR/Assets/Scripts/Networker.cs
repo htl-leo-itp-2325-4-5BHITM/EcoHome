@@ -19,7 +19,8 @@ public class Networker : MonoBehaviour
     }
     public PostData[] get10Data()
     {
-        StartCoroutine(MakeRequestsSave());
+        StartCoroutine(MakeRequestsGet());
+        return null;        // TEMPORARY
     }
 
     private IEnumerator MakeRequestsSave(int value)
