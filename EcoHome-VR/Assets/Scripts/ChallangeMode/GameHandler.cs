@@ -92,6 +92,7 @@ class GameHandler : MonoBehaviour{
     }
 
     public void CheckAndSaveHighscore() {
+        Debug.Log("Hilfe");
         HighscorePlayerPrefs();
         HighscoreServer();
     }
@@ -157,7 +158,7 @@ class GameHandler : MonoBehaviour{
         }
 
     public Boolean challangeFailedYet(){
-        if(timeleft == 0){
+        if(timeleft <= 0){
             return true;   
         }else{          
             return false;

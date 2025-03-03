@@ -17,10 +17,7 @@ public class Networker : MonoBehaviour
     {
         StartCoroutine(MakeRequestsSave(value));
     }
-    public PostData[] get10Data()
-    {
-        StartCoroutine(MakeRequestsSave());
-    }
+  
 
     private IEnumerator MakeRequestsSave(int value)
     {
@@ -60,27 +57,6 @@ public class Networker : MonoBehaviour
 
         // Create and send the POST request
         var postRequest = CreateRequest("https://ecohome.blauregen.dev/database_handler.php", RequestType.POST, dataToPost);
-        yield return postRequest.SendWebRequest();
-
-        // Handle the response
-        if (postRequest.result == UnityWebRequest.Result.Success)
-        {
-            Debug.Log("Response: " + postRequest.downloadHandler.text);
-        }
-        else
-        {
-            Debug.LogError("Error: " + postRequest.error);
-        }
-    }
-
-    private IEnumerator MakeRequestsGet()
-    {
-        
-
-        
-
-        // Create and send the POST request
-        var postRequest = CreateRequest("https://ecohome.blauregen.dev/database_handler.php");
         yield return postRequest.SendWebRequest();
 
         // Handle the response
