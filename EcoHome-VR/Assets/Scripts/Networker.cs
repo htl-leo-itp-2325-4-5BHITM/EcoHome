@@ -5,10 +5,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using TMPro;
 using RandomNameGen;
 
 public class Networker : MonoBehaviour
 {
+
+    void Start() {
+        if(PlayerPrefs.HasKey("HighscoreChallenge")) 
+        {
+            GameObject.Find("ScorePlacementSELF").GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("HighscoreChallenge").ToString();
+        } 
+        else
+        {
+            GameObject.Find("ScorePlacementSELF").GetComponent<TextMeshProUGUI>().text = "0";
+            PlayerPrefs.SetInt("HighscoreChallenge", 0);
+            PlayerPrefs.Save();
+        }
+
+        GameObject.Find("NamePlacementSELF").GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetString("PlayerName");
+    }
 
     private RandomName randomName = new RandomName(new System.Random());
     private System.Random rand = new System.Random();
