@@ -3297,12 +3297,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &270727225 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4630260191140385214, guid: 6aab526357c822b4e96c29d22854bfc8,
-    type: 3}
-  m_PrefabInstance: {fileID: 113182713}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &277143909
 GameObject:
   m_ObjectHideFlags: 0
@@ -3972,7 +3966,7 @@ MonoBehaviour:
   audioPlayer: {fileID: 1473392963}
   clip_1: {fileID: 8300000, guid: 2c239880c927c4a6290b1512b88f5e0f, type: 3}
   clip_2: {fileID: 8300000, guid: d1ffea9b29898604298d75fdcd6b98b1, type: 3}
-  paperParticle: {fileID: 1662060755}
+  paperParticle: {fileID: 0}
 --- !u!1 &349193221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3911475926258947383, guid: a13aeb90d7ce3454d8bc0035e47672e5,
@@ -10550,12 +10544,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 543320968}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &543320970 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2569738444733847796, guid: 62deb7714b6d1fc4481248d71ca6fac5,
-    type: 3}
-  m_PrefabInstance: {fileID: 543320968}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &543320971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7149071295278074828, guid: 62deb7714b6d1fc4481248d71ca6fac5,
@@ -10579,7 +10567,7 @@ MonoBehaviour:
   audioPlayer: {fileID: 1473392963}
   clip_1: {fileID: 8300000, guid: 2c239880c927c4a6290b1512b88f5e0f, type: 3}
   clip_2: {fileID: 8300000, guid: d1ffea9b29898604298d75fdcd6b98b1, type: 3}
-  paperParticle: {fileID: 543320970}
+  paperParticle: {fileID: 0}
 --- !u!1 &545074282
 GameObject:
   m_ObjectHideFlags: 0
@@ -17760,7 +17748,7 @@ MonoBehaviour:
   audioPlayer: {fileID: 1473392963}
   clip_1: {fileID: 8300000, guid: 2c239880c927c4a6290b1512b88f5e0f, type: 3}
   clip_2: {fileID: 8300000, guid: d1ffea9b29898604298d75fdcd6b98b1, type: 3}
-  paperParticle: {fileID: 1662060755}
+  paperParticle: {fileID: 0}
 --- !u!1001 &1535495024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18314,7 +18302,7 @@ MonoBehaviour:
   audioPlayer: {fileID: 1473392963}
   clip_1: {fileID: 8300000, guid: 2c239880c927c4a6290b1512b88f5e0f, type: 3}
   clip_2: {fileID: 8300000, guid: d1ffea9b29898604298d75fdcd6b98b1, type: 3}
-  paperParticle: {fileID: 1662060755}
+  paperParticle: {fileID: 0}
 --- !u!1001 &1598442298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18875,12 +18863,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdaebf091cbff504abda2da866cba76c, type: 3}
---- !u!198 &1662060755 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2569738444733847796, guid: 62deb7714b6d1fc4481248d71ca6fac5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1872974582}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1666337727 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 481697374534744507, guid: 6aab526357c822b4e96c29d22854bfc8,
@@ -18904,7 +18886,7 @@ MonoBehaviour:
   audioPlayer: {fileID: 1473392963}
   clip_1: {fileID: 8300000, guid: 2c239880c927c4a6290b1512b88f5e0f, type: 3}
   clip_2: {fileID: 8300000, guid: d1ffea9b29898604298d75fdcd6b98b1, type: 3}
-  paperParticle: {fileID: 270727225}
+  paperParticle: {fileID: 0}
 --- !u!1 &1671521912
 GameObject:
   m_ObjectHideFlags: 0
@@ -19085,6 +19067,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trashbin Glass
       objectReference: {fileID: 0}
+    - target: {fileID: 4632118904417613901, guid: 6aab526357c822b4e96c29d22854bfc8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8266559926113360493, guid: 6aab526357c822b4e96c29d22854bfc8,
         type: 3}
       propertyPath: m_RootOrder
@@ -19140,8 +19127,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4632118904417613901, guid: 6aab526357c822b4e96c29d22854bfc8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6aab526357c822b4e96c29d22854bfc8, type: 3}
+--- !u!1 &1691571790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 481697374534744507, guid: 6aab526357c822b4e96c29d22854bfc8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1691571789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1691571791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691571790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3266eb28f4be1c240b2cffac5fe6fcc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  gameHandler: {fileID: 2023631418}
+  audioPlayer: {fileID: 1473392963}
+  clip_1: {fileID: 8300000, guid: 2c239880c927c4a6290b1512b88f5e0f, type: 3}
+  clip_2: {fileID: 8300000, guid: d1ffea9b29898604298d75fdcd6b98b1, type: 3}
+  paperParticle: {fileID: 0}
 --- !u!1001 &1710661984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20710,7 +20722,7 @@ MonoBehaviour:
   audioPlayer: {fileID: 1473392963}
   clip_1: {fileID: 8300000, guid: 2c239880c927c4a6290b1512b88f5e0f, type: 3}
   clip_2: {fileID: 8300000, guid: d1ffea9b29898604298d75fdcd6b98b1, type: 3}
-  paperParticle: {fileID: 1662060755}
+  paperParticle: {fileID: 0}
 --- !u!1001 &1896271104
 PrefabInstance:
   m_ObjectHideFlags: 0
