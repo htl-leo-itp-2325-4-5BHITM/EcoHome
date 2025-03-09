@@ -111,8 +111,8 @@ Transform:
   m_GameObject: {fileID: 2291696411062313866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.3300002, z: 0.039999932}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9031801724455523890}
   m_RootOrder: 6
@@ -889,9 +889,9 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 90
+      value: 360
       mode: 0
-      spread: 0.54
+      spread: 0
       speed:
         serializedVersion: 2
         minMaxState: 0
@@ -1219,12 +1219,12 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
-      minScalar: 0
+      minMaxState: 3
+      scalar: 0.7853981
+      minScalar: 3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1275,9 +1275,9 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
-      minScalar: 0
+      minMaxState: 3
+      scalar: 0.7853981
+      minScalar: 3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1328,9 +1328,9 @@ ParticleSystem:
         m_RotationOrder: 4
     curve:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0.7853982
-      minScalar: 0.7853982
+      minScalar: 3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1379,7 +1379,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    separateAxes: 0
+    separateAxes: 1
   ColorModule:
     enabled: 0
     gradient:
@@ -4845,7 +4845,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ad33049d24c6f4392bce4711e74a34, type: 2}
+  - {fileID: 2100000, guid: b59cff7a233f9e449bd5271edad977de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4887,7 +4887,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 2019106192293726239, guid: 7be422f812999804f9761644b65f5c3d, type: 3}
+  m_Mesh: {fileID: 2816119944088101400, guid: 42960416f67db8e41a271a08f770a776, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -9780,7 +9780,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ad33049d24c6f4392bce4711e74a34, type: 2}
+  - {fileID: 2100000, guid: b59cff7a233f9e449bd5271edad977de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9822,7 +9822,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 2019106192293726239, guid: 7be422f812999804f9761644b65f5c3d, type: 3}
+  m_Mesh: {fileID: 2816119944088101400, guid: 42960416f67db8e41a271a08f770a776, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -9847,7 +9847,9 @@ MonoBehaviour:
   audioPlayer: {fileID: 0}
   clip_1: {fileID: 8300000, guid: 2c239880c927c4a6290b1512b88f5e0f, type: 3}
   clip_2: {fileID: 8300000, guid: d1ffea9b29898604298d75fdcd6b98b1, type: 3}
+  _objectDestroyed: 0
   paperParticle: {fileID: 5627794185191882436}
+  itemSpawner: {fileID: 0}
 --- !u!1 &4791759720292763552
 GameObject:
   m_ObjectHideFlags: 0
