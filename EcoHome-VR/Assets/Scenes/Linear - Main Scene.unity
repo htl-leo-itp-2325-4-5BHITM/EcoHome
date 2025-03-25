@@ -7932,7 +7932,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioPlayer
       value: 
-      objectReference: {fileID: 416973906}
+      objectReference: {fileID: 231946230}
     - target: {fileID: 3502182610516278456, guid: e5d3ba65ac0d69144a02e90e6c78ffac,
         type: 3}
       propertyPath: itemSpawner
